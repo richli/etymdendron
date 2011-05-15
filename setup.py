@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from distutils.core import setup
+#import py2exe # not on linux; save this for later
 
 setup(name='etymdendron',
         version='0.01',
