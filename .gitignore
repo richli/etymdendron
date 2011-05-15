@@ -1,2 +1,6 @@
 # Ignore vim swap files
 *.swp
+
+# Ignore distutils files
+MANIFEST
+dist/
