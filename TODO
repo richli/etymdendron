@@ -1,0 +1,15 @@
+TODO for etymdendron
+--------------------
+
+* Decide on how the entries are to be stored.
+	I think I should make a class which hold each entry. How should entries be related? Should an entry only keep track of its ancestors, and looking up that entry would walk along the tree and show ancestors and cognates? Maybe I need to store descendants too, for faster tree walking. This would make entry addition slower...
+
+* Decide on the backend. 
+	It should probably use a database, but for now I can keep things in memory.
+
+* Frontend. 
+	I can use a CLI frontend temporarily, but I will need a GUI interface as well. Probably use wxpython for this, since it's nicely cross-platform.
+	How can I display a tree easily? I'm use it's easy in wxwidgets.
+
+* XML import/export
+	Good idea to implement this
