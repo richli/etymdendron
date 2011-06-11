@@ -1,4 +1,8 @@
-<?xml version="1.0"? encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file provides for some test cases: 
+	 1) A word is found multiple times in the same tree (ros)
+	 2) A word is found in multiple trees (biology)
+	 -->
 <etym>
 	<word lang="PIE" text="unknown" morpheme="unknown">
 		<word lang="Old English" text="hors" morpheme="hors">
