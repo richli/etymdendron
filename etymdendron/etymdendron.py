@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-
-# This file is the main driver for the program
+""" This file is the main driver for the program """
 
 ###
 # Imports (global)
@@ -12,14 +11,15 @@ import cli_funcs
 
 ###
 # Global constants
-WORDS_FILE='words.xml'
+WORDS_FILE = 'words.xml'
 
 def main():
     """ The main routine """
     ###
     # Parse arguments
     parser = argparse.ArgumentParser(description='Run etymdendron')
-    parser.add_argument('word', help='Word to search for (will be asked for if not specified)', nargs='?', default=None)
+    parser.add_argument('word', help='Word to search for (will be asked for '
+        'if not specified)', nargs='?', default=None)
     args = parser.parse_args()
 
     ###
@@ -40,7 +40,7 @@ def main():
         for word in root.iterdescendants():
             if word.attrib['text'] == search_word:
                 # Add the found word to our list
-                matched_words.append((root,word))
+                matched_words.append((root, word))
 
     # Now remove non-unique roots (using the set container)
     matched_roots = [match[0] for match in matched_words]
@@ -54,7 +54,7 @@ def main():
     # Display the tree if we have matches
     # No match
     if num_trees == 0:
-        print('{0} is not found in {1}'.format(search_word,WORDS_FILE))
+        print('{0} is not found in {1}'.format(search_word, WORDS_FILE))
         sys.exit(0)
     # Multiple matches
     elif num_trees > 1:
@@ -63,7 +63,7 @@ def main():
     # One match
     elif num_trees == 1:
         print('{0} is found in one tree'.format(search_word))
-        cli_funcs.display_tree(unique_roots[0],matched_words_ur)
+        cli_funcs.display_tree(unique_roots[0], matched_words_ur)
 
     ###
     # That's all!
