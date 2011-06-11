@@ -45,8 +45,11 @@ def main():
 
     # Now remove non-unique roots (using the set container)
     matched_roots = [match[0] for match in matched_words]
-    unique_roots = set(matched_roots)
+    unique_roots = list(set(matched_roots))
     num_trees = len(unique_roots)
+
+    # Concatenate all matched words
+    matched_words_ur = [match[1] for match in matched_words]
 
     ###
     # Display the tree if we have matches
