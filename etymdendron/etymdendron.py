@@ -48,19 +48,20 @@ def main():
     unique_roots = set(matched_roots)
     num_trees = len(unique_roots)
 
+    ###
+    # Display the tree if we have matches
     # No match
     if num_trees == 0:
         print('{0} is not found in {1}'.format(search_word,WORDS_FILE))
         sys.exit(0)
     # Multiple matches
     elif num_trees > 1:
+        #TODO: have the user choose which tree
         print('{0} is found in more than one tree'.format(search_word))
     # One match
     elif num_trees == 1:
         print('{0} is found in one tree'.format(search_word))
-
-    ###
-    # Display the tree
+        cli_funcs.display_tree(unique_roots[0],matched_words_ur)
 
     ###
     # That's all!
