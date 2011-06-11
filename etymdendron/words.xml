@@ -4,28 +4,28 @@
 	 2) A word is found in multiple trees (biology)
 	 -->
 <etym>
-	<word lang="PIE" text="unknown" morpheme="unknown">
+	<root lang="PIE" text="unknown" morpheme="unknown">
 		<word lang="Old English" text="hors" morpheme="hors">
 			<word lang="Modern English" text="horse" morpheme="horse">
 			</word>
 		</word>
-		<word lang="Old German" text="(h)ros" morpheme="hros">
+		<word lang="Old German" text="ros" morpheme="ros">
 			<word lang="Middle High German" text="ros" morpheme="ros">
 				<word lang="Modern German" text="ross" morpheme="ross">
 				</word>
 			</word>
 		</word>
-	</word>
-	<word lang="PIE" text="gweie" morpheme="gweie">
+	</root>
+	<root lang="PIE" text="gweie" morpheme="gweie">
 		<word lang="Greek" text="bios" morpheme="bios">
 			<word lang="Modern English" text="biology" morpheme="bio">
 			</word>
 		</word>
-	</word>
-	<word lang="PIE" text="unknown" morpheme="unknown">
+	</root>
+	<root lang="PIE" text="unknown" morpheme="unknown">
 		<word lang="Greek" text="logia" morpheme="logia">
 			<word lang="Modern English" text="biology" morpheme="logy">
 			</word>
 		</word>
-	</word>
+	</root>
 </etym>
