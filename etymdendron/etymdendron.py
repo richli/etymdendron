@@ -3,12 +3,11 @@
 # This file is the main driver for the program
 
 ###
-# Imports
+# Imports (global)
 import sys
 import argparse
-#import xml.etree.ElementTree as ET
 from lxml import etree as ET
-
+# Imports (local)
 import cli_funcs
 
 ###
