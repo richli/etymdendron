@@ -35,6 +35,14 @@ def main():
     else:
         search_word = args.word
 
+    # We go through each of the possible trees
+    matched_words = []
+    for root in words_tree.getroot().iterchildren():
+        for word in root.iterdescendants():
+            if word.attrib['text'] == search_word:
+                # Add the found word to our list
+                matched_words.append((root,word))
+
     ###
     # Display the tree
 
