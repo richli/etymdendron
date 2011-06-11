@@ -43,6 +43,22 @@ def main():
                 # Add the found word to our list
                 matched_words.append((root,word))
 
+    # Now remove non-unique roots (using the set container)
+    matched_roots = [match[0] for match in matched_words]
+    unique_roots = set(matched_roots)
+    num_trees = len(unique_roots)
+
+    # No match
+    if num_trees == 0:
+        print('{0} is not found in {1}'.format(search_word,WORDS_FILE))
+        sys.exit(0)
+    # Multiple matches
+    elif num_trees > 1:
+        print('{0} is found in more than one tree'.format(search_word))
+    # One match
+    elif num_trees == 1:
+        print('{0} is found in one tree'.format(search_word))
+
     ###
     # Display the tree
 
