@@ -6,11 +6,14 @@
 # Imports
 import sys
 import argparse
+#import xml.etree.ElementTree as ET
+from lxml import etree as ET
 
 import cli_funcs
 
 ###
 # Global constants
+WORDS_FILE='words.xml'
 
 def main():
     """ The main routine """
@@ -22,6 +25,8 @@ def main():
 
     ###
     # First let's load the XML
+    words_tree = ET.ElementTree()
+    words_tree.parse(WORDS_FILE)
 
     ###
     # Search for a word
