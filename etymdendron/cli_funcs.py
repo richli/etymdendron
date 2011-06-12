@@ -26,6 +26,27 @@ def get_num_choice(prompt='Input: ',min_num=0,max_num=10):
         except ValueError:
             print('That is an invalid number')
 
+
+def choose_word_from_many(words):
+    """ From a list of matched words, prompts the user to select which one
+        words is a list of tuples, each tuple is (tree,word)
+        returns the one (tree,word) tuple
+    """
+    # Find the morphemes,language for each instance
+    mor_lan = []
+    word_text = words[0][1].attrib['text']
+    for item in words:
+        word = item[1]
+        mor_lan.append( (word.attrib['morpheme'],word.attrib['lang']) )
+
+    print('For the word {0}, {1} options are available:'.format(word_text,len(mor_lan)))
+    for item in enumerate(mor_lan,1):
+        print('  {0}: In {1}, choose the {2} morpheme'.format(item[0],item[1][1],item[1][0]))
+    item_select = get_num_choice(min_num=1,max_num=len(mor_lan))
+
+    print('{0} morpheme of {1} chosen'.format(mor_lan[item_select-1][0],word_text))
+    return words[item_select-1]
+
 ###
 # Display functions
 def display_tree(tree, word):
