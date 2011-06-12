@@ -52,6 +52,10 @@ def choose_word_from_many(words):
 def display_tree(tree, word):
     """ For a given word and tree, display the rest of the tree 
     """
+    # Encapsulate word in a list if it isn't already
+    if type(word) is not list:
+        word = [word]
+
     print('Root: {0}, {1}'.format(tree.attrib['text'], tree.attrib['lang']))
     display_children(tree, 1, word)
 
@@ -66,7 +70,7 @@ def display_children(node, depth, word):
         for child in node.iterchildren():
             depth_marker = '  '*depth
             #print(child,word)
-            if child == word:
+            if child in word:
                 child_markup = '*{0}*'.format(child.attrib['text'])
             else:
                 child_markup = '{0}'.format(child.attrib['text'])
