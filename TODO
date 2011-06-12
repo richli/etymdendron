@@ -7,8 +7,15 @@ TODO for etymdendron
 
 * Frontend
   * CLI (coming along)
-	* If a word is found in more than one tree, prompt to select which tree to display
     * Make options to edit the tree and save out the XML
+	* Add some unit testing so the changes I make to the code don't break things
+	* Add more words to words.xml, add more tests
   * GUI (not yet started)
     * Use wxPython
 
+To work on next:
+1) XML schema creation
+2) XML validation
+3) Automated testing
+4) Add options to edit the tree within the program
+5) Start on GUI
