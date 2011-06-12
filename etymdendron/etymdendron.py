@@ -58,8 +58,9 @@ def main():
         sys.exit(0)
     # Multiple matches
     elif num_trees > 1:
-        #TODO: have the user choose which tree
-        print('{0} is found in more than one tree'.format(search_word))
+        print('{0} is found in {1} trees'.format(search_word,num_trees))
+        chosen_root, chosen_word = cli_funcs.choose_word_from_many(matched_words)
+        cli_funcs.display_tree(chosen_root,chosen_word)
     # One match
     elif num_trees == 1:
         print('{0} is found in one tree'.format(search_word))
