@@ -53,19 +53,27 @@ def display_tree(tree, word):
     """ For a given word and tree, display the rest of the tree 
     """
     print('Root: {0}, {1}'.format(tree.attrib['text'], tree.attrib['lang']))
-    display_children(tree, 1)
+    display_children(tree, 1, word)
 
-def display_children(node, depth):
+def display_children(node, depth, word):
     """ Recursive function to display children of a node
         depth is what level we're on
+        word is the word element we're looking for (it will be emphasized
+        in the tree)
     """
     # The len() of a node returns how many children it has
     if len(node) > 0:
         for child in node.iterchildren():
             depth_marker = '  '*depth
+            #print(child,word)
+            if child == word:
+                child_markup = '*{0}*'.format(child.attrib['text'])
+            else:
+                child_markup = '{0}'.format(child.attrib['text'])
+
             print('{0}Child: {1}, {2}'.format(
-                depth_marker, child.attrib['text'], child.attrib['lang']))
-            display_children(child, depth+1)
+                depth_marker, child_markup, child.attrib['lang']))
+            display_children(child, depth+1, word)
     else:
         # The base of the recursion simply does nothing
         pass
