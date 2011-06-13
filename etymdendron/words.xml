@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE etym [
+<!ELEMENT etym (tree+)>
+<!ELEMENT tree (lang,text+,morpheme+,word+)>
+<!ELEMENT lang (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT morpheme (#PCDATA)>
+<!ELEMENT word (lang,text+,morpheme+,word*)>
+<!ATTLIST tree id CDATA #REQUIRED>
+]>
 <!-- This file provides for some test cases: 
 	 1) A word is found multiple times in the same tree (ros)
 	 2) A word is found in multiple trees (biology)
