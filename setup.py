@@ -4,7 +4,7 @@ from distutils.core import setup
 #import py2exe # not on linux; save this for later
 
 setup(  name='etymdendron',
-        version='0.01',
+        version='0.10',
         packages=['etymdendron'],
         package_dir={'etymdendron': 'etymdendron'},
         package_data={'etymdendron': ['words.xml']},
