@@ -34,10 +34,10 @@ def choose_word_from_many(words):
     """
     # Find the morphemes,language for each instance
     mor_lan = []
-    word_text = words[0][1].attrib['text']
+    word_text = words[0][1].xpath('text')[0].text
     for item in words:
         word = item[1]
-        mor_lan.append( (word.attrib['morpheme'],word.attrib['lang']) )
+        mor_lan.append( (word.xpath('morpheme')[0].text,word.xpath('lang')[0].text) )
 
     print('For the word {0}, {1} options are available:'.format(word_text,len(mor_lan)))
     for item in enumerate(mor_lan,1):
