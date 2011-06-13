@@ -3,9 +3,8 @@
 	 1) A word is found multiple times in the same tree (ros)
 	 2) A word is found in multiple trees (biology)
 	 -->
-
 <etym>
-	<tree id=1>
+	<tree id='1'>
 		<lang>PIE</lang>
 		<text>Unknown</text>
 		<morpheme>Unknown</morpheme>
@@ -35,7 +34,7 @@
 			</word>
 		</word>
 	</tree>
-	<tree id=2>
+	<tree id='2'>
 		<lang>PIE</lang>
 		<text>gweie</text>
 		<morpheme>gweie</morpheme>
@@ -50,7 +49,7 @@
 			</word>
 		</word>
 	</tree>
-	<tree id=3>
+	<tree id='3'>
 		<lang>PIE</lang>
 		<text>Unknown</text>
 		<morpheme>Unknown</morpheme>
