@@ -6,10 +6,13 @@ from distutils.core import setup
 setup(  name='etymdendron',
         version='0.01',
         packages=['etymdendron'],
+        package_dir={'etymdendron': 'etymdendron'},
+        package_data={'etymdendron': ['words.xml']},
+        data_files=['TODO'],
         description=['Etymology tree viewer'],
         author='Rich Lindsley',
         author_email='richli.ff@gmail.com',
-        url='github.com/richli/etymdendron')
+        url='http://github.com/richli/etymdendron')
 
 # Notes to myself:
 # To create the source distribution in dist/, run ./setup.py sdist
