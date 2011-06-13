@@ -44,11 +44,12 @@ def main():
 
     # We go through each of the possible trees
     matched_words = []
-    for root in words_tree.getroot().iterchildren():
-        for word in root.iterdescendants():
-            if word.attrib['text'] == search_word:
-                # Add the found word to our list
-                matched_words.append((root, word))
+    for tree in words_tree.getroot().iterchildren():
+        for word in tree.iterdescendants(tag='word'):
+            for text in word.iterchildren(tag='text'):
+                if text.text == search_word:
+                    # Add the found word to our list
+                    matched_words.append((tree, word))
 
     # Now remove non-unique roots (using the set container)
     matched_roots = [match[0] for match in matched_words]

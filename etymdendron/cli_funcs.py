@@ -56,7 +56,7 @@ def display_tree(tree, word):
     if type(word) is not list:
         word = [word]
 
-    print('Root: {0}, {1}'.format(tree.attrib['text'], tree.attrib['lang']))
+    print('Root: {0} ({1})'.format(tree.xpath('text')[0].text, tree.xpath('lang')[0].text))
     display_children(tree, 1, word)
 
 def display_children(node, depth, word):
@@ -66,17 +66,21 @@ def display_children(node, depth, word):
         in the tree)
     """
     # The len() of a node returns how many children it has
-    if len(node) > 0:
-        for child in node.iterchildren():
+    if len(node.xpath('word')) > 0:
+        for child in node.xpath('word'):
             depth_marker = '  '*depth
-            #print(child,word)
+            child_markup = ''
             if child in word:
-                child_markup = '*{0}*'.format(child.attrib['text'])
+                texts = child.xpath('text')
+                child_markup = ', '.join(['*{0}*'.format(text_var.text)
+                    for text_var in texts])
             else:
-                child_markup = '{0}'.format(child.attrib['text'])
+                texts = child.xpath('text')
+                child_markup = ', '.join(['{0}'.format(text_var.text)
+                    for text_var in texts])
 
-            print('{0}Child: {1}, {2}'.format(
-                depth_marker, child_markup, child.attrib['lang']))
+            print('{0}Child: {1} ({2})'.format(
+                depth_marker, child_markup, child.xpath('lang')[0].text))
             display_children(child, depth+1, word)
     else:
         # The base of the recursion simply does nothing
