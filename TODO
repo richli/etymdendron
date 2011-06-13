@@ -15,7 +15,6 @@ TODO for etymdendron
     * Use wxPython
 
 To work on next:
-1) Re-write XML using elements rather than attributes
 2) Re-write code to use XPath to find desired nodes
 3) XML schema creation (Use DTD)
 4) XML validation

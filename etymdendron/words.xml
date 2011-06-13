@@ -3,25 +3,66 @@
 	 1) A word is found multiple times in the same tree (ros)
 	 2) A word is found in multiple trees (biology)
 	 -->
+
 <etym>
-	<root lang="PIE" text="unknown" morpheme="unknown">
-		<word lang="Old English" text="hors" morpheme="hors">
-			<word lang="Modern English" text="horse" morpheme="horse" />
-		</word>
-		<word lang="Old German" text="ros" morpheme="ros">
-			<word lang="Middle High German" text="ros" morpheme="ros">
-				<word lang="Modern German" text="ross" morpheme="ross" />
+	<tree id=1>
+		<lang>PIE</lang>
+		<text>Unknown</text>
+		<morpheme>Unknown</morpheme>
+		<word>
+			<lang>Old English</lang>
+			<text>hors</text>
+			<morpheme>hors</morpheme>
+			<word>
+				<lang>Modern English</lang>
+				<text>horse</text>
+				<morpheme>horse</morpheme>
 			</word>
 		</word>
-	</root>
-	<root lang="PIE" text="gweie" morpheme="gweie">
-		<word lang="Greek" text="bios" morpheme="bios">
-			<word lang="Modern English" text="biology" morpheme="bio" />
+		<word>
+			<lang>Old German</lang>
+			<text>ros</text>
+			<morpheme>ros</morpheme>
+			<word>
+				<lang>Middle High German</lang>
+				<text>ros</text>
+				<morpheme>ros</morpheme>
+					<word>
+						<lang>Modern German</lang>
+						<text>ross</text>
+						<morpheme>ross</morpheme>
+					</word>
+			</word>
 		</word>
-	</root>
-	<root lang="PIE" text="unknown" morpheme="unknown">
-		<word lang="Greek" text="logia" morpheme="logia">
-			<word lang="Modern English" text="biology" morpheme="logy" />
+	</tree>
+	<tree id=2>
+		<lang>PIE</lang>
+		<text>gweie</text>
+		<morpheme>gweie</morpheme>
+		<word>
+			<lang>Greek</lang>
+			<text>bios</text>
+			<morpheme>bios</morpheme>
+			<word>
+				<lang>Modern English</lang>
+				<text>biology</text>
+				<morpheme>bio</morpheme>
+			</word>
 		</word>
-	</root>
+	</tree>
+	<tree id=3>
+		<lang>PIE</lang>
+		<text>Unknown</text>
+		<morpheme>Unknown</morpheme>
+		<word>
+			<lang>Greek</lang>
+			<text>logia</text>
+			<morpheme>logia</morpheme>
+			<word>
+				<lang>Modern English</lang>
+				<text>biology</text>
+				<morpheme>logy</morpheme>
+			</word>
+		</word>
+	</tree>
 </etym>
