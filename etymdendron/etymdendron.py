@@ -28,6 +28,14 @@ def main():
     words_tree.parse(WORDS_FILE)
 
     ###
+    # Display a header
+    print('=========================')
+    print('====   Etymdendron   ====')
+    print('=========================')
+    print('{0} loaded, {1} trees found'.format(WORDS_FILE,
+        len(words_tree.getroot())))
+
+    ###
     # Search for a word
     if args.word is None:
         search_word = cli_funcs.get_search_word()
