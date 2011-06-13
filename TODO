@@ -15,8 +15,10 @@ TODO for etymdendron
     * Use wxPython
 
 To work on next:
-1) XML schema creation
-2) XML validation
-3) Automated testing
-4) Add options to edit the tree within the program
-5) Start on GUI
+1) Re-write XML using elements rather than attributes
+2) Re-write code to use XPath to find desired nodes
+3) XML schema creation (Use DTD)
+4) XML validation
+5) Automated testing
+6) Start on GUI
+7) Add options to edit the tree within the program
