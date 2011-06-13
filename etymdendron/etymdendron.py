@@ -25,7 +25,13 @@ def main():
     ###
     # First let's load the XML
     words_tree = ET.ElementTree()
-    words_tree.parse(WORDS_FILE)
+    try:
+        words_tree.parse(WORDS_FILE,ET.XMLParser(dtd_validation=True))
+    except ET.XMLSyntaxError as err:
+        print("ERROR: Error parsing {0}".
+                format(WORDS_FILE))
+        print('  {0}'.format(err))
+        sys.exit(1)
 
     ###
     # Display a header
