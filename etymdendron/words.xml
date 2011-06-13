@@ -21,18 +21,18 @@
 		<word>
 			<lang>Old High German</lang>
 			<text>ros</text>
-			<morpheme>ros</morpheme>
 			<text>hros</text>
+			<morpheme>ros</morpheme>
 			<morpheme>hros</morpheme>
 			<word>
 				<lang>Middle High German</lang>
 				<text>ros</text>
 				<morpheme>ros</morpheme>
-					<word>
-						<lang>Modern German</lang>
-						<text>ross</text>
-						<morpheme>ross</morpheme>
-					</word>
+				<word>
+					<lang>Modern German</lang>
+					<text>ross</text>
+					<morpheme>ross</morpheme>
+				</word>
 			</word>
 		</word>
 	</tree>
