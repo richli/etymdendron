@@ -53,7 +53,14 @@ class EtymFrame(wx.Frame):
         self.dirname = ''
         dlg = wx.FileDialog(self, 'Choose the database file', self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
         if dlg.ShowModal() == wx.ID_OK:
-            print('yup')
+            f = open(dlg.GetPath(),'r')
+            self.control.SetValue(f.read())
+            f.close()
+            dlg2 = wx.MessageDialog(self, "This isn't properly implemented, but I can load the xml file just to show I can do stuff"
+                ,'Error', wx.OK|wx.ICON_EXCLAMATION)
+            dlg2.ShowModal()
+            dlg2.Destroy()
+
         dlg.Destroy()
 
     def OnSave(self, event):
