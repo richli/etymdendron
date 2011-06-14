@@ -7,11 +7,8 @@ import sys
 import argparse
 from lxml import etree as ET
 # Imports (local)
+from global_opts import WORDS_FILE
 import cli_funcs
-
-###
-# Global constants
-WORDS_FILE = 'words.xml'
 
 def main():
     """ The main routine """
