@@ -15,16 +15,27 @@
 <etym>
 	<tree id='1'>
 		<lang>PIE</lang>
-		<text>Unknown</text>
-		<morpheme>Unknown</morpheme>
+		<text>khursa</text>
+		<morpheme>khursa</morpheme>
 		<word>
 			<lang>Old English</lang>
 			<text>hors</text>
 			<morpheme>hors</morpheme>
 			<word>
-				<lang>Modern English</lang>
+				<lang>Middle English</lang>
 				<text>horse</text>
+				<text>hors</text>
+				<text>horce</text>
+				<text>horsse</text>
+				<text>horis</text>
+				<text>hos</text>
+				<text>ors</text>
 				<morpheme>horse</morpheme>
+				<word>
+					<lang>Modern English</lang>
+					<text>horse</text>
+					<morpheme>horse</morpheme>
+				</word>
 			</word>
 		</word>
 		<word>
@@ -62,8 +73,8 @@
 	</tree>
 	<tree id='3'>
 		<lang>PIE</lang>
-		<text>Unknown</text>
-		<morpheme>Unknown</morpheme>
+		<text>leg</text>
+		<morpheme>leg</morpheme>
 		<word>
 			<lang>Greek</lang>
 			<text>logia</text>
