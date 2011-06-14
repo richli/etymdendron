@@ -10,7 +10,7 @@ from global_opts import WORDS_FILE
 class EtymFrame(wx.Frame):
     """ Our subclass implementation of Frame """
     def __init__(self,parent,title):
-        wx.Frame.__init__(self,parent,title=title,size=(200,100))
+        wx.Frame.__init__(self,parent,title=title,size=(400,300))
         self.control = wx.TextCtrl(self, style=wx.TE_MULTILINE)
         #self.CreateStatusBar()
 
