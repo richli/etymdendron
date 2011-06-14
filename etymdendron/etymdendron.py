@@ -5,7 +5,11 @@
 # Imports (global)
 import sys
 import argparse
-from lxml import etree as ET
+try:
+    from lxml import etree as ET
+except ImportError as err:
+    print('lxml is missing\n{0}'.format(err))
+
 # Imports (local)
 from global_opts import WORDS_FILE
 import cli_funcs
