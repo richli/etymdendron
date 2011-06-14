@@ -7,15 +7,17 @@ TODO for etymdendron
 * Frontend
   * CLI (coming along)
     * Make options to edit the tree and save out the XML
+	* Display the word definition
 	* Add some unit testing so the changes I make to the code don't break things
 	* Add more words to words.xml, add more tests
 	* For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
-  * GUI (not yet started)
-    * Use wxPython
+  * GUI (started, using wxPython)
+    * Finish functionality to duplicate the CLI version
 	* Phase 1: Just the treelist widget for now
 	* Phase 2: Use Graphviz to plot the trees? (pydot, pygraphviz, networkx, python-graph?)
 	* Phase 3: Use floatcanvas to have interactive trees?
 	* Maybe create a link to the entry on etymonline?
+	* Display the word definition when you select a word
 
 To work on next:
 * Start on GUI
