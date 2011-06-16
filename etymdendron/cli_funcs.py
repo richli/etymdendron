@@ -79,8 +79,9 @@ def display_children(node, depth, word):
                 child_markup = ', '.join(['{0}'.format(text_var.text)
                     for text_var in texts])
 
-            print('{0}Child: {1} ({2})'.format(
-                depth_marker, child_markup, child.xpath('lang')[0].text))
+            print(u'{0}Child: {1} ({2}, "{3}")'.format(
+                depth_marker, child_markup, child.xpath('lang')[0].text,
+                child.xpath('def')[0].text))
             display_children(child, depth+1, word)
     else:
         # The base of the recursion simply does nothing

@@ -5,8 +5,8 @@ TODO for etymdendron
 
 * Frontend
   * CLI (coming along)
+	* Only highlight the searched-for word
     * Make options to edit the tree and save out the XML
-	* Display the word definition
 	* Add some unit testing so the changes I make to the code don't break things
 	* Add more words to words.xml, add more tests
 	* For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
