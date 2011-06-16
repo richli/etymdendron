@@ -5,7 +5,8 @@
 <!ELEMENT lang (#PCDATA)>
 <!ELEMENT text (#PCDATA)>
 <!ELEMENT morpheme (#PCDATA)>
-<!ELEMENT word (lang,text+,morpheme+,word*)>
+<!ELEMENT def (#PCDATA)>
+<!ELEMENT word (lang,text+,morpheme+,def,word*)>
 <!ATTLIST tree id CDATA #REQUIRED>
 ]>
 <!-- This file provides for some test cases: 
@@ -21,6 +22,7 @@
 			<lang>Old English</lang>
 			<text>hors</text>
 			<morpheme>hors</morpheme>
+			<def>A man-eating beast</def>
 			<word>
 				<lang>Middle English</lang>
 				<text>horse</text>
@@ -31,10 +33,12 @@
 				<text>hos</text>
 				<text>ors</text>
 				<morpheme>horse</morpheme>
+				<def>A horse that you feed oats</def>
 				<word>
 					<lang>Modern English</lang>
 					<text>horse</text>
 					<morpheme>horse</morpheme>
+					<def>A horse that you ride</def>
 				</word>
 			</word>
 		</word>
@@ -44,14 +48,17 @@
 			<text>hros</text>
 			<morpheme>ros</morpheme>
 			<morpheme>hros</morpheme>
+			<def>Eine Bestie</def>
 			<word>
 				<lang>Middle High German</lang>
 				<text>ros</text>
 				<morpheme>ros</morpheme>
+				<def>Eines infizierten Tieres</def>
 				<word>
 					<lang>Modern German</lang>
 					<text>ross</text>
 					<morpheme>ross</morpheme>
+					<def>Eine blutrünstige Monster</def>
 				</word>
 			</word>
 		</word>
@@ -64,10 +71,12 @@
 			<lang>Greek</lang>
 			<text>bios</text>
 			<morpheme>bios</morpheme>
+			<def>Life</def>
 			<word>
 				<lang>Modern English</lang>
 				<text>biology</text>
 				<morpheme>bio</morpheme>
+				<def>Study of life</def>
 			</word>
 		</word>
 	</tree>
@@ -79,10 +88,12 @@
 			<lang>Greek</lang>
 			<text>logia</text>
 			<morpheme>logia</morpheme>
+			<def>The study of</def>
 			<word>
 				<lang>Modern English</lang>
 				<text>biology</text>
 				<morpheme>logy</morpheme>
+				<def>Study of life</def>
 			</word>
 		</word>
 	</tree>
