@@ -10,8 +10,14 @@ from global_opts import WORDS_FILE
 class EtymFrame(wx.Frame):
     """ Our subclass implementation of Frame """
     def __init__(self,parent,title):
-        wx.Frame.__init__(self,parent,title=title,size=(400,300))
-        self.control = wx.TextCtrl(self, style=wx.TE_MULTILINE)
+        wx.Frame.__init__(self,parent,pos=wx.DefaultPosition,title=title)
+        self.InitUI()
+        self.Centre()
+        self.Show(True)
+
+    #TODO: Use wxFormBuilder to build GUI, import XRC file
+
+    def InitUI(self):
         #self.CreateStatusBar()
 
         # Create the menus
@@ -34,7 +40,17 @@ class EtymFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnLoad, menuLoad)
         self.Bind(wx.EVT_MENU, self.OnSave, menuSave)
 
-        self.Show(True)
+        # Add a sizer and widgets
+        hbox = wx.BoxSizer(wx.HORIZONTAL)
+        vbox = wx.BoxSizer(wx.VERTICAL)
+        self.treeDisp = wx.TreeCtrl(self, wx.ID_ANY, pos = wx.DefaultPosition, style=wx.TR_HAS_BUTTONS)
+        self.tmpBox = wx.TextCtrl(self, style=wx.TE_MULTILINE)
+        hbox.Add(self.treeDisp, flag=wx.EXPAND|wx.ALL)
+        hbox.Add(self.tmpBox, flag=wx.EXPAND|wx.ALL)
+        vbox.Add(hbox, flag=wx.EXPAND|wx.ALL)
+
+        self.SetSizerAndFit(vbox)
+
 
     def OnAbout(self, event):
         """ Displays the About dialog """
@@ -54,7 +70,7 @@ class EtymFrame(wx.Frame):
         dlg = wx.FileDialog(self, 'Choose the database file', self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
         if dlg.ShowModal() == wx.ID_OK:
             f = open(dlg.GetPath(),'r')
-            self.control.SetValue(f.read())
+            self.tmpBox.SetValue(f.read())
             f.close()
             dlg2 = wx.MessageDialog(self, "This isn't properly implemented, but I can load the xml file just to show I can do stuff"
                 ,'Error', wx.OK|wx.ICON_EXCLAMATION)
