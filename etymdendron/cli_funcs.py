@@ -49,40 +49,47 @@ def choose_word_from_many(words):
 
 ###
 # Display functions
-def display_tree(tree, word):
+def display_tree(tree, word, search_word):
     """ For a given word and tree, display the rest of the tree 
+        The search_word is emphasized
     """
     # Encapsulate word in a list if it isn't already
     if type(word) is not list:
         word = [word]
 
     print('Root: {0} ({1})'.format(tree.xpath('text')[0].text, tree.xpath('lang')[0].text))
-    display_children(tree, 1, word)
+    display_children(tree, 1, word, search_word)
 
-def display_children(node, depth, word):
+def display_children(node, depth, word, search_word):
     """ Recursive function to display children of a node
         depth is what level we're on
         word is the word element we're looking for (it will be emphasized
         in the tree)
+        search_word is the word text we're looking for
     """
     # The len() of a node returns how many children it has
     if len(node.xpath('word')) > 0:
         for child in node.xpath('word'):
             depth_marker = '  '*depth
             child_markup = ''
+            texts = child.xpath('text')
             if child in word:
-                texts = child.xpath('text')
+                # First we have the emphasized word
+                # Then the other matches, if there
                 child_markup = ', '.join(['*{0}*'.format(text_var.text)
-                    for text_var in texts])
+                    for text_var in texts if text_var.text == search_word])
+                child_markup_rest = ', '.join(['{0}'.format(text_var.text)
+                    for text_var in texts if text_var.text != search_word])
+                if child_markup_rest is not '':
+                    child_markup = ', '.join([child_markup,child_markup_rest])
             else:
-                texts = child.xpath('text')
                 child_markup = ', '.join(['{0}'.format(text_var.text)
                     for text_var in texts])
 
             print(u'{0}Child: {1} ({2}, "{3}")'.format(
                 depth_marker, child_markup, child.xpath('lang')[0].text,
                 child.xpath('def')[0].text))
-            display_children(child, depth+1, word)
+            display_children(child, depth+1, word, search_word)
     else:
         # The base of the recursion simply does nothing
         pass
