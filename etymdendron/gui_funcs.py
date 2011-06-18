@@ -76,7 +76,25 @@ class EtymApp(wx.App):
         search_word = self.searchbox.GetValue()
         if search_word is not '': # Simple validation for now
             num_trees, matched_words = searchDB(self.words_tree, search_word)
-            print(num_trees)
+            # TODO: This is temporary
+            import cli_funcs
+            if num_trees == 0:
+                print('{0} is not found in {1}'.format(search_word, WORDS_FILE))
+            # Multiple matches
+            elif num_trees > 1:
+                print('{0} is found in {1} trees'.format(search_word,num_trees))
+                chosen_root, chosen_word = cli_funcs.choose_word_from_many(matched_words)
+            # One match
+            elif num_trees == 1:
+                print('{0} is found in one tree'.format(search_word))
+                # Extract the tree and all matched words separately
+                # Just pick the first entry (m_w[...][0] are the same in this case)
+                chosen_root = matched_words[0][0]
+                chosen_word = [match[1] for match in matched_words]
+
+            # And now display the tree
+            cli_funcs.display_tree(chosen_root,chosen_word,search_word)
+
 
 ###
 # Some methods for the class
