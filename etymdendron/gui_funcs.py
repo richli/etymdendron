@@ -10,14 +10,14 @@ from global_opts import WORDS_FILE
 # Define the main frame
 class EtymApp(wx.App):
     """ Our subclass implementation of App"""
-
+###
+# Initialization
     def OnInit(self):
         """ Load in the XRC file and display frame """
         self.xrc = wx.xrc.XmlResource('etym.xrc')
         self.InitUI()
         #self.Show(True)
         return True
-
 
     def InitUI(self):
         """ Load the frame, bind events, and show """
@@ -29,45 +29,9 @@ class EtymApp(wx.App):
         self.frame.Bind(wx.EVT_MENU, self.OnSave, id=wx.xrc.XRCID('m_save'))
         # And show the frame!
         self.frame.Show()
-        pass
 
-
-
-#    def InitUI(self):
-#        #self.CreateStatusBar()
-#
-#        # Create the menus
-#        fileMenu = wx.Menu()
-#        helpMenu = wx.Menu()
-#        menuLoad = fileMenu.Append(wx.ID_ANY,'&Load', 'Load the database file')
-#        menuSave = fileMenu.Append(wx.ID_ANY,'&Save', 'Save the database file')
-#        fileMenu.AppendSeparator()
-#        menuExit = fileMenu.Append(wx.ID_EXIT, "E&xit", "End the program")
-#        menuAbout = helpMenu.Append(wx.ID_ABOUT, "&About", "Information about the program")
-#
-#        menuBar = wx.MenuBar()
-#        menuBar.Append(fileMenu,"&File")
-#        menuBar.Append(helpMenu,"&Help")
-#        self.SetMenuBar(menuBar)
-#
-#        # Define menu bindings
-#        self.Bind(wx.EVT_MENU, self.OnAbout, menuAbout)
-#        self.Bind(wx.EVT_MENU, self.OnExit, menuExit)
-#        self.Bind(wx.EVT_MENU, self.OnLoad, menuLoad)
-#        self.Bind(wx.EVT_MENU, self.OnSave, menuSave)
-#
-#        # Add a sizer and widgets
-#        hbox = wx.BoxSizer(wx.HORIZONTAL)
-#        vbox = wx.BoxSizer(wx.VERTICAL)
-#        self.treeDisp = wx.TreeCtrl(self, wx.ID_ANY, pos = wx.DefaultPosition, style=wx.TR_HAS_BUTTONS)
-#        self.tmpBox = wx.TextCtrl(self, style=wx.TE_MULTILINE)
-#        hbox.Add(self.treeDisp, flag=wx.EXPAND|wx.ALL)
-#        hbox.Add(self.tmpBox, flag=wx.EXPAND|wx.ALL)
-#        vbox.Add(hbox, flag=wx.EXPAND|wx.ALL)
-#
-#        self.SetSizerAndFit(vbox)
-
-
+###
+# Event handlers
     def OnAbout(self, event):
         """ Displays the About dialog """
         dlg = wx.MessageDialog(self.frame, 'Etymdendron \nAn etymology tree viewer\n'
@@ -93,7 +57,6 @@ class EtymApp(wx.App):
 #            dlg2.ShowModal()
 #            dlg2.Destroy()
             pass
-
         dlg.Destroy()
 
     def OnSave(self, event):
