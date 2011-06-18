@@ -61,16 +61,7 @@ class EtymApp(wx.App):
         self.dirname = ''
         dlg = wx.FileDialog(self.frame, 'Choose the database file', self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
         if dlg.ShowModal() == wx.ID_OK:
-            self.words_tree = loadDB(dlg.GetPath())
-            if type(self.words_tree) is str:
-                dlg_err = wx.MessageDialog(self.frame, self.words_tree
-                    ,'Error', wx.OK|wx.ICON_EXCLAMATION)
-                dlg_err.ShowModal()
-                dlg_err.Destroy()
-                self.words_tree = None
-            else:
-                print('{0} loaded, {1} trees found'.format(WORDS_FILE,
-                len(self.words_tree.getroot())))
+            self.LoadWordDB(dlg.GetPath())
         dlg.Destroy()
 
     def OnSave(self, event):
@@ -86,6 +77,21 @@ class EtymApp(wx.App):
         if search_word is not '': # Simple validation for now
             num_trees, matched_words = searchDB(self.words_tree, search_word)
             print(num_trees)
+
+###
+# Some methods for the class
+    def LoadWordDB(self, filename=WORDS_FILE):
+        """ Load the database file """
+        self.words_tree = loadDB(filename)
+        if type(self.words_tree) is str:
+            dlg_err = wx.MessageDialog(self.frame, self.words_tree
+                ,'Error', wx.OK|wx.ICON_EXCLAMATION)
+            dlg_err.ShowModal()
+            dlg_err.Destroy()
+            self.words_tree = None
+        else:
+            print('{0} loaded, {1} trees found'.format(WORDS_FILE,
+            len(self.words_tree.getroot())))
 
 
 
