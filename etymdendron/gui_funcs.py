@@ -8,7 +8,7 @@ import wx.xrc
 from global_opts import WORDS_FILE
 from common_funcs import loadDB
 
-# Define the main frame
+# Define the application
 class EtymApp(wx.App):
     """ Our subclass implementation of App"""
 ###
@@ -55,13 +55,16 @@ class EtymApp(wx.App):
         self.dirname = ''
         dlg = wx.FileDialog(self.frame, 'Choose the database file', self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
         if dlg.ShowModal() == wx.ID_OK:
-            words_tree = loadDB(dlg.GetPath())
-            if type(words_tree) is str:
-                dlg_err = wx.MessageDialog(self.frame, words_tree
+            self.words_tree = loadDB(dlg.GetPath())
+            if type(self.words_tree) is str:
+                dlg_err = wx.MessageDialog(self.frame, self.words_tree
                     ,'Error', wx.OK|wx.ICON_EXCLAMATION)
                 dlg_err.ShowModal()
                 dlg_err.Destroy()
-                words_tree = None
+                self.words_tree = None
+            else:
+                print('{0} loaded, {1} trees found'.format(WORDS_FILE,
+                len(self.words_tree.getroot())))
         dlg.Destroy()
 
     def OnSave(self, event):
@@ -71,4 +74,14 @@ class EtymApp(wx.App):
             ,'Error', wx.OK|wx.ICON_EXCLAMATION)
         dlg.ShowModal()
         dlg.Destroy()
+
+
+
+
+###
+# Validators?
+
+#class SearchValidator(wx.PyValidator):
+#    def Validate(self, window):
+#        pass
 
