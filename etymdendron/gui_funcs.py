@@ -23,7 +23,7 @@ class EtymApp(wx.App):
         """ Load the frame, bind events, and show """
         self.frame = self.xrc.LoadFrame(None, 'et_Frame')
         # Bind menu events
-        self.frame.Bind(wx.EVT_MENU, self.OnExit, id=wx.xrc.XRCID('m_exit'))
+        self.frame.Bind(wx.EVT_MENU, self.OnQuit, id=wx.xrc.XRCID('m_exit'))
         self.frame.Bind(wx.EVT_MENU, self.OnAbout, id=wx.xrc.XRCID('m_about'))
         self.frame.Bind(wx.EVT_MENU, self.OnLoad, id=wx.xrc.XRCID('m_load'))
         self.frame.Bind(wx.EVT_MENU, self.OnSave, id=wx.xrc.XRCID('m_save'))
@@ -39,8 +39,9 @@ class EtymApp(wx.App):
         dlg.ShowModal()
         dlg.Destroy()
 
-    def OnExit(self, event):
+    def OnQuit(self, event):
         """ Exits the program """
+        #import pdb; pdb.set_trace()
         self.frame.Close(True)
 
     def OnLoad(self, event):
