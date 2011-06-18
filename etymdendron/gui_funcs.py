@@ -6,6 +6,7 @@ import os
 import wx
 import wx.xrc
 from global_opts import WORDS_FILE
+from common_funcs import loadDB
 
 # Define the main frame
 class EtymApp(wx.App):
@@ -54,14 +55,13 @@ class EtymApp(wx.App):
         self.dirname = ''
         dlg = wx.FileDialog(self.frame, 'Choose the database file', self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
         if dlg.ShowModal() == wx.ID_OK:
-#            f = open(dlg.GetPath(),'r')
-#            self.tmpBox.SetValue(f.read())
-#            f.close()
-#            dlg2 = wx.MessageDialog(self.frame, "This isn't properly implemented, but I can load the xml file just to show I can do stuff"
-#                ,'Error', wx.OK|wx.ICON_EXCLAMATION)
-#            dlg2.ShowModal()
-#            dlg2.Destroy()
-            pass
+            words_tree = loadDB(dlg.GetPath())
+            if type(words_tree) is str:
+                dlg_err = wx.MessageDialog(self.frame, words_tree
+                    ,'Error', wx.OK|wx.ICON_EXCLAMATION)
+                dlg_err.ShowModal()
+                dlg_err.Destroy()
+                words_tree = None
         dlg.Destroy()
 
     def OnSave(self, event):

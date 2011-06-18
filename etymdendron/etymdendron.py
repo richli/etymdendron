@@ -13,6 +13,7 @@ except ImportError as err:
 # Imports (local)
 from global_opts import WORDS_FILE
 import cli_funcs
+from common_funcs import loadDB
 
 def main():
     """ The main routine """
@@ -25,13 +26,9 @@ def main():
 
     ###
     # First let's load the XML
-    words_tree = ET.ElementTree()
-    try:
-        words_tree.parse(WORDS_FILE,ET.XMLParser(dtd_validation=True))
-    except ET.XMLSyntaxError as err:
-        print("ERROR: Error parsing {0}".
-                format(WORDS_FILE))
-        print('  {0}'.format(err))
+    words_tree = loadDB(WORDS_FILE)
+    if type(words_tree) is str:
+        print(words_tree) # This holds the error message
         sys.exit(1)
 
     ###
