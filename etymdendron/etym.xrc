@@ -166,6 +166,7 @@
 											<flag>wxALL|wxEXPAND</flag>
 											<border>5</border>
 											<object class="wxTextCtrl" name="et_boxSearch">
+												<style>wxTE_PROCESS_ENTER</style>
 												<value></value>
 												<maxlength>0</maxlength>
 											</object>
