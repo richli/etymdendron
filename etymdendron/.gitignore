@@ -1,2 +1,6 @@
 # Ignore Python bytecode
 *.pyc
+
+# Ignore backup and vim swap files
+*.bak
+.*.swp
