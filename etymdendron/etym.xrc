@@ -2,7 +2,7 @@
 <resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
 	<object class="wxFrame" name="et_Frame">
 		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
-		<size>642,371</size>
+		<size>642,400</size>
 		<title>Etymdendron</title>
 		<centered>1</centered>
 		<aui_managed>0</aui_managed>

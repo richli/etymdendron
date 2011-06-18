@@ -4,10 +4,9 @@
 import wx
 import gui_funcs
 
-
 def main():
     # Create and show the frame
-    app = gui_funcs.EtymApp(True)
+    app = gui_funcs.EtymApp(False)
     app.MainLoop()
 
 if __name__ == '__main__':
