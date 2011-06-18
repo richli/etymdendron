@@ -6,7 +6,7 @@ import os
 import wx
 import wx.xrc
 from global_opts import WORDS_FILE
-from common_funcs import loadDB
+from common_funcs import loadDB, searchDB
 
 # Define the application
 class EtymApp(wx.App):
@@ -81,6 +81,11 @@ class EtymApp(wx.App):
         dlg.ShowModal()
         dlg.Destroy()
 
+    def OnSearch(self, event):
+        search_word = self.searchbox.GetValue()
+        if search_word is not '': # Simple validation for now
+            num_trees, matched_words = searchDB(self.words_tree, search_word)
+            print(num_trees)
 
 
 
