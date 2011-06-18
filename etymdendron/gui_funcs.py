@@ -29,6 +29,10 @@ class EtymApp(wx.App):
         self.frame.Bind(wx.EVT_MENU, self.OnSave, id=wx.xrc.XRCID('m_save'))
         # And show the frame!
         self.frame.Show()
+        # Override the tight fitting of the sizers; this is also a 
+        # workaround since the frame size is set before the menubar is
+        # loaded, so it pushes the content down
+        self.frame.SetMinSize(wx.Size(642,400)) 
 
 ###
 # Event handlers
