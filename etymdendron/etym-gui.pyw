@@ -7,10 +7,8 @@ import gui_funcs
 
 def main():
     # Create and show the frame
-    app = wx.App(True)
-    frame = gui_funcs.EtymFrame(None, 'Etymdendron')
+    app = gui_funcs.EtymApp(True)
     app.MainLoop()
-
 
 if __name__ == '__main__':
     main()
