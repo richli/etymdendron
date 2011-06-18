@@ -28,6 +28,12 @@ class EtymApp(wx.App):
         self.frame.Bind(wx.EVT_MENU, self.OnAbout, id=wx.xrc.XRCID('m_about'))
         self.frame.Bind(wx.EVT_MENU, self.OnLoad, id=wx.xrc.XRCID('m_load'))
         self.frame.Bind(wx.EVT_MENU, self.OnSave, id=wx.xrc.XRCID('m_save'))
+        # Bind button events
+        self.frame.Bind(wx.EVT_BUTTON, self.OnSearch, id=wx.xrc.XRCID('et_btnSearch'))
+        self.frame.Bind(wx.EVT_TEXT_ENTER, self.OnSearch, id=wx.xrc.XRCID('et_boxSearch'))
+        # Save some object references for later
+        self.searchbox = wx.xrc.XRCCTRL(self.frame,'et_boxSearch')
+        self.treebox = wx.xrc.XRCCTRL(self.frame,'et_tree')
         # And show the frame!
         self.frame.Show()
         # Override the tight fitting of the sizers; this is also a 
