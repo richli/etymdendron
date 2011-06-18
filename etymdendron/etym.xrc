@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+	<object class="wxFrame" name="et_Frame">
+		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
+		<size>642,371</size>
+		<title>Etymdendron</title>
+		<centered>1</centered>
+		<aui_managed>0</aui_managed>
+		<object class="wxMenuBar" name="et_menubar">
+			<label>MyMenuBar</label>
+			<object class="wxMenu" name="m_file">
+				<label>File</label>
+				<object class="wxMenuItem" name="m_load">
+					<label>Load</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="m_save">
+					<label>Save</label>
+					<help></help>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="m_exit">
+					<label>Exit</label>
+					<help></help>
+				</object>
+			</object>
+			<object class="wxMenu" name="m_help">
+				<label>Help</label>
+				<object class="wxMenuItem" name="m_about">
+					<label>About</label>
+					<help></help>
+				</object>
+			</object>
+		</object>
+		<object class="wxBoxSizer">
+			<orient>wxHORIZONTAL</orient>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxTreeCtrl" name="et_tree">
+					<style>wxTR_DEFAULT_STYLE</style>
+					<size>200,-1</size>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxPanel" name="et_panelDetails">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxVERTICAL</orient>
+								<label>Word details</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxEXPAND</flag>
+									<border>5</border>
+									<object class="wxGridBagSizer">
+										<vgap>0</vgap>
+										<hgap>0</hgap>
+										<growablecols>1</growablecols>
+										<growablerows></growablerows>
+										<object class="sizeritem">
+											<cellpos>0,0</cellpos>
+											<cellspan>1,1</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="et_stLang">
+												<label>Language:</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>1,0</cellpos>
+											<cellspan>1,1</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="et_stDef">
+												<label>Definition:</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>2,0</cellpos>
+											<cellspan>1,1</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="et_stAlt">
+												<label>Alternates:</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>0,1</cellpos>
+											<cellspan>1,1</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxTextCtrl" name="et_txtLang">
+												<value></value>
+												<maxlength>0</maxlength>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>1,1</cellpos>
+											<cellspan>1,1</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxTextCtrl" name="et_txtDef">
+												<value></value>
+												<maxlength>0</maxlength>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>2,1</cellpos>
+											<cellspan>1,2</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxTextCtrl" name="et_txtAlt">
+												<value></value>
+												<maxlength>0</maxlength>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>3,0</cellpos>
+											<cellspan>1,3</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxToggleButton" name="et_btnEdit">
+												<label>Edit mode</label>
+												<checked>0</checked>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND | wxALL</flag>
+						<border>5</border>
+						<object class="wxPanel" name="et_panelSearch">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxVERTICAL</orient>
+								<label>Search</label>
+								<object class="sizeritem">
+									<option>1</option>
+									<flag>wxEXPAND</flag>
+									<border>5</border>
+									<object class="wxGridBagSizer">
+										<vgap>0</vgap>
+										<hgap>0</hgap>
+										<growablecols>0</growablecols>
+										<growablerows></growablerows>
+										<object class="sizeritem">
+											<cellpos>0,0</cellpos>
+											<cellspan>1,3</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxTextCtrl" name="et_boxSearch">
+												<value></value>
+												<maxlength>0</maxlength>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>0,4</cellpos>
+											<cellspan>1,1</cellspan>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxButton" name="et_btnSearch">
+												<label>Search</label>
+												<default>0</default>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>1,0</cellpos>
+											<cellspan>1,2</cellspan>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxCheckBox" name="et_checkSearch">
+												<label>Use selected word</label>
+												<checked>0</checked>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+</resource>
