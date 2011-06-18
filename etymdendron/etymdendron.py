@@ -13,7 +13,7 @@ except ImportError as err:
 # Imports (local)
 from global_opts import WORDS_FILE
 import cli_funcs
-from common_funcs import loadDB
+from common_funcs import loadDB, searchDB
 
 def main():
     """ The main routine """
@@ -46,22 +46,7 @@ def main():
     else:
         search_word = args.word
 
-    # We go through each of the possible trees
-    matched_words = []
-    for tree in words_tree.getroot().iterchildren():
-        for word in tree.iterdescendants(tag='word'):
-            for text in word.iterchildren(tag='text'):
-                if text.text == search_word:
-                    # Add the found word to our list
-                    matched_words.append((tree, word))
-
-    # Now remove non-unique roots (using the set container)
-    matched_roots = [match[0] for match in matched_words]
-    unique_roots = list(set(matched_roots))
-    num_trees = len(unique_roots)
-
-    # Concatenate all matched words
-    matched_words_ur = [match[1] for match in matched_words]
+    num_trees, matched_words = searchDB(words_tree, search_word)
 
     ###
     # Display the tree if we have matches
@@ -73,11 +58,16 @@ def main():
     elif num_trees > 1:
         print('{0} is found in {1} trees'.format(search_word,num_trees))
         chosen_root, chosen_word = cli_funcs.choose_word_from_many(matched_words)
-        cli_funcs.display_tree(chosen_root,chosen_word,search_word)
     # One match
     elif num_trees == 1:
         print('{0} is found in one tree'.format(search_word))
-        cli_funcs.display_tree(unique_roots[0], matched_words_ur,search_word)
+        # Extract the tree and all matched words separately
+        # Just pick the first entry (m_w[...][0] are the same in this case)
+        chosen_root = matched_words[0][0]
+        chosen_word = [match[1] for match in matched_words]
+
+    # And now display the tree
+    cli_funcs.display_tree(chosen_root,chosen_word,search_word)
 
     ###
     # That's all!

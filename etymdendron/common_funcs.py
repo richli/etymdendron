@@ -26,3 +26,28 @@ def loadDB(filename):
         return err_msg
 
     return words_db
+
+def searchDB(db, search_word):
+    """ Searches the database db for the word search_word
+        Returns a tuple: (num_trees, words)
+        The 'words' element is itself a list of tuples: 
+            [(tree,word), (tree,word), ...]
+    """
+     # We go through each of the possible trees
+    matched_words = []
+    found_roots = set()
+    num_trees = 0
+    for tree in db.getroot().iterchildren():
+        for word in tree.iterdescendants(tag='word'):
+            for text in word.iterchildren(tag='text'):
+                if text.text == search_word:
+                    # Alright, we found a match
+                    # Add the root to our list
+                    if tree not in found_roots:
+                        num_trees += 1
+                    found_roots.add(tree)
+                    # Add the found word to our list
+                    matched_words.append((tree, word))
+
+    return (num_trees, matched_words)
+
