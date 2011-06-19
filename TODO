@@ -2,6 +2,9 @@ TODO for etymdendron
 --------------------
 TO WORK ON NEXT:
 * Automated testing
+  http://somethingaboutorange.com/mrl/projects/nose/1.0.0/
+  http://docs.python.org/library/unittest.html
+  http://diveintopython.org/unit_testing/index.html
 * Add options to edit the tree within the program (CLI and GUI)
 * Export the modified XML file (this should be really easy)
 
