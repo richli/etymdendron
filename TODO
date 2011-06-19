@@ -1,5 +1,10 @@
 TODO for etymdendron
 --------------------
+TO WORK ON after I get the GUI caught up to the CLI version:
+* Automated testing
+* Add options to edit the tree within the program (CLI and GUI)
+* Export the modified XML file (this should be really easy)
+
 * Frontend
   * GUI (started, using wxPython)
     * Finish functionality to duplicate the CLI version
@@ -20,7 +25,3 @@ TODO for etymdendron
 * Backend
   * We're using libxml (using lxml) for now, maybe make it a db sometime? (looking into SQLAlchemy)
 
-To work on after I get the GUI caught up:
-* Automated testing
-* Add options to edit the tree within the program (CLI and GUI)
-* Export the modified XML file (this should be really easy)
