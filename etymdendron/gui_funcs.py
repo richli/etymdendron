@@ -109,6 +109,44 @@ class EtymApp(wx.App):
             print('{0} loaded, {1} trees found'.format(WORDS_FILE,
             len(self.words_tree.getroot())))
 
+    def DisplayTree(self, root, nodes, search_word):
+        """ Displays the tree in the wx.TreeCtrl object 
+            root is the ElementTree root node
+            nodes is a list of ElementTree word nodes
+            search_word is the searched-for word
+            if root is None, then is displays an empty tree message
+        """
+        if root is None:
+            self.treebox.AddRoot('No matches found')
+        else:
+            root_elem = self.treebox.AddRoot(root.xpath('text')[0].text,
+                    data = wx.TreeItemData(root))
+            if type(nodes) is not list:
+                nodes = [nodes]
+            self._populate_tree(root, root_elem, nodes, search_word)
+            self.treebox.ExpandAll()
+
+    def _populate_tree(self, node, node_elem, emph_nodes, search_word):
+        """ Recursive private function to fill in the rest of the tree control 
+            node: the ElementTree element we're working on
+            node_elem: the corresponding object in the TreeCtrl class
+            emph_nodes: a list of ElementTree elements, these will be emphasized
+            search_word: the search_word, which is emphasized within elem_nodes
+        """
+        # len() of a node returns how many children it has
+        if len(node.xpath('word')) > 0:
+            for child in node.xpath('word'):
+                texts = child.xpath('text')
+                child_label = texts[0].text # Just display the first alternate
+                child_elem = self.treebox.AppendItem(node_elem,child_label,
+                        data = wx.TreeItemData(child))
+                if child in emph_nodes:
+                    # Emphasize the node
+                    self.treebox.SetItemBold(child_elem)
+                    # Select the node
+                    self.treebox.SelectItem(child_elem)
+                # Recurse!
+                self._populate_tree(child, child_elem, emph_nodes, search_word)
 
 
 ###
