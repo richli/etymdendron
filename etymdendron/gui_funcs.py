@@ -80,14 +80,14 @@ class EtymApp(wx.App):
         dlg.Destroy()
 
     def OnSearch(self, event):
-        search_word = self.searchbox.GetValue()
-        if search_word is not '': # Simple validation for now
-            num_trees, matched_words = searchDB(self.words_tree, search_word)
+        self.search_word = self.searchbox.GetValue()
+        if self.search_word is not '': # Simple validation for now
+            num_trees, matched_words = searchDB(self.words_tree, self.search_word)
             self.treebox.DeleteAllItems() # Clear the tree control out
             if num_trees == 0:
                 chosen_root = chosen_word = None
             elif num_trees > 1:
-                print('{0} is found in {1} trees'.format(search_word,num_trees))
+                print('{0} is found in {1} trees'.format(self.search_word,num_trees))
                 chosen_root = chosen_word = None
                 #TODO: Implement this
                 #chosen_root, chosen_word = cli_funcs.choose_word_from_many(matched_words)
@@ -97,7 +97,7 @@ class EtymApp(wx.App):
                 chosen_root = matched_words[0][0]
                 chosen_word = [match[1] for match in matched_words]
 
-            self.DisplayTree(chosen_root, chosen_word, search_word)
+            self.DisplayTree(chosen_root, chosen_word)
 
 ###
 # Some methods for the class
@@ -114,11 +114,10 @@ class EtymApp(wx.App):
             print('{0} loaded, {1} trees found'.format(WORDS_FILE,
             len(self.words_tree.getroot())))
 
-    def DisplayTree(self, root, nodes, search_word):
+    def DisplayTree(self, root, nodes):
         """ Displays the tree in the wx.TreeCtrl object 
             root is the ElementTree root node
             nodes is a list of ElementTree word nodes
-            search_word is the searched-for word
             if root is None, then is displays an empty tree message
         """
         if root is None:
@@ -128,15 +127,14 @@ class EtymApp(wx.App):
                     data = wx.TreeItemData(root))
             if type(nodes) is not list:
                 nodes = [nodes]
-            self._populate_tree(root, root_elem, nodes, search_word)
+            self._populate_tree(root, root_elem, nodes)
             self.treebox.ExpandAll()
 
-    def _populate_tree(self, node, node_elem, emph_nodes, search_word):
+    def _populate_tree(self, node, node_elem, emph_nodes):
         """ Recursive private function to fill in the rest of the tree control 
             node: the ElementTree element we're working on
             node_elem: the corresponding object in the TreeCtrl class
             emph_nodes: a list of ElementTree elements, these will be emphasized
-            search_word: the search_word, which is emphasized within elem_nodes
         """
         # len() of a node returns how many children it has
         if len(node.xpath('word')) > 0:
@@ -151,7 +149,7 @@ class EtymApp(wx.App):
                     # Select the node
                     self.treebox.SelectItem(child_elem)
                 # Recurse!
-                self._populate_tree(child, child_elem, emph_nodes, search_word)
+                self._populate_tree(child, child_elem, emph_nodes)
 
     def SelectTreeItem(self,event):
         """ Update various widgets when a tree item has been selected """
