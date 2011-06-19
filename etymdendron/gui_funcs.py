@@ -44,7 +44,7 @@ class EtymApp(wx.App):
         # Override the tight fitting of the sizers; this is also a 
         # workaround since the frame size is set before the menubar is
         # loaded, so it pushes the content down
-        self.frame.SetMinSize(wx.Size(642,400)) 
+        self.frame.SetMinSize(wx.Size(610,395)) 
         # Put focus in the search box
         self.searchbox.SetFocus()
 

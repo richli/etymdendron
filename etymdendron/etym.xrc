@@ -125,7 +125,7 @@
 											<flag>wxALL|wxEXPAND</flag>
 											<border>5</border>
 											<object class="wxTextCtrl" name="et_txtAlt">
-												<style>wxTE_READONLY</style>
+												<style>wxTE_MULTILINE|wxTE_READONLY|wxTE_RICH|wxTE_RICH2</style>
 												<value></value>
 												<maxlength>0</maxlength>
 											</object>
