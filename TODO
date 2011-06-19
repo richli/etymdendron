@@ -3,7 +3,6 @@ TODO for etymdendron
 * Frontend
   * GUI (started, using wxPython)
     * Finish functionality to duplicate the CLI version
-		* Highlight searched-word in alternates box
 		* Implement search using selected word
 		* Implement choosing a word that's in multiple trees
 	* Implement edit mode toggle

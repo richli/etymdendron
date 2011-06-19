@@ -163,9 +163,21 @@ class EtymApp(wx.App):
             # This occurs before the PIE root doesn't have def/alt defined
             # We recognize it occurs, but we already have def,alt set to ''
             pass
+
         self.langbox.ChangeValue(lang_text)
         self.defbox.ChangeValue(def_text)
         self.altbox.ChangeValue(alt_text)
+
+        if self.search_word in alt_text:
+            # Set the style
+            bold_style = self.altbox.GetDefaultStyle()
+            bold_font = bold_style.GetFont()
+            bold_font.SetWeight(wx.FONTWEIGHT_BOLD)
+            bold_style.SetFont(bold_font)
+            # Find the start/end indices
+            str_start = alt_text.find(self.search_word)
+            # Bold the word
+            self.altbox.SetStyle(str_start,str_start+len(self.search_word),bold_style)
 
 ###
 # Validators?
