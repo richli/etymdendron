@@ -31,9 +31,14 @@ class EtymApp(wx.App):
         # Bind button events
         self.frame.Bind(wx.EVT_BUTTON, self.OnSearch, id=wx.xrc.XRCID('et_btnSearch'))
         self.frame.Bind(wx.EVT_TEXT_ENTER, self.OnSearch, id=wx.xrc.XRCID('et_boxSearch'))
+        # Bind tree events
+        self.frame.Bind(wx.EVT_TREE_SEL_CHANGED, self.SelectTreeItem, id=wx.xrc.XRCID('et_tree'))
         # Save some object references for later
         self.searchbox = wx.xrc.XRCCTRL(self.frame,'et_boxSearch')
         self.treebox = wx.xrc.XRCCTRL(self.frame,'et_tree')
+        self.langbox = wx.xrc.XRCCTRL(self.frame,'et_txtLang')
+        self.defbox = wx.xrc.XRCCTRL(self.frame,'et_txtDef')
+        self.altbox = wx.xrc.XRCCTRL(self.frame,'et_txtAlt')
         # And show the frame!
         self.frame.Show()
         # Override the tight fitting of the sizers; this is also a 
@@ -148,6 +153,21 @@ class EtymApp(wx.App):
                 # Recurse!
                 self._populate_tree(child, child_elem, emph_nodes, search_word)
 
+    def SelectTreeItem(self,event):
+        """ Update various widgets when a tree item has been selected """
+        node = self.treebox.GetPyData(event.GetItem())
+        lang_text = def_text = alt_text = ''
+        try:
+            lang_text = node.xpath('lang')[0].text
+            def_text = node.xpath('def')[0].text
+            alt_text = ', '.join([n.text for n in node.xpath('text')])
+        except IndexError:
+            # This occurs before the PIE root doesn't have def/alt defined
+            # We recognize it occurs, but we already have def,alt set to ''
+            pass
+        self.langbox.ChangeValue(lang_text)
+        self.defbox.ChangeValue(def_text)
+        self.altbox.ChangeValue(alt_text)
 
 ###
 # Validators?
