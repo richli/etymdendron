@@ -17,7 +17,14 @@ class EtymApp(wx.App):
         """ Load in the XRC file and display frame """
         self.xrc = wx.xrc.XmlResource('etym.xrc')
         self.InitUI()
-        #self.Show(True)
+        # Override the tight fitting of the sizers; this is also a 
+        # workaround since the frame size is set before the menubar is
+        # loaded, so it pushes the content down
+        self.frame.SetMinSize(wx.Size(610,395)) 
+        # Initialize some other variables
+        self.search_on_select = False
+        # Put focus in the search box
+        self.searchbox.SetFocus()
         return True
 
     def InitUI(self):
@@ -43,12 +50,6 @@ class EtymApp(wx.App):
         self.searchchoice = wx.xrc.XRCCTRL(self.frame,'et_choice')
         # And show the frame!
         self.frame.Show()
-        # Override the tight fitting of the sizers; this is also a 
-        # workaround since the frame size is set before the menubar is
-        # loaded, so it pushes the content down
-        self.frame.SetMinSize(wx.Size(610,395)) 
-        # Put focus in the search box
-        self.searchbox.SetFocus()
 
 ###
 # Event handlers
@@ -115,9 +116,6 @@ class EtymApp(wx.App):
 
     def OnMorphemeSelect(self, event):
         """ Chooses between different morphemes (different trees) """
-        #TODO: Finish implementing this
-        #import pdb; pdb.set_trace()
-        #item = self.searchchoice.GetClientData(1)
         item = event.GetClientData()
         self.treebox.DeleteAllItems()
         self.DisplayTree(item[0], item[1])
@@ -176,6 +174,7 @@ class EtymApp(wx.App):
 
     def SelectTreeItem(self,event):
         """ Update various widgets when a tree item has been selected """
+        # Set the 'word details' widgets
         node = self.treebox.GetPyData(event.GetItem())
         lang_text = def_text = alt_text = ''
         try:
@@ -186,11 +185,11 @@ class EtymApp(wx.App):
             # This occurs before the PIE root doesn't have def/alt defined
             # We recognize it occurs, but we already have def,alt set to ''
             pass
-
         self.langbox.ChangeValue(lang_text)
         self.defbox.ChangeValue(def_text)
         self.altbox.ChangeValue(alt_text)
 
+        # Highlight matching alternates, if applicable
         if self.search_word in alt_text:
             # Set the style
             bold_style = self.altbox.GetDefaultStyle()
