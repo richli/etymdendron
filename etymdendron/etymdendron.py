@@ -5,10 +5,6 @@
 # Imports (global)
 import sys
 import argparse
-try:
-    from lxml import etree as ET
-except ImportError as err:
-    print('lxml is missing\n{0}'.format(err))
 
 # Imports (local)
 from global_opts import WORDS_FILE
@@ -56,8 +52,9 @@ def main():
         sys.exit(0)
     # Multiple matches
     elif num_trees > 1:
-        print('{0} is found in {1} trees'.format(search_word,num_trees))
-        chosen_root, chosen_word = cli_funcs.choose_word_from_many(matched_words)
+        print('{0} is found in {1} trees'.format(search_word, num_trees))
+        chosen_root, chosen_word = cli_funcs.choose_word_from_many(
+                matched_words)
     # One match
     elif num_trees == 1:
         print('{0} is found in one tree'.format(search_word))
@@ -67,7 +64,7 @@ def main():
         chosen_word = [match[1] for match in matched_words]
 
     # And now display the tree
-    cli_funcs.display_tree(chosen_root,chosen_word,search_word)
+    cli_funcs.display_tree(chosen_root, chosen_word, search_word)
 
     ###
     # That's all!

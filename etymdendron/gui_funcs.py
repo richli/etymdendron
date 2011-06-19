@@ -2,7 +2,6 @@
 """ This module contains classes and such needed for the GUI """
 
 # We're using wxWidgets as a cross-platform toolkit
-import os
 import wx
 import wx.xrc
 from global_opts import WORDS_FILE
@@ -20,7 +19,7 @@ class EtymApp(wx.App):
         # Override the tight fitting of the sizers; this is also a 
         # workaround since the frame size is set before the menubar is
         # loaded, so it pushes the content down
-        self.frame.SetMinSize(wx.Size(610,395)) 
+        self.frame.SetMinSize(wx.Size(610, 395)) 
         # Initialize some other variables
         #self.search_on_select = False
         # Put focus in the search box
@@ -36,12 +35,17 @@ class EtymApp(wx.App):
         self.frame.Bind(wx.EVT_MENU, self.OnLoad, id=wx.xrc.XRCID('m_load'))
         self.frame.Bind(wx.EVT_MENU, self.OnSave, id=wx.xrc.XRCID('m_save'))
         # Bind button events
-        self.frame.Bind(wx.EVT_BUTTON, self.OnSearch, id=wx.xrc.XRCID('et_btnSearch'))
-        self.frame.Bind(wx.EVT_TEXT_ENTER, self.OnSearch, id=wx.xrc.XRCID('et_boxSearch'))
-        self.frame.Bind(wx.EVT_CHOICE, self.OnMorphemeSelect, id=wx.xrc.XRCID('et_choice'))
-        #self.frame.Bind(wx.EVT_CHECKBOX, self.OnSearchCheck, id=wx.xrc.XRCID('et_checkSearch'))
+        self.frame.Bind(wx.EVT_BUTTON, self.OnSearch,
+                id=wx.xrc.XRCID('et_btnSearch'))
+        self.frame.Bind(wx.EVT_TEXT_ENTER, self.OnSearch,
+                id=wx.xrc.XRCID('et_boxSearch'))
+        self.frame.Bind(wx.EVT_CHOICE, self.OnMorphemeSelect,
+                id=wx.xrc.XRCID('et_choice'))
+        #self.frame.Bind(wx.EVT_CHECKBOX, self.OnSearchCheck,
+        #       id=wx.xrc.XRCID('et_checkSearch'))
         # Bind tree events
-        self.frame.Bind(wx.EVT_TREE_SEL_CHANGED, self.SelectTreeItem, id=wx.xrc.XRCID('et_tree'))
+        self.frame.Bind(wx.EVT_TREE_SEL_CHANGED, self.SelectTreeItem,
+                id=wx.xrc.XRCID('et_tree'))
         # Save some object references for later
         self.searchbox = wx.xrc.XRCCTRL(self.frame,'et_boxSearch')
         self.treebox = wx.xrc.XRCCTRL(self.frame,'et_tree')
@@ -57,8 +61,9 @@ class EtymApp(wx.App):
 # Event handlers
     def OnAbout(self, event):
         """ Displays the About dialog """
-        dlg = wx.MessageDialog(self.frame, 'Etymdendron \nAn etymology tree viewer\n'
-            'Written 2011 Rich Li','About Etymdendron', wx.OK)
+        dlg = wx.MessageDialog(self.frame,
+                'Etymdendron \nAn etymology tree viewer\n'
+                'Written 2011 Rich Li','About Etymdendron', wx.OK)
         dlg.ShowModal()
         dlg.Destroy()
 
@@ -71,7 +76,8 @@ class EtymApp(wx.App):
         """ Loads the word database """
 #TODO: Implement me
         self.dirname = ''
-        dlg = wx.FileDialog(self.frame, 'Choose the database file', self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
+        dlg = wx.FileDialog(self.frame, 'Choose the database file',
+                self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
         if dlg.ShowModal() == wx.ID_OK:
             self.LoadWordDB(dlg.GetPath())
         dlg.Destroy()
@@ -88,7 +94,8 @@ class EtymApp(wx.App):
         """ Searches for a word, displays results """
         self.search_word = self.searchbox.GetValue()
         if self.search_word is not '': # Simple validation for now
-            num_trees, matched_words = searchDB(self.words_tree, self.search_word)
+            num_trees, matched_words = searchDB(self.words_tree,
+                    self.search_word)
             self.treebox.DeleteAllItems() # Clear the tree control out
             self.searchchoice.Clear() # Clear out the choice box
             self.searchchoice.Disable()
@@ -110,7 +117,8 @@ class EtymApp(wx.App):
                 self.searchchoice.SetSelection(0)
             else:
                 # Extract the tree and all matched words separately
-                # Just pick the first entry (m_w[...][0] are the same in this case)
+                # Just pick the first entry (m_w[...][0] are the 
+                # same in this case)
                 chosen_root = matched_words[0][0]
                 chosen_word = [match[1] for match in matched_words]
 
@@ -170,7 +178,7 @@ class EtymApp(wx.App):
             for child in node.xpath('word'):
                 texts = child.xpath('text')
                 child_label = texts[0].text # Just display the first alternate
-                child_elem = self.treebox.AppendItem(node_elem,child_label,
+                child_elem = self.treebox.AppendItem(node_elem, child_label,
                         data = wx.TreeItemData(child))
                 if child in emph_nodes:
                     # Emphasize the node
@@ -180,7 +188,7 @@ class EtymApp(wx.App):
                 # Recurse!
                 self._populate_tree(child, child_elem, emph_nodes)
 
-    def SelectTreeItem(self,event):
+    def SelectTreeItem(self, event):
         """ Update various widgets when a tree item has been selected """
         # Set the 'word details' widgets
         node = self.treebox.GetPyData(event.GetItem())
@@ -213,7 +221,8 @@ class EtymApp(wx.App):
             # Find the start/end indices
             str_start = alt_text.find(self.search_word)
             # Bold the word
-            self.altbox.SetStyle(str_start,str_start+len(self.search_word),bold_style)
+            self.altbox.SetStyle(str_start,
+                    str_start+len(self.search_word),bold_style)
 
 ###
 # Validators?

@@ -3,11 +3,10 @@
 
 ###
 # Imports
-import sys
 try:
     from lxml import etree as ET
-except ImportError as err:
-    print('lxml is missing\n{0}'.format(err))
+except ImportError as im_err:
+    print('lxml is missing\n{0}'.format(im_err))
 
 ###
 # Functions
@@ -17,18 +16,18 @@ def loadDB(filename):
     """
     words_db = ET.ElementTree()
     try:
-        words_db.parse(filename,ET.XMLParser(dtd_validation=True))
+        words_db.parse(filename, ET.XMLParser(dtd_validation=True))
     except ET.XMLSyntaxError as err:
-        err_msg = "ERROR: Error parsing {0}\n{1}".format(filename,err)
+        err_msg = "ERROR: Error parsing {0}\n{1}".format(filename, err)
         return err_msg
     except IOError as err:
-        err_msg = "ERROR: Error reading {0}\n{1}".format(filename,err)
+        err_msg = "ERROR: Error reading {0}\n{1}".format(filename, err)
         return err_msg
 
     return words_db
 
-def searchDB(db, search_word):
-    """ Searches the database db for the word search_word
+def searchDB(word_db, search_word):
+    """ Searches the database word_db for the word search_word
         Returns a tuple: (num_trees, words)
         The 'words' element is itself a list of tuples: 
             [(tree,word), (tree,word), ...]
@@ -37,7 +36,7 @@ def searchDB(db, search_word):
     matched_words = []
     found_roots = set()
     num_trees = 0
-    for tree in db.getroot().iterchildren():
+    for tree in word_db.getroot().iterchildren():
         for word in tree.iterdescendants(tag='word'):
             for text in word.iterchildren(tag='text'):
                 if text.text == search_word:

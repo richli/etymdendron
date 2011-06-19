@@ -10,7 +10,7 @@ def get_search_word():
     #TODO: Make sure it doesn't contain illegal characters, such as numbers?
     return word
 
-def get_num_choice(prompt='Input: ',min_num=0,max_num=10):
+def get_num_choice(prompt='Input: ', min_num=0, max_num=10):
     """ Get a number choice with prompt, only allow integers 
         between min_num and max_num
     """
@@ -37,14 +37,18 @@ def choose_word_from_many(words):
     word_text = words[0][1].xpath('text')[0].text
     for item in words:
         word = item[1]
-        mor_lan.append( (word.xpath('morpheme')[0].text,word.xpath('lang')[0].text) )
+        mor_lan.append( (word.xpath('morpheme')[0].text,
+            word.xpath('lang')[0].text) )
 
-    print('For the word {0}, {1} options are available:'.format(word_text,len(mor_lan)))
-    for item in enumerate(mor_lan,1):
-        print('  {0}: In {1}, choose the {2} morpheme'.format(item[0],item[1][1],item[1][0]))
-    item_select = get_num_choice(min_num=1,max_num=len(mor_lan))
+    print('For the word {0}, {1} options are available:'.format(
+        word_text, len(mor_lan)))
+    for item in enumerate(mor_lan, 1):
+        print('  {0}: In {1}, choose the {2} morpheme'.format(
+            item[0], item[1][1], item[1][0]))
+    item_select = get_num_choice(min_num=1, max_num=len(mor_lan))
 
-    print('{0} morpheme of {1} chosen'.format(mor_lan[item_select-1][0],word_text))
+    print('{0} morpheme of {1} chosen'.format(
+        mor_lan[item_select-1][0], word_text))
     return words[item_select-1]
 
 ###
@@ -57,7 +61,8 @@ def display_tree(tree, word, search_word):
     if type(word) is not list:
         word = [word]
 
-    print('Root: {0} ({1})'.format(tree.xpath('text')[0].text, tree.xpath('lang')[0].text))
+    print('Root: {0} ({1})'.format(tree.xpath('text')[0].text,
+        tree.xpath('lang')[0].text))
     display_children(tree, 1, word, search_word)
 
 def display_children(node, depth, word, search_word):
@@ -81,7 +86,7 @@ def display_children(node, depth, word, search_word):
                 child_markup_rest = ', '.join(['{0}'.format(text_var.text)
                     for text_var in texts if text_var.text != search_word])
                 if child_markup_rest is not '':
-                    child_markup = ', '.join([child_markup,child_markup_rest])
+                    child_markup = ', '.join([child_markup, child_markup_rest])
             else:
                 child_markup = ', '.join(['{0}'.format(text_var.text)
                     for text_var in texts])
