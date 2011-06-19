@@ -40,6 +40,8 @@ class EtymApp(wx.App):
         # workaround since the frame size is set before the menubar is
         # loaded, so it pushes the content down
         self.frame.SetMinSize(wx.Size(642,400)) 
+        # Put focus in the search box
+        self.searchbox.SetFocus()
 
 ###
 # Event handlers
