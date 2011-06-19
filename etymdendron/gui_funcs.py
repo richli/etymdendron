@@ -31,6 +31,7 @@ class EtymApp(wx.App):
         # Bind button events
         self.frame.Bind(wx.EVT_BUTTON, self.OnSearch, id=wx.xrc.XRCID('et_btnSearch'))
         self.frame.Bind(wx.EVT_TEXT_ENTER, self.OnSearch, id=wx.xrc.XRCID('et_boxSearch'))
+        self.frame.Bind(wx.EVT_CHOICE, self.OnMorphemeSelect, id=wx.xrc.XRCID('et_choice'))
         # Bind tree events
         self.frame.Bind(wx.EVT_TREE_SEL_CHANGED, self.SelectTreeItem, id=wx.xrc.XRCID('et_tree'))
         # Save some object references for later
@@ -39,6 +40,7 @@ class EtymApp(wx.App):
         self.langbox = wx.xrc.XRCCTRL(self.frame,'et_txtLang')
         self.defbox = wx.xrc.XRCCTRL(self.frame,'et_txtDef')
         self.altbox = wx.xrc.XRCCTRL(self.frame,'et_txtAlt')
+        self.searchchoice = wx.xrc.XRCCTRL(self.frame,'et_choice')
         # And show the frame!
         self.frame.Show()
         # Override the tight fitting of the sizers; this is also a 
