@@ -74,25 +74,37 @@ class EtymApp(wx.App):
         dlg.Destroy()
 
     def OnSave(self, event):
-#TODO: Implement me
         """ Saves the word database """
+#TODO: Implement me
         dlg = wx.MessageDialog(self.frame, 'This function not yet implemented'
             ,'Error', wx.OK|wx.ICON_EXCLAMATION)
         dlg.ShowModal()
         dlg.Destroy()
 
     def OnSearch(self, event):
+        """ Searches for a word, displays results """
         self.search_word = self.searchbox.GetValue()
         if self.search_word is not '': # Simple validation for now
             num_trees, matched_words = searchDB(self.words_tree, self.search_word)
             self.treebox.DeleteAllItems() # Clear the tree control out
+            self.searchchoice.Clear() # Clear out the choice box
+            self.searchchoice.Disable()
             if num_trees == 0:
                 chosen_root = chosen_word = None
             elif num_trees > 1:
-                print('{0} is found in {1} trees'.format(self.search_word,num_trees))
-                chosen_root = chosen_word = None
-                #TODO: Implement this
-                #chosen_root, chosen_word = cli_funcs.choose_word_from_many(matched_words)
+                # Populate the tree with the first match
+                chosen_root = matched_words[0][0]
+                chosen_word = [match[1] for match in matched_words]
+                # Populate the choice button
+                for item in matched_words:
+                    word = item[1]
+                    choice_text = '{0} ({1})'.format(
+                            word.xpath('morpheme')[0].text, 
+                            word.xpath('lang')[0].text)
+                    self.searchchoice.Append(choice_text, item)
+
+                self.searchchoice.Enable()
+                self.searchchoice.SetSelection(0)
             else:
                 # Extract the tree and all matched words separately
                 # Just pick the first entry (m_w[...][0] are the same in this case)
@@ -100,6 +112,15 @@ class EtymApp(wx.App):
                 chosen_word = [match[1] for match in matched_words]
 
             self.DisplayTree(chosen_root, chosen_word)
+
+    def OnMorphemeSelect(self, event):
+        """ Chooses between different morphemes (different trees) """
+        #TODO: Finish implementing this
+        #import pdb; pdb.set_trace()
+        #item = self.searchchoice.GetClientData(1)
+        item = event.GetClientData()
+        self.treebox.DeleteAllItems()
+        self.DisplayTree(item[0], item[1])
 
 ###
 # Some methods for the class
