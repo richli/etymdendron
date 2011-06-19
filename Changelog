@@ -1,5 +1,11 @@
 Changelog for etymdendron
 
+2011-06-19	v0.20
+Basic GUI laid out. Functionality duplicates that of the command-line version:
+search and display trees, get information about each entry. Word definitions
+added, shown in both GUI and CLI. Only the searched-for word is emphasized
+instead of the whole list of alternates.
+
 2011-06-12	v0.10
 Basic command-line functionality finished as far as searching and displaying
 the XML file is finished.
