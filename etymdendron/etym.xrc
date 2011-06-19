@@ -191,6 +191,8 @@
 											<flag>wxALL</flag>
 											<border>5</border>
 											<object class="wxCheckBox" name="et_checkSearch">
+												<enabled>0</enabled>
+												<hidden>1</hidden>
 												<label>Use selected word</label>
 												<checked>0</checked>
 											</object>

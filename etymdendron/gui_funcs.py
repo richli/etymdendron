@@ -22,7 +22,7 @@ class EtymApp(wx.App):
         # loaded, so it pushes the content down
         self.frame.SetMinSize(wx.Size(610,395)) 
         # Initialize some other variables
-        self.search_on_select = False
+        #self.search_on_select = False
         # Put focus in the search box
         self.searchbox.SetFocus()
         return True
@@ -39,7 +39,7 @@ class EtymApp(wx.App):
         self.frame.Bind(wx.EVT_BUTTON, self.OnSearch, id=wx.xrc.XRCID('et_btnSearch'))
         self.frame.Bind(wx.EVT_TEXT_ENTER, self.OnSearch, id=wx.xrc.XRCID('et_boxSearch'))
         self.frame.Bind(wx.EVT_CHOICE, self.OnMorphemeSelect, id=wx.xrc.XRCID('et_choice'))
-        self.frame.Bind(wx.EVT_CHECKBOX, self.OnSearchCheck, id=wx.xrc.XRCID('et_checkSearch'))
+        #self.frame.Bind(wx.EVT_CHECKBOX, self.OnSearchCheck, id=wx.xrc.XRCID('et_checkSearch'))
         # Bind tree events
         self.frame.Bind(wx.EVT_TREE_SEL_CHANGED, self.SelectTreeItem, id=wx.xrc.XRCID('et_tree'))
         # Save some object references for later
@@ -122,11 +122,11 @@ class EtymApp(wx.App):
         self.treebox.DeleteAllItems()
         self.DisplayTree(item[0], item[1])
 
-    def OnSearchCheck(self, event):
-        """ Toggles whether we search on selected word or not """
-        self.search_on_select = not self.search_on_select
-        self.searchbox.Enable(not self.searchbox.IsEnabled())
-        self.searchbtn.Enable(not self.searchbtn.IsEnabled())
+#    def OnSearchCheck(self, event):
+#        """ Toggles whether we search on selected word or not """
+#        self.search_on_select = not self.search_on_select
+#        self.searchbox.Enable(not self.searchbox.IsEnabled())
+#        self.searchbtn.Enable(not self.searchbtn.IsEnabled())
 
 ###
 # Some methods for the class
@@ -197,11 +197,11 @@ class EtymApp(wx.App):
         self.defbox.ChangeValue(def_text)
         self.altbox.ChangeValue(alt_text)
 
-        # Update the search word if applicable
-        if self.search_on_select:
-            self.search_word = node.xpath('text')[0].text
-            self.searchbox.SetValue(self.search_word)
-            # TODO: bold, debold the tree control
+#        # Update the search word if applicable
+#        if self.search_on_select:
+#            self.search_word = node.xpath('text')[0].text
+#            self.searchbox.SetValue(self.search_word)
+#            # TODO: bold, debold the tree control
 
         # Highlight matching alternates, if applicable
         if self.search_word in alt_text:
