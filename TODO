@@ -7,8 +7,6 @@ TO WORK ON after I get the GUI caught up to the CLI version:
 
 * Frontend
   * GUI (started, using wxPython)
-    * Finish functionality to duplicate the CLI version
-		* Implement search using selected word
 	* Implement edit mode toggle
 	* Phase 1: Just the treelist widget for now
 	* Phase 2: Use Graphviz to plot the trees? (pydot, pygraphviz, networkx, python-graph?)
