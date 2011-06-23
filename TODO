@@ -1,19 +1,21 @@
 TODO for etymdendron
 --------------------
 TO WORK ON NEXT:
-* Automated testing
-  http://somethingaboutorange.com/mrl/projects/nose/1.0.0/
-  http://docs.python.org/library/unittest.html
-  http://diveintopython.org/unit_testing/index.html
-* Add options to edit the tree within the program (CLI and GUI)
-* Export the modified XML file (this should be really easy)
+* Add options to edit the tree within the program (both CLI and GUI)
+  * Start with editing the details of an existing element
+  * Then add an element, specify the parents/children of the element
+  * Then remove an element (children become its siblings)
+  * Moving an element is then a combo of adding and removing, but mind the children
+  * The above is working within a tree, I then need to create a new tree
+* Export the modified XML file (this should be really easy since I'm using ElementTree)
 
 * Frontend
   * GUI
 	* Implement edit mode toggle
 	  * Edit entries of the tree
-	  * Drag-and-drop elements of the tree
 	  * Create new entries in the tree
+	  * Remove entries from the tree
+	  * Drag-and-drop elements of the tree
 	* Maybe create a link to the entry on etymonline?
 	* A taskbar icon
 	* GUI Layout phases:
@@ -22,8 +24,10 @@ TO WORK ON NEXT:
   	  * Phase 2: Use Graphviz to plot the trees? (pydot, pygraphviz, networkx, python-graph?)
   	  * Phase 3: Use floatcanvas to have interactive trees?
   * CLI
-	* Add some unit testing so the changes I make to the code don't break things
     * Make options to edit the tree and save out the XML
+	  * Edit entries of the tree
+	  * Create new entries in the tree
+	  * Remove entries from the tree
 	* Add more words to words.xml, add more tests
 	* For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
 
