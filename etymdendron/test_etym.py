@@ -28,6 +28,33 @@ class EtymDB(unittest.TestCase):
         """ Test saving the db """
         raise NotImplementedError
 
+    @unittest.skip('Not yet implemented')
+    def testEditWord(self):
+        """ Test editing a word details """
+        db = cf.loadDB(global_opts.WORDS_FILE)
+        #TODO: search for some word; save its details; write new details; compare new details with old details
+        raise NotImplementedError
+
+    @unittest.skip('Not yet implemented')
+    def testAddWord(self):
+        """ Test adding a word """
+        raise NotImplementedError
+
+    @unittest.skip('Not yet implemented')
+    def testDelWord(self):
+        """ Test deleting a word """
+        raise NotImplementedError
+
+    @unittest.skip('Not yet implemented')
+    def testAddTree(self):
+        """ Test adding a tree """
+        raise NotImplementedError
+
+    @unittest.skip('Not yet implemented')
+    def testDelTree(self):
+        """ Test deleting a tree """
+        raise NotImplementedError
+
 class EtymDisplayCLI(unittest.TestCase):
     dispHorse = u'''Root: khursa (PIE)
   Child: hors (Old English, "A man-eating beast")
