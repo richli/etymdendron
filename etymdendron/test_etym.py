@@ -72,16 +72,17 @@ class EtymDisplayCLI(unittest.TestCase):
     Child: *ros* (Middle High German, "Eines infizierten Tieres")
       Child: ross (Modern German, "Eine blutrünstige Monster")'''
 
+    def setUp(self):
+        self.db = cf.loadDB(global_opts.WORDS_FILE)
+
     def testSearchHorse(self):
         """ Tests how many trees 'horse' is found in """
-        db = cf.loadDB(global_opts.WORDS_FILE)
-        num_trees, matched_words = cf.searchDB(db, 'horse')
+        num_trees, matched_words = cf.searchDB(self.db, 'horse')
         self.assertEqual(num_trees, 1)
 
     def testDispHorse(self):
         """ Tests the CLI display of 'horse' """
-        db = cf.loadDB(global_opts.WORDS_FILE)
-        num_trees, matched_words = cf.searchDB(db, 'horse')
+        num_trees, matched_words = cf.searchDB(self.db, 'horse')
         chosen_root = matched_words[0][0]
         chosen_word = [match[1] for match in matched_words]
         # Redirect stdout to a string
@@ -95,8 +96,7 @@ class EtymDisplayCLI(unittest.TestCase):
 
     def testDispRos(self):
         """ Tests the CLI display of 'ros' """
-        db = cf.loadDB(global_opts.WORDS_FILE)
-        num_trees, matched_words = cf.searchDB(db, 'ros')
+        num_trees, matched_words = cf.searchDB(self.db, 'ros')
         chosen_root = matched_words[0][0]
         chosen_word = [match[1] for match in matched_words]
         # Redirect stdout to a string
@@ -110,14 +110,12 @@ class EtymDisplayCLI(unittest.TestCase):
 
     def testSearchBiology(self):
         """ Tests how many trees 'biology' is found in """
-        db = cf.loadDB(global_opts.WORDS_FILE)
-        num_trees, matched_words = cf.searchDB(db, 'biology')
+        num_trees, matched_words = cf.searchDB(self.db, 'biology')
         self.assertEqual(num_trees, 2)
 
     def testSearchNonexistant(self):
         """ Tests how many trees an unknown word is found in """
-        db = cf.loadDB(global_opts.WORDS_FILE)
-        num_trees, matched_words = cf.searchDB(db, 'kumquat')
+        num_trees, matched_words = cf.searchDB(self.db, 'kumquat')
         self.assertEqual(num_trees, 0)
     
 if __name__ == '__main__':
