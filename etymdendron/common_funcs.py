@@ -9,6 +9,13 @@ except ImportError as im_err:
     print('lxml is missing\n{0}'.format(im_err))
 
 ###
+# Exceptions
+class EtymException(Exception):
+    pass
+class EtymExceptDB(EtymException):
+    pass
+
+###
 # Functions
 def loadDB(filename):
     """ This function loads the word database given by filename 
@@ -18,11 +25,11 @@ def loadDB(filename):
     try:
         words_db.parse(filename, ET.XMLParser(dtd_validation=True))
     except ET.XMLSyntaxError as err:
-        err_msg = "ERROR: Error parsing {0}\n{1}".format(filename, err)
-        return err_msg
+        raise EtymExceptDB("ERROR: Error parsing {0}\n{1}".format(
+            filename, err))
     except IOError as err:
-        err_msg = "ERROR: Error reading {0}\n{1}".format(filename, err)
-        return err_msg
+        raise EtymExceptDB("ERROR: Error reading {0}\n{1}".format(
+            filename, err))
 
     return words_db
 
