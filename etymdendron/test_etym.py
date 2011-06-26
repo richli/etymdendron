@@ -70,17 +70,21 @@ class EtymDisplayCLI(unittest.TestCase):
   Child: hors (Old English, "A man-eating beast")
     Child: *horse*, hors, horce, horsse, horis, hos, ors (Middle English, "A horse that you feed oats")
       Child: *horse* (Modern English, "A horse that you ride")
+  Child: hors (Old Frisian, "A horse")
   Child: ros, hros (Old High German, "Eine Bestie")
     Child: ros (Middle High German, "Eines infizierten Tieres")
-      Child: ross (Modern German, "Eine blutrünstige Monster")'''
+      Child: ross (Modern High German, "Eine blutrünstige Monster")
+  Child: hross (Old Norse, "A horse")'''
 
     dispRos = u'''Root: khursa (PIE)
   Child: hors (Old English, "A man-eating beast")
     Child: horse, hors, horce, horsse, horis, hos, ors (Middle English, "A horse that you feed oats")
       Child: horse (Modern English, "A horse that you ride")
+  Child: hors (Old Frisian, "A horse")
   Child: *ros*, hros (Old High German, "Eine Bestie")
     Child: *ros* (Middle High German, "Eines infizierten Tieres")
-      Child: ross (Modern German, "Eine blutrünstige Monster")'''
+      Child: ross (Modern High German, "Eine blutrünstige Monster")
+  Child: hross (Old Norse, "A horse")'''
 
     def setUp(self):
         self.db = cf.loadDB(global_opts.WORDS_FILE)
