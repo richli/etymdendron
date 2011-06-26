@@ -16,7 +16,7 @@ class EtymDB(unittest.TestCase):
     """ Various tests for the database """
     def testTypeDB(self):
         """ Test if the return type is what we expect """
-        db = cf.loadDB(global_opts.WORDS_FILE)
+        db = self.getDB()
         self.assertIsInstance(db, type(ET.ElementTree()))
 
     def testLoadBadDB(self):
@@ -28,12 +28,22 @@ class EtymDB(unittest.TestCase):
         """ Test saving the db """
         raise NotImplementedError
 
-    def testReadWord(self):
-        """ Test reading the details of a word """
-        db = cf.loadDB(global_opts.WORDS_FILE)
-        num_trees, matched_words = cf.searchDB(db, 'horse')
+    def getDB(self):
+        """ Helper function to load the DB """
+        return cf.loadDB(global_opts.WORDS_FILE)
+
+    def getWord(self, search_word):
+        """ Helper function to load in a word """
+        db = self.getDB()
+        num_trees, matched_words = cf.searchDB(db, search_word)
+        # Return the first match
         #chosen_root = matched_words[0][0]
         chosen_word = matched_words[0][1]
+        return chosen_word
+
+    def testReadWord(self):
+        """ Test reading the details of a word """
+        chosen_word = self.getWord('horse')
         wordDets = cf.loadWordDetails(chosen_word)
         self.assertEqual(wordDets['lang'],'Middle English')
         self.assertEqual(wordDets['def'],'A horse that you feed oats')
@@ -42,8 +52,8 @@ class EtymDB(unittest.TestCase):
     @unittest.skip('Not yet implemented')
     def testEditWord(self):
         """ Test editing a word details """
-        db = cf.loadDB(global_opts.WORDS_FILE)
         #TODO: search for some word; save its details; write new details; compare new details with old details
+        chosen_word = self.getWord('horse')
 
     @unittest.skip('Not yet implemented')
     def testAddWord(self):
