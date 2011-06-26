@@ -28,19 +28,22 @@ class EtymDB(unittest.TestCase):
         """ Test saving the db """
         raise NotImplementedError
 
-    @unittest.skip('Not yet implemented')
     def testReadWord(self):
         """ Test reading the details of a word """
         db = cf.loadDB(global_opts.WORDS_FILE)
-        #TODO: search for some word; compare its details with known values
-        raise NotImplementedError
+        num_trees, matched_words = cf.searchDB(db, 'horse')
+        #chosen_root = matched_words[0][0]
+        chosen_word = matched_words[0][1]
+        wordDets = cf.loadWordDetails(chosen_word)
+        self.assertEqual(wordDets['lang'],'Middle English')
+        self.assertEqual(wordDets['def'],'A horse that you feed oats')
+        self.assertEqual(wordDets['text'],['horse','hors','horce','horsse','horis','hos','ors'])
 
     @unittest.skip('Not yet implemented')
     def testEditWord(self):
         """ Test editing a word details """
         db = cf.loadDB(global_opts.WORDS_FILE)
         #TODO: search for some word; save its details; write new details; compare new details with old details
-        raise NotImplementedError
 
     @unittest.skip('Not yet implemented')
     def testAddWord(self):
