@@ -14,6 +14,8 @@ class EtymException(Exception):
     pass
 class EtymExceptDB(EtymException):
     pass
+class EtymExceptWord(EtymException):
+    pass
 
 ###
 # Functions
@@ -94,4 +96,11 @@ def editWordDetails(word, details):
         space (since one element of each kind (lang, def, text) must exist.
 
     """
+    # First check sanity of the word
+    for item in ['lang', 'def', 'morpheme', 'text']:
+        if item not in details.keys():
+            raise EtymExceptWord('Required key(s) not found in word details'
+                    '\n details: {0}'.format(details))
+
+    # Save it
     raise NotImplementedError
