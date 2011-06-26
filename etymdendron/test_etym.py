@@ -57,7 +57,7 @@ class EtymDB(unittest.TestCase):
         new_wordDets['lang'] = 'Elvish'
         new_wordDets['def'] = 'A helpful friend'
         new_wordDets['text'] = ['horsey','neigh']
-        new_wordDets['morpheme'] = ['horsey']
+        new_wordDets['morpheme'] = 'horsey'
 
         # Try purposefully giving incorrect details
         test_wordDets = {}
