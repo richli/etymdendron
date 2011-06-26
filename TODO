@@ -1,9 +1,9 @@
 TODO for etymdendron
 --------------------
 TO WORK ON NEXT:
-* Save the modified XML structure
+* Save the modified XML structure (NOT YET STARTED)
 * Edit the tree
-  * Enable GUI functionality to edit word details
+  * Enable GUI functionality to edit word details (IN PROGRESS)
   * Specify the parents/children of an element
   * Add a new element
   * Remove an element (children become its siblings)
