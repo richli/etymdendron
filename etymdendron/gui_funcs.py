@@ -22,6 +22,7 @@ class EtymApp(wx.App):
         self.frame.SetMinSize(wx.Size(610, 395)) 
         # Initialize some other variables
         #self.search_on_select = False
+        self.edit_mode = False
         # Put focus in the search box
         self.searchbox.SetFocus()
         return True
@@ -41,6 +42,8 @@ class EtymApp(wx.App):
                 id=wx.xrc.XRCID('et_boxSearch'))
         self.frame.Bind(wx.EVT_CHOICE, self.OnMorphemeSelect,
                 id=wx.xrc.XRCID('et_choice'))
+        self.frame.Bind(wx.EVT_TOGGLEBUTTON, self.OnEdit,
+                id=wx.xrc.XRCID('et_btnEdit'))
         #self.frame.Bind(wx.EVT_CHECKBOX, self.OnSearchCheck,
         #       id=wx.xrc.XRCID('et_checkSearch'))
         # Bind tree events
@@ -54,6 +57,7 @@ class EtymApp(wx.App):
         self.altbox = wx.xrc.XRCCTRL(self.frame,'et_txtAlt')
         self.searchchoice = wx.xrc.XRCCTRL(self.frame,'et_choice')
         self.searchbtn = wx.xrc.XRCCTRL(self.frame,'et_btnSearch')
+        self.editbtn = wx.xrc.XRCCTRL(self.frame,'et_btnEdit')
         # And show the frame!
         self.frame.Show()
 
@@ -74,7 +78,6 @@ class EtymApp(wx.App):
 
     def OnLoad(self, event):
         """ Loads the word database """
-#TODO: Implement me
         self.dirname = ''
         dlg = wx.FileDialog(self.frame, 'Choose the database file',
                 self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
@@ -135,6 +138,10 @@ class EtymApp(wx.App):
 #        self.search_on_select = not self.search_on_select
 #        self.searchbox.Enable(not self.searchbox.IsEnabled())
 #        self.searchbtn.Enable(not self.searchbtn.IsEnabled())
+
+    def OnEdit(self,event):
+        """ Just saves whether we're in edit mode or not """
+        pass
 
 ###
 # Some methods for the class
