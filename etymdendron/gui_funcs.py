@@ -44,6 +44,13 @@ class EtymApp(wx.App):
                 id=wx.xrc.XRCID('et_choice'))
         self.frame.Bind(wx.EVT_TOGGLEBUTTON, self.OnEdit,
                 id=wx.xrc.XRCID('et_btnEdit'))
+        # Bind text events
+#        self.frame.Bind(wx.EVT_TEXT, self.OnDetailEdit,
+#                id=wx.xrc.XRCID('et_txtLang'))
+#        self.frame.Bind(wx.EVT_TEXT, self.OnDetailEdit,
+#                id=wx.xrc.XRCID('et_txtDef'))
+#        self.frame.Bind(wx.EVT_TEXT, self.OnDetailEdit,
+#                id=wx.xrc.XRCID('et_txtAlt'))
         #self.frame.Bind(wx.EVT_CHECKBOX, self.OnSearchCheck,
         #       id=wx.xrc.XRCID('et_checkSearch'))
         # Bind tree events
@@ -149,6 +156,17 @@ class EtymApp(wx.App):
         wx.xrc.XRCCTRL(self.frame, 'et_txtLang').SetEditable(self.edit_mode)
         wx.xrc.XRCCTRL(self.frame, 'et_txtDef').SetEditable(self.edit_mode)
         wx.xrc.XRCCTRL(self.frame, 'et_txtAlt').SetEditable(self.edit_mode)
+
+
+#    def OnDetailEdit(self,event):
+#        """ This is for the word detail text boxes
+#            Because wxMSW and wxGTK function differently when it comes
+#            to marking read-only text boxes, I'm intercepting all text
+#            edits and only allowing them if edit_mode is enabled
+#        """
+##TODO: implement me
+#        print('hit')
+
 
 ###
 # Some methods for the class
