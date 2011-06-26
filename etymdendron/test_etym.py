@@ -49,11 +49,30 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(wordDets['def'],'A horse that you feed oats')
         self.assertEqual(wordDets['text'],['horse','hors','horce','horsse','horis','hos','ors'])
 
-    @unittest.skip('Not yet implemented')
     def testEditWord(self):
         """ Test editing a word details """
-        #TODO: search for some word; save its details; write new details; compare new details with old details
         chosen_word = self.getWord('horse')
+        orig_wordDets = cf.loadWordDetails(chosen_word)
+        new_wordDets = orig_wordDets.copy()
+        new_wordDets['lang'] = 'Elvish'
+        new_wordDets['def'] = 'A helpful friend'
+        new_wordDets['text'] = ['horsey','neigh']
+        new_wordDets['morpheme'] = ['horsey']
+
+        # Try purposefully giving incorrect details
+        test_wordDets = {}
+        self.assertRaises(cf.EtymExceptWord, cf.editWordDetails, chosen_word, test_wordDets)
+
+        # Try refreshing the word
+        cf.editWordDetails(chosen_word, orig_wordDets)
+        test_wordDets = cf.loadWordDetails(chosen_word)
+        self.assertEqual(orig_wordDets, test_wordDets)
+
+        # Try new details
+        cf.editWordDetails(chosen_word, new_wordDets)
+        test_wordDets = cf.loadWordDetails(chosen_word)
+        self.assertEqual(new_wordDets, test_wordDets)
+        self.assertNotEqual(orig_wordDets, test_wordDets)
 
     @unittest.skip('Not yet implemented')
     def testAddWord(self):
