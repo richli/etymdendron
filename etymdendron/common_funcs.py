@@ -97,10 +97,31 @@ def editWordDetails(word, details):
 
     """
     # First check sanity of the word
-    for item in ['lang', 'def', 'morpheme', 'text']:
+    element_items = ['lang', 'def', 'morpheme', 'text']
+    for item in element_items:
         if item not in details.keys():
             raise EtymExceptWord('Required key(s) not found in word details'
                     '\n details: {0}'.format(details))
 
-    # Save it
-    raise NotImplementedError
+    # Create the new Element objects
+    new_elements = []
+    for item in element_items:
+        if item == 'text': # details[item] is a list in this case
+            for text_items in xrange(len(details[item])):
+                new_element = ET.Element(item)
+                new_element.text = details[item][text_items]
+                new_elements.append(new_element)
+        else:
+            new_element = ET.Element(item)
+            new_element.text = details[item]
+        new_elements.append(new_element)
+
+    # Clear out the old elements
+    for item in element_items:
+        for child in word.iterchildren(tag=item):
+            word.remove(child)
+
+    # Add the new ones
+    for item in new_elements:
+        word.append(item)
+
