@@ -69,7 +69,13 @@ def loadWordDetails(word):
         whereas there can be more than one 'text' element. These text 
         elements are stored in a list.
     """
-    raise NotImplementedError
+    wordDets = {'lang': None, 'def': None, 'text': None}
+    
+    wordDets['lang'] = word.xpath('lang')[0].text
+    wordDets['def'] = word.xpath('def')[0].text
+    wordDets['text'] = [n.text for n in word.xpath('text')]
+
+    return wordDets
 
 def editWordDetails(word, details):
     """ Edits the element word using details
