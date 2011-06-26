@@ -102,6 +102,9 @@ class EtymApp(wx.App):
             self.treebox.DeleteAllItems() # Clear the tree control out
             self.searchchoice.Clear() # Clear out the choice box
             self.searchchoice.Disable()
+            wx.xrc.XRCCTRL(self.frame, 'et_txtLang').SetEditable(self.edit_mode)
+            wx.xrc.XRCCTRL(self.frame, 'et_txtDef').SetEditable(self.edit_mode)
+            wx.xrc.XRCCTRL(self.frame, 'et_txtAlt').SetEditable(self.edit_mode)
             if num_trees == 0:
                 chosen_root = chosen_word = None
             elif num_trees > 1:
@@ -141,7 +144,11 @@ class EtymApp(wx.App):
 
     def OnEdit(self,event):
         """ Just saves whether we're in edit mode or not """
-        pass
+        self.edit_mode = event.IsChecked()
+        # Change UI controls
+        wx.xrc.XRCCTRL(self.frame, 'et_txtLang').SetEditable(self.edit_mode)
+        wx.xrc.XRCCTRL(self.frame, 'et_txtDef').SetEditable(self.edit_mode)
+        wx.xrc.XRCCTRL(self.frame, 'et_txtAlt').SetEditable(self.edit_mode)
 
 ###
 # Some methods for the class
