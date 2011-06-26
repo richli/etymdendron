@@ -36,12 +36,11 @@ def choose_word_from_many(words):
     """
     # Find the morphemes,language for each instance
     mor_lan = []
-#TODO: remove xpath usage into common_funcs
-    word_text = words[0][1].xpath('text')[0].text
+    word_text = cf.loadWordDetails(words[0][1])['text'][0]
     for item in words:
         word = item[1]
-        mor_lan.append( (word.xpath('morpheme')[0].text,
-            word.xpath('lang')[0].text) )
+        word_details = cf.loadWordDetails(word)
+        mor_lan.append( (word_details['morpheme'], word_details['lang']) )
 
     print('For the word {0}, {1} options are available:'.format(
         word_text, len(mor_lan)))

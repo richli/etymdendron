@@ -69,10 +69,11 @@ def loadWordDetails(word):
         whereas there can be more than one 'text' element. These text 
         elements are stored in a list.
     """
-    wordDets = {'lang': None, 'def': None, 'text': None}
+    wordDets = {'lang': None, 'def': None, 'text': None, 'morpheme': None}
     
     wordDets['lang'] = word.xpath('lang')[0].text
     wordDets['def'] = word.xpath('def')[0].text
+    wordDets['morpheme'] = word.xpath('morpheme')[0].text
     wordDets['text'] = [n.text for n in word.xpath('text')]
 
     return wordDets

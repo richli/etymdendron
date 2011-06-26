@@ -108,10 +108,9 @@ class EtymApp(wx.App):
                 # Populate the choice button
                 for item in matched_words:
                     word = item[1]
+                    word_details = cf.loadWordDetails(word)
                     choice_text = '{0} ({1})'.format(
-                            word.xpath('morpheme')[0].text, 
-                            word.xpath('lang')[0].text)
-                    #TODO: Use loadWordDetails for the above
+                            word_details['morpheme'], word_details['lang'])
                     self.searchchoice.Append(choice_text, item)
 
                 self.searchchoice.Enable()
