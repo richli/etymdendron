@@ -166,6 +166,10 @@ class EtymApp(wx.App):
         """
         if root is None:
             self.treebox.AddRoot('No matches found')
+            self.editbtn.Disable()
+            self.langbox.ChangeValue('')
+            self.defbox.ChangeValue('')
+            self.altbox.ChangeValue('')
         else:
             root_details = cf.loadWordDetails(root)
             root_elem = self.treebox.AddRoot(root_details['text'][0],
@@ -174,6 +178,7 @@ class EtymApp(wx.App):
                 nodes = [nodes]
             self._populate_tree(root, root_elem, nodes)
             self.treebox.ExpandAll()
+            self.editbtn.Enable()
 
     def _populate_tree(self, node, node_elem, emph_nodes):
         """ Recursive private function to fill in the rest of the tree control 
