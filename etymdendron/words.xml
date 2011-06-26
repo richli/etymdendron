@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ï»¿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE etym [
 <!ELEMENT etym (tree+)>
 <!ELEMENT tree (lang,text+,morpheme+,def,word+)>
@@ -65,7 +65,7 @@
 					<lang>Modern High German</lang>
 					<text>ross</text>
 					<morpheme>ross</morpheme>
-					<def>Eine blutrünstige Monster</def>
+					<def>Eine blutrÃ¼nstige Monster</def>
 				</word>
 			</word>
 		</word>
@@ -220,7 +220,7 @@
 					</word>
 			</word>
 			<word>
-				<lang>Old Occitan/Provençal</lang>
+				<lang>Old Occitan/ProvenÃ§al</lang>
 				<text>porc</text>
 				<morpheme>porc</morpheme>
 				<def>A pig?</def>
@@ -230,7 +230,7 @@
 	<tree id='5'>
 			<lang>PIE</lang>
 			<text>*ekwo-</text>
-			<text>*hiékwos</text>
+			<text>*hiÃ©kwos</text>
 			<morpheme>*ekwo-</morpheme>
 			<def>A species of horse</def>
 			<word>
