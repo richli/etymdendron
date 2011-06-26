@@ -57,3 +57,34 @@ def searchDB(word_db, search_word):
 
     return (num_trees, matched_words)
 
+def loadWordDetails(word):
+    """ Returns the details of the element word
+        details is a dict where the keys are the element names and 
+        the values the element text
+
+        For example, details = {'lang':'Modern English', 
+            'def':'To dance lively', 
+            'text': ['bigdance','coolstep','befrobingate'] }
+        Remember the 'lang' and 'def' elements contain only a string, 
+        whereas there can be more than one 'text' element. These text 
+        elements are stored in a list.
+    """
+    raise NotImplementedError
+
+def editWordDetails(word, details):
+    """ Edits the element word using details
+        details is a dict where the keys are the element names and 
+        the values the element text
+
+        For example, details = {'lang':'Modern English', 
+            'def':'To dance lively', 
+            'text': ['bigdance','coolstep','befrobingate'] }
+        Remember the 'lang' and 'def' elements contain only a string, 
+        whereas there can be more than one 'text' element. These text 
+        elements are stored in a list.
+
+        If an entry is set to None, the element value is replaced by a 
+        space (since one element of each kind (lang, def, text) must exist.
+
+    """
+    raise NotImplementedError

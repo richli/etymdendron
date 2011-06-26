@@ -29,6 +29,13 @@ class EtymDB(unittest.TestCase):
         raise NotImplementedError
 
     @unittest.skip('Not yet implemented')
+    def testReadWord(self):
+        """ Test reading the details of a word """
+        db = cf.loadDB(global_opts.WORDS_FILE)
+        #TODO: search for some word; compare its details with known values
+        raise NotImplementedError
+
+    @unittest.skip('Not yet implemented')
     def testEditWord(self):
         """ Test editing a word details """
         db = cf.loadDB(global_opts.WORDS_FILE)
