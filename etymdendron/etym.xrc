@@ -103,7 +103,6 @@
 											<flag>wxALL|wxEXPAND</flag>
 											<border>5</border>
 											<object class="wxTextCtrl" name="et_txtLang">
-												<style>wxTE_READONLY</style>
 												<value></value>
 												<maxlength>0</maxlength>
 											</object>
@@ -114,7 +113,6 @@
 											<flag>wxALL|wxEXPAND</flag>
 											<border>5</border>
 											<object class="wxTextCtrl" name="et_txtDef">
-												<style>wxTE_READONLY</style>
 												<value></value>
 												<maxlength>0</maxlength>
 											</object>
@@ -125,7 +123,7 @@
 											<flag>wxALL|wxEXPAND</flag>
 											<border>5</border>
 											<object class="wxTextCtrl" name="et_txtAlt">
-												<style>wxTE_MULTILINE|wxTE_READONLY|wxTE_RICH|wxTE_RICH2</style>
+												<style>wxTE_MULTILINE|wxTE_RICH|wxTE_RICH2</style>
 												<value></value>
 												<maxlength>0</maxlength>
 											</object>
