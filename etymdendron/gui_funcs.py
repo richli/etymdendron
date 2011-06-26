@@ -5,7 +5,7 @@
 import wx
 import wx.xrc
 from global_opts import WORDS_FILE
-from common_funcs import loadDB, searchDB
+import common_funcs as cf
 
 # Define the application
 class EtymApp(wx.App):
@@ -94,7 +94,7 @@ class EtymApp(wx.App):
         """ Searches for a word, displays results """
         self.search_word = self.searchbox.GetValue()
         if self.search_word is not '': # Simple validation for now
-            num_trees, matched_words = searchDB(self.words_tree,
+            num_trees, matched_words = cf.searchDB(self.words_tree,
                     self.search_word)
             self.treebox.DeleteAllItems() # Clear the tree control out
             self.searchchoice.Clear() # Clear out the choice box
@@ -111,6 +111,7 @@ class EtymApp(wx.App):
                     choice_text = '{0} ({1})'.format(
                             word.xpath('morpheme')[0].text, 
                             word.xpath('lang')[0].text)
+                    #TODO: Use loadWordDetails for the above
                     self.searchchoice.Append(choice_text, item)
 
                 self.searchchoice.Enable()
@@ -140,7 +141,7 @@ class EtymApp(wx.App):
 # Some methods for the class
     def LoadWordDB(self, filename=WORDS_FILE):
         """ Load the database file """
-        self.words_tree = loadDB(filename)
+        self.words_tree = cf.loadDB(filename)
         if type(self.words_tree) is str:
             dlg_err = wx.MessageDialog(self.frame, self.words_tree
                 ,'Error', wx.OK|wx.ICON_EXCLAMATION)
@@ -160,7 +161,8 @@ class EtymApp(wx.App):
         if root is None:
             self.treebox.AddRoot('No matches found')
         else:
-            root_elem = self.treebox.AddRoot(root.xpath('text')[0].text,
+            root_details = cf.loadWordDetails(root)
+            root_elem = self.treebox.AddRoot(root_details['text'][0],
                     data = wx.TreeItemData(root))
             if type(nodes) is not list:
                 nodes = [nodes]
@@ -174,10 +176,11 @@ class EtymApp(wx.App):
             emph_nodes: a list of ElementTree elements, these will be emphasized
         """
         # len() of a node returns how many children it has
+#TODO: Replace this with a getchildrenofword function or something
         if len(node.xpath('word')) > 0:
             for child in node.xpath('word'):
-                texts = child.xpath('text')
-                child_label = texts[0].text # Just display the first alternate
+                child_details = cf.loadWordDetails(child)
+                child_label = child_details['text'][0] # Just display the first alternate
                 child_elem = self.treebox.AppendItem(node_elem, child_label,
                         data = wx.TreeItemData(child))
                 if child in emph_nodes:
@@ -192,17 +195,10 @@ class EtymApp(wx.App):
         """ Update various widgets when a tree item has been selected """
         # Set the 'word details' widgets
         node = self.treebox.GetPyData(event.GetItem())
-        lang_text = def_text = alt_text = ''
-        try:
-            lang_text = node.xpath('lang')[0].text
-            def_text = node.xpath('def')[0].text
-            alt_text = ', '.join([n.text for n in node.xpath('text')])
-        except IndexError:
-            # This occurs before the PIE root doesn't have def/alt defined
-            # We recognize it occurs, but we already have def,alt set to ''
-            pass
-        self.langbox.ChangeValue(lang_text)
-        self.defbox.ChangeValue(def_text)
+        nodeDetails = cf.loadWordDetails(node)
+        alt_text = ', '.join(nodeDetails['text'])
+        self.langbox.ChangeValue(nodeDetails['lang'])
+        self.defbox.ChangeValue(nodeDetails['def'])
         self.altbox.ChangeValue(alt_text)
 
 #        # Update the search word if applicable

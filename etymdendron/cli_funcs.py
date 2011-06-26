@@ -1,5 +1,7 @@
 """ This module contains some helper functions needed for the command line """
 
+import common_funcs as cf
+
 ###
 # Input functions
 def get_search_word():
@@ -34,6 +36,7 @@ def choose_word_from_many(words):
     """
     # Find the morphemes,language for each instance
     mor_lan = []
+#TODO: remove xpath usage into common_funcs
     word_text = words[0][1].xpath('text')[0].text
     for item in words:
         word = item[1]
@@ -61,8 +64,9 @@ def display_tree(tree, word, search_word):
     if type(word) is not list:
         word = [word]
 
-    print('Root: {0} ({1})'.format(tree.xpath('text')[0].text,
-        tree.xpath('lang')[0].text))
+    tree_details = cf.loadWordDetails(tree)
+    print('Root: {0} ({1})'.format(tree_details['text'][0],
+        tree_details['lang']))
     display_children(tree, 1, word, search_word)
 
 def display_children(node, depth, word, search_word):
@@ -73,27 +77,30 @@ def display_children(node, depth, word, search_word):
         search_word is the word text we're looking for
     """
     # The len() of a node returns how many children it has
+#TODO: Move xpath references to common_funcs, not here
     if len(node.xpath('word')) > 0:
         for child in node.xpath('word'):
             depth_marker = '  '*depth
             child_markup = ''
-            texts = child.xpath('text')
+            child_details = cf.loadWordDetails(child)
             if child in word:
                 # First we have the emphasized word
                 # Then the other matches, if there
-                child_markup = ', '.join(['*{0}*'.format(text_var.text)
-                    for text_var in texts if text_var.text == search_word])
-                child_markup_rest = ', '.join(['{0}'.format(text_var.text)
-                    for text_var in texts if text_var.text != search_word])
+                child_markup = ', '.join(['*{0}*'.format(text_var)
+                    for text_var in child_details['text'] 
+                    if text_var == search_word])
+                child_markup_rest = ', '.join(['{0}'.format(text_var)
+                    for text_var in child_details['text'] 
+                    if text_var != search_word])
                 if child_markup_rest is not '':
                     child_markup = ', '.join([child_markup, child_markup_rest])
             else:
-                child_markup = ', '.join(['{0}'.format(text_var.text)
-                    for text_var in texts])
+                child_markup = ', '.join(['{0}'.format(text_var)
+                    for text_var in child_details['text']])
 
             print(u'{0}Child: {1} ({2}, "{3}")'.format(
-                depth_marker, child_markup, child.xpath('lang')[0].text,
-                child.xpath('def')[0].text))
+                depth_marker, child_markup, child_details['lang'],
+                child_details['def']))
             display_children(child, depth+1, word, search_word)
     else:
         # The base of the recursion simply does nothing
