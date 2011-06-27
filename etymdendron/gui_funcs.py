@@ -156,6 +156,19 @@ class EtymApp(wx.App):
         self.langbox.SetEditable(self.edit_mode)
         self.defbox.SetEditable(self.edit_mode)
         self.altbox.SetEditable(self.edit_mode)
+#TODO: Figure out better functionality here
+# For now, if edit mode toggled off, then save out word details
+        if self.edit_mode == False:
+            new_nodeDetails = {}
+            new_nodeDetails['lang'] = self.langbox.GetValue()
+            new_nodeDetails['def'] = self.defbox.GetValue()
+            alt_list = [text_item for text_item in self.altbox.GetValue().split(', ')]
+            new_nodeDetails['text'] = alt_list 
+            # Set the morpheme to be the first text entry
+            new_nodeDetails['morpheme'] = alt_list[0]
+
+            cf.editWordDetails(self.current_node,new_nodeDetails)
+# TODO: Refresh the tree if ['text'][0] changed
 
 
 #    def OnDetailEdit(self,event):
