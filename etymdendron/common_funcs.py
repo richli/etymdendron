@@ -97,7 +97,7 @@ def editWordDetails(word, details):
 
     """
     # First check sanity of the word
-    element_items = ['lang', 'def', 'morpheme', 'text']
+    element_items = ['lang', 'text', 'morpheme', 'def']
     for item in element_items:
         if item not in details.keys():
             raise EtymExceptWord('Required key(s) not found in word details'
