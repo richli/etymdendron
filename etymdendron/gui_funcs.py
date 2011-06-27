@@ -199,7 +199,7 @@ class EtymApp(wx.App):
             dlg_err.Destroy()
             self.words_tree = None
         else:
-            print('{0} loaded, {1} trees found'.format(WORDS_FILE,
+            print('{0} loaded, {1} trees found'.format(filename,
             len(self.words_tree.getroot())))
 
     def SaveWordDB(self, filename=WORDS_FILE):
