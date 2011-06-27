@@ -4,6 +4,7 @@
 import gui_funcs
 
 def main():
+    """ Main function, gui style """
     # Create and show the app
     app = gui_funcs.EtymApp(False)
     # Load in the default XML file

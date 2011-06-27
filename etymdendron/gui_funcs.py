@@ -151,7 +151,7 @@ class EtymApp(wx.App):
 #        self.searchbox.Enable(not self.searchbox.IsEnabled())
 #        self.searchbtn.Enable(not self.searchbtn.IsEnabled())
 
-    def OnEdit(self,event):
+    def OnEdit(self, event):
         """ Just saves whether we're in edit mode or not """
         self.edit_mode = event.IsChecked()
         # Change UI controls
@@ -164,12 +164,13 @@ class EtymApp(wx.App):
             new_nodeDetails = {}
             new_nodeDetails['lang'] = self.langbox.GetValue()
             new_nodeDetails['def'] = self.defbox.GetValue()
-            alt_list = [text_item for text_item in self.altbox.GetValue().split(', ')]
+            alt_list = [text_item for text_item in 
+                    self.altbox.GetValue().split(', ')]
             new_nodeDetails['text'] = alt_list 
             # Set the morpheme to be the first text entry
             new_nodeDetails['morpheme'] = alt_list[0]
 
-            cf.editWordDetails(self.current_node,new_nodeDetails)
+            cf.editWordDetails(self.current_node, new_nodeDetails)
             # Refresh the tree
             self.DisplayTree(self.search_root, self.search_words)
 
@@ -235,7 +236,8 @@ class EtymApp(wx.App):
         if len(node.xpath('word')) > 0:
             for child in node.xpath('word'):
                 child_details = cf.loadWordDetails(child)
-                child_label = child_details['text'][0] # Just display the first alternate
+                # Just display the first alternate
+                child_label = child_details['text'][0] 
                 child_elem = self.treebox.AppendItem(node_elem, child_label,
                         data = wx.TreeItemData(child))
                 if child in emph_nodes:

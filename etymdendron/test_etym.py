@@ -47,7 +47,8 @@ class EtymDB(unittest.TestCase):
         wordDets = cf.loadWordDetails(chosen_word)
         self.assertEqual(wordDets['lang'],'Middle English')
         self.assertEqual(wordDets['def'],'A horse that you feed oats')
-        self.assertEqual(wordDets['text'],['horse','hors','horce','horsse','horis','hos','ors'])
+        self.assertEqual(wordDets['text'],
+                ['horse','hors','horce','horsse','horis','hos','ors'])
 
     def testEditWord(self):
         """ Test editing a word details """
@@ -61,7 +62,8 @@ class EtymDB(unittest.TestCase):
 
         # Try purposefully giving incorrect details
         test_wordDets = {}
-        self.assertRaises(cf.EtymExceptWord, cf.editWordDetails, chosen_word, test_wordDets)
+        self.assertRaises(cf.EtymExceptWord, cf.editWordDetails,
+                chosen_word, test_wordDets)
 
         # Try refreshing the word
         cf.editWordDetails(chosen_word, orig_wordDets)
