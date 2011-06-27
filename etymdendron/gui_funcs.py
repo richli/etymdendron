@@ -94,10 +94,11 @@ class EtymApp(wx.App):
 
     def OnSave(self, event):
         """ Saves the word database """
-#TODO: Implement me
-        dlg = wx.MessageDialog(self.frame, 'This function not yet implemented'
-            ,'Error', wx.OK|wx.ICON_EXCLAMATION)
-        dlg.ShowModal()
+        dlg = wx.FileDialog(self.frame, 'Choose the database file',
+                defaultFile = WORDS_FILE, wildcard = '*.xml',
+                style = wx.SAVE | wx.OVERWRITE_PROMPT)
+        if dlg.ShowModal() == wx.ID_OK:
+            self.SaveWordDB(dlg.GetPath())
         dlg.Destroy()
 
     def OnSearch(self, event):
@@ -199,6 +200,12 @@ class EtymApp(wx.App):
             self.words_tree = None
         else:
             print('{0} loaded, {1} trees found'.format(WORDS_FILE,
+            len(self.words_tree.getroot())))
+
+    def SaveWordDB(self, filename=WORDS_FILE):
+        """ Saves the database file """
+        cf.saveDB(self.words_tree, filename)
+        print('{0} saved with {1} trees'.format(filename,
             len(self.words_tree.getroot())))
 
     def DisplayTree(self, root, nodes):
