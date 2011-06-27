@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
 <!DOCTYPE etym [
-<!ELEMENT etym (tree+)>
-<!ELEMENT tree (lang,text+,morpheme+,def,word+)>
+<!ELEMENT etym (tree)+>
+<!ELEMENT tree (lang , text+ , morpheme+ , def , word+)>
 <!ELEMENT lang (#PCDATA)>
 <!ELEMENT text (#PCDATA)>
 <!ELEMENT morpheme (#PCDATA)>
 <!ELEMENT def (#PCDATA)>
-<!ELEMENT word (lang,text+,morpheme+,def,word*)>
+<!ELEMENT word (lang , text+ , morpheme+ , def , word*)>
 <!ATTLIST tree id CDATA #REQUIRED>
 ]>
 <!-- This file provides for some test cases: 
@@ -14,290 +14,290 @@
 	 2) A word is found in multiple trees (biology)
 	 -->
 <etym>
-	<tree id='1'>
-		<lang>PIE</lang>
-		<text>khursa</text>
-		<morpheme>khursa</morpheme>
-		<def>Some kinda animal</def>
-		<word>
-			<lang>Old English</lang>
-			<text>hors</text>
-			<morpheme>hors</morpheme>
-			<def>A man-eating beast</def>
-			<word>
-				<lang>Middle English</lang>
-				<text>horse</text>
-				<text>hors</text>
-				<text>horce</text>
-				<text>horsse</text>
-				<text>horis</text>
-				<text>hos</text>
-				<text>ors</text>
-				<morpheme>horse</morpheme>
-				<def>A horse that you feed oats</def>
-				<word>
-					<lang>Modern English</lang>
-					<text>horse</text>
-					<morpheme>horse</morpheme>
-					<def>A horse that you ride</def>
-				</word>
-			</word>
-		</word>
-		<word>
-			<lang>Old Frisian</lang>
-			<text>hors</text>
-			<morpheme>hors</morpheme>
-			<def>A horse</def>
-		</word>
-		<word>
-			<lang>Old High German</lang>
-			<text>ros</text>
-			<text>hros</text>
-			<morpheme>ros</morpheme>
-			<morpheme>hros</morpheme>
-			<def>Eine Bestie</def>
-			<word>
-				<lang>Middle High German</lang>
-				<text>ros</text>
-				<morpheme>ros</morpheme>
-				<def>Eines infizierten Tieres</def>
-				<word>
-					<lang>Modern High German</lang>
-					<text>ross</text>
-					<morpheme>ross</morpheme>
-					<def>Eine blutrünstige Monster</def>
-				</word>
-			</word>
-		</word>
-		<word>
-			<lang>Old Norse</lang>
-			<text>hross</text>
-			<morpheme>hross</morpheme>
-			<def>A horse</def>
-		</word>
-	</tree>
-	<tree id='2'>
-		<lang>PIE</lang>
-		<text>gweie</text>
-		<morpheme>gweie</morpheme>
-		<def>Lifey stuff</def>
-		<word>
-			<lang>Greek</lang>
-			<text>bios</text>
-			<morpheme>bios</morpheme>
-			<def>Life</def>
-			<word>
-				<lang>Modern English</lang>
-				<text>biology</text>
-				<morpheme>bio</morpheme>
-				<def>Study of life</def>
-			</word>
-		</word>
-	</tree>
-	<tree id='3'>
-		<lang>PIE</lang>
-		<text>leg</text>
-		<morpheme>leg</morpheme>
-		<def>Wibbly-wobbly timey-wimey</def>
-		<word>
-			<lang>Greek</lang>
-			<text>logia</text>
-			<morpheme>logia</morpheme>
-			<def>The study of</def>
-			<word>
-				<lang>Modern English</lang>
-				<text>biology</text>
-				<morpheme>logy</morpheme>
-				<def>Study of life</def>
-			</word>
-		</word>
-	</tree>
-	<tree id='4'>
-		<lang>PIE</lang>
-		<text>porko-</text>
-		<morpheme>porko</morpheme>
-		<def>A feral pig</def>
-		<word>
-			<lang>Old Germanic</lang>
-			<text>farho</text>
-			<text>farhaz</text>
-			<morpheme>farho</morpheme>
-			<def>A wild pig thing</def>
-			<word>
-				<lang>Old English</lang>
-				<text>fearh</text>
-				<text>faerh</text>
-				<morpheme>fearh</morpheme>
-				<def>A masculine pig</def>
-				<word>
-					<lang>Middle English</lang>
-					<text>far</text>
-					<text>farry</text>
-					<morpheme>far</morpheme>
-					<def>A pig, especially masculine</def>
-					<word>
-						<lang>Modern English</lang>
-						<text>farrow</text>
-						<morpheme>farrow</morpheme>
-						<def>An obsolete word for a pig</def>
-					</word>
-				</word>
-			</word>
-			<word>
-				<lang>Old Saxon</lang>
-				<text>farh</text>
-				<morpheme>farh</morpheme>
-				<def>A pig</def>
-				<word>
-					<lang>Middle Low German</lang>
-					<text>ferken</text>
-					<morpheme>ferken</morpheme>
-					<def>A pig of some sort</def>
-					<word>
-						<lang>Dutch</lang>
-						<text>varken</text>
-						<morpheme>varken</morpheme>
-						<def>A pig</def>
-					</word>
-				</word>
-			</word>
-			<word>
-				<lang>Old High German</lang>
-				<text>farh</text>
-				<text>farah</text>
-				<morpheme>farh</morpheme>
-				<def>A pig</def>
-				<word>
-					<lang>Middle High German</lang>
-					<text>varch</text>
-					<morpheme>varch</morpheme>
-					<def>A pig of some sort</def>
-					<word>
-						<lang>High German</lang>
-						<text>ferkel</text>
-						<morpheme>ferkel</morpheme>
-						<def>A piglet, pig (derrogatory)</def>
-					</word>
-				</word>
-			</word>
-		</word>
-		<word>
-			<lang>Classical Latin</lang>
-			<text>porcus</text>
-			<morpheme>porcus</morpheme>
-			<def>A pig</def>
-			<word>
-				<lang>Old French</lang>
-				<text>porc</text>
-				<morpheme>porc</morpheme>
-				<def>A pig</def>
-				<word>
-					<lang>Middle French</lang>
-					<text>porc</text>
-					<morpheme>porc</morpheme>
-					<def>A pig</def>
-					<word>
-						<lang>French</lang>
-						<text>porc</text>
-						<morpheme>porc</morpheme>
-						<def>A pig, porc</def>
-					</word>
-				</word>
-				<word>
-					<lang>Anglo-Norman</lang>
-					<text>porc</text>
-					<text>pork</text>
-					<text>porke</text>
-					<text>porck</text>
-					<morpheme>pork</morpheme>
-					<def>A pig for eating, pork</def>
-					<word>
-						<lang>English</lang>
-						<text>pork</text>
-						<morpheme>pork</morpheme>
-						<def>The meat of a pig</def>
-					</word>
-					</word>
-			</word>
-			<word>
-				<lang>Old Occitan/Provençal</lang>
-				<text>porc</text>
-				<morpheme>porc</morpheme>
-				<def>A pig?</def>
-			</word>
-		</word>
-	</tree>
-	<tree id='5'>
-			<lang>PIE</lang>
-			<text>*ekwo-</text>
-			<text>*hiékwos</text>
-			<morpheme>*ekwo-</morpheme>
-			<def>A species of horse</def>
-			<word>
-				<lang>Greek</lang>
-				<text>hippos</text>
-				<morpheme>hippos</morpheme>
-				<def>A horse</def>
-			</word>
-			<word>
-				<lang>Latin</lang>
-				<text>equus</text>
-				<morpheme>equus</morpheme>
-				<def>A horse</def>
-				<word>
-					<lang>Latin</lang>
-					<text>equinus</text>
-					<morpheme>equinus</morpheme>
-					<def>Relating to a horse</def>
-					<word>
-						<lang>English</lang>
-						<text>equine</text>
-						<morpheme>equine</morpheme>
-						<def>Of, pertaining to, or resembling a horse</def>
-					</word>
-				</word>
-			</word>
-			<word>
-				<lang>Proto-Germanic</lang>
-				<text>ehwaz</text>
-				<morpheme>ehwaz</morpheme>
-				<def>A horse</def>
-				<word>
-					<lang>Old English</lang>
-					<text>eoh</text>
-					<morpheme>eoh</morpheme>
-					<def>The usual Old English word for a horse</def>
-				</word>
-				<word>
-					<lang>Old Norse</lang>
-					<text>jor</text>
-					<morpheme>jor</morpheme>
-					<def>A horse</def>
-				</word>
-			</word>
-			<word>
-				<lang>Old Irish</lang>
-				<text>ech</text>
-				<morpheme>ech</morpheme>
-				<def>A horse</def>
-				<word>
-					<lang>Irish</lang>
-					<text>each</text>
-					<morpheme>each</morpheme>
-					<def>A horse</def>
-				</word>
-				<word>
-					<lang>Scottish Gaelic</lang>
-					<text>each</text>
-					<morpheme>each</morpheme>
-					<def>A horse</def>
-				</word>
-				<word>
-					<lang>Manx</lang>
-					<text>agh</text>
-					<morpheme>agh</morpheme>
-					<def>A horse</def>
-				</word>
-			</word>
-	</tree>
+  <tree id="1">
+    <lang>PIE</lang>
+    <text>khursa</text>
+    <morpheme>khursa</morpheme>
+    <def>Some kinda animal</def>
+    <word>
+      <lang>Old English</lang>
+      <text>hors</text>
+      <morpheme>hors</morpheme>
+      <def>A man-eating beast</def>
+      <word>
+        <lang>Middle English</lang>
+        <text>horse</text>
+        <text>hors</text>
+        <text>horce</text>
+        <text>horsse</text>
+        <text>horis</text>
+        <text>hos</text>
+        <text>ors</text>
+        <morpheme>horse</morpheme>
+        <def>A horse that you feed oats</def>
+        <word>
+          <lang>Modern English</lang>
+          <text>horse</text>
+          <morpheme>horse</morpheme>
+          <def>A horse that you ride</def>
+        </word>
+      </word>
+    </word>
+    <word>
+      <lang>Old Frisian</lang>
+      <text>hors</text>
+      <morpheme>hors</morpheme>
+      <def>A horse</def>
+    </word>
+    <word>
+      <lang>Old High German</lang>
+      <text>ros</text>
+      <text>hros</text>
+      <morpheme>ros</morpheme>
+      <morpheme>hros</morpheme>
+      <def>Eine Bestie</def>
+      <word>
+        <lang>Middle High German</lang>
+        <text>ros</text>
+        <morpheme>ros</morpheme>
+        <def>Eines infizierten Tieres</def>
+        <word>
+          <lang>Modern High German</lang>
+          <text>ross</text>
+          <morpheme>ross</morpheme>
+          <def>Eine blutrünstige Monster</def>
+        </word>
+      </word>
+    </word>
+    <word>
+      <lang>Old Norse</lang>
+      <text>hross</text>
+      <morpheme>hross</morpheme>
+      <def>A horse</def>
+    </word>
+  </tree>
+  <tree id="2">
+    <lang>PIE</lang>
+    <text>gweie</text>
+    <morpheme>gweie</morpheme>
+    <def>Lifey stuff</def>
+    <word>
+      <lang>Greek</lang>
+      <text>bios</text>
+      <morpheme>bios</morpheme>
+      <def>Life</def>
+      <word>
+        <lang>Modern English</lang>
+        <text>biology</text>
+        <morpheme>bio</morpheme>
+        <def>Study of life</def>
+      </word>
+    </word>
+  </tree>
+  <tree id="3">
+    <lang>PIE</lang>
+    <text>leg</text>
+    <morpheme>leg</morpheme>
+    <def>Wibbly-wobbly timey-wimey</def>
+    <word>
+      <lang>Greek</lang>
+      <text>logia</text>
+      <morpheme>logia</morpheme>
+      <def>The study of</def>
+      <word>
+        <lang>Modern English</lang>
+        <text>biology</text>
+        <morpheme>logy</morpheme>
+        <def>Study of life</def>
+      </word>
+    </word>
+  </tree>
+  <tree id="4">
+    <lang>PIE</lang>
+    <text>porko-</text>
+    <morpheme>porko</morpheme>
+    <def>A feral pig</def>
+    <word>
+      <lang>Old Germanic</lang>
+      <text>farho</text>
+      <text>farhaz</text>
+      <morpheme>farho</morpheme>
+      <def>A wild pig thing</def>
+      <word>
+        <lang>Old English</lang>
+        <text>fearh</text>
+        <text>faerh</text>
+        <morpheme>fearh</morpheme>
+        <def>A masculine pig</def>
+        <word>
+          <lang>Middle English</lang>
+          <text>far</text>
+          <text>farry</text>
+          <morpheme>far</morpheme>
+          <def>A pig, especially masculine</def>
+          <word>
+            <lang>Modern English</lang>
+            <text>farrow</text>
+            <morpheme>farrow</morpheme>
+            <def>An obsolete word for a pig</def>
+          </word>
+        </word>
+      </word>
+      <word>
+        <lang>Old Saxon</lang>
+        <text>farh</text>
+        <morpheme>farh</morpheme>
+        <def>A pig</def>
+        <word>
+          <lang>Middle Low German</lang>
+          <text>ferken</text>
+          <morpheme>ferken</morpheme>
+          <def>A pig of some sort</def>
+          <word>
+            <lang>Dutch</lang>
+            <text>varken</text>
+            <morpheme>varken</morpheme>
+            <def>A pig</def>
+          </word>
+        </word>
+      </word>
+      <word>
+        <lang>Old High German</lang>
+        <text>farh</text>
+        <text>farah</text>
+        <morpheme>farh</morpheme>
+        <def>A pig</def>
+        <word>
+          <lang>Middle High German</lang>
+          <text>varch</text>
+          <morpheme>varch</morpheme>
+          <def>A pig of some sort</def>
+          <word>
+            <lang>High German</lang>
+            <text>ferkel</text>
+            <morpheme>ferkel</morpheme>
+            <def>A piglet, pig (derrogatory)</def>
+          </word>
+        </word>
+      </word>
+    </word>
+    <word>
+      <lang>Classical Latin</lang>
+      <text>porcus</text>
+      <morpheme>porcus</morpheme>
+      <def>A pig</def>
+      <word>
+        <lang>Old French</lang>
+        <text>porc</text>
+        <morpheme>porc</morpheme>
+        <def>A pig</def>
+        <word>
+          <lang>Middle French</lang>
+          <text>porc</text>
+          <morpheme>porc</morpheme>
+          <def>A pig</def>
+          <word>
+            <lang>French</lang>
+            <text>porc</text>
+            <morpheme>porc</morpheme>
+            <def>A pig, porc</def>
+          </word>
+        </word>
+        <word>
+          <lang>Anglo-Norman</lang>
+          <text>porc</text>
+          <text>pork</text>
+          <text>porke</text>
+          <text>porck</text>
+          <morpheme>pork</morpheme>
+          <def>A pig for eating, pork</def>
+          <word>
+            <lang>English</lang>
+            <text>pork</text>
+            <morpheme>pork</morpheme>
+            <def>The meat of a pig</def>
+          </word>
+        </word>
+      </word>
+      <word>
+        <lang>Old Occitan/Provençal</lang>
+        <text>porc</text>
+        <morpheme>porc</morpheme>
+        <def>A pig?</def>
+      </word>
+    </word>
+  </tree>
+  <tree id="5">
+    <lang>PIE</lang>
+    <text>*ekwo-</text>
+    <text>*hiékwos</text>
+    <morpheme>*ekwo-</morpheme>
+    <def>A species of horse</def>
+    <word>
+      <lang>Greek</lang>
+      <text>hippos</text>
+      <morpheme>hippos</morpheme>
+      <def>A horse</def>
+    </word>
+    <word>
+      <lang>Latin</lang>
+      <text>equus</text>
+      <morpheme>equus</morpheme>
+      <def>A horse</def>
+      <word>
+        <lang>Latin</lang>
+        <text>equinus</text>
+        <morpheme>equinus</morpheme>
+        <def>Relating to a horse</def>
+        <word>
+          <lang>English</lang>
+          <text>equine</text>
+          <morpheme>equine</morpheme>
+          <def>Of, pertaining to, or resembling a horse</def>
+        </word>
+      </word>
+    </word>
+    <word>
+      <lang>Proto-Germanic</lang>
+      <text>ehwaz</text>
+      <morpheme>ehwaz</morpheme>
+      <def>A horse</def>
+      <word>
+        <lang>Old English</lang>
+        <text>eoh</text>
+        <morpheme>eoh</morpheme>
+        <def>The usual Old English word for a horse</def>
+      </word>
+      <word>
+        <lang>Old Norse</lang>
+        <text>jor</text>
+        <morpheme>jor</morpheme>
+        <def>A horse</def>
+      </word>
+    </word>
+    <word>
+      <lang>Old Irish</lang>
+      <text>ech</text>
+      <morpheme>ech</morpheme>
+      <def>A horse</def>
+      <word>
+        <lang>Irish</lang>
+        <text>each</text>
+        <morpheme>each</morpheme>
+        <def>A horse</def>
+      </word>
+      <word>
+        <lang>Scottish Gaelic</lang>
+        <text>each</text>
+        <morpheme>each</morpheme>
+        <def>A horse</def>
+      </word>
+      <word>
+        <lang>Manx</lang>
+        <text>agh</text>
+        <morpheme>agh</morpheme>
+        <def>A horse</def>
+      </word>
+    </word>
+  </tree>
 </etym>
