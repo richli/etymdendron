@@ -25,7 +25,8 @@ def loadDB(filename):
     """
     words_db = ET.ElementTree()
     try:
-        words_db.parse(filename, ET.XMLParser(dtd_validation=True))
+        words_db.parse(filename, ET.XMLParser(dtd_validation=True,
+            remove_blank_text=True))
     except ET.XMLSyntaxError as err:
         raise EtymExceptDB("ERROR: Error parsing {0}\n{1}".format(
             filename, err))
