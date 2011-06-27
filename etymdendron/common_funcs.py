@@ -35,6 +35,14 @@ def loadDB(filename):
 
     return words_db
 
+def saveDB(words_db, filename):
+    """ This saves words_db into filename
+        This is using the XML backend
+    """
+    with open(filename, 'w') as f:
+        f.write(ET.tostring(words_db, encoding='utf-8', pretty_print=True,
+            xml_declaration=True, standalone=True))
+
 def searchDB(word_db, search_word):
     """ Searches the database word_db for the word search_word
         Returns a tuple: (num_trees, words)
