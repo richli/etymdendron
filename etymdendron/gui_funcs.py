@@ -85,9 +85,9 @@ class EtymApp(wx.App):
 
     def OnLoad(self, event):
         """ Loads the word database """
-        self.dirname = ''
         dlg = wx.FileDialog(self.frame, 'Choose the database file',
-                self.dirname, WORDS_FILE, '*.xml', wx.OPEN)
+                defaultFile = WORDS_FILE, wildcard = '*.xml',
+                style = wx.OPEN | wx.FILE_MUST_EXIST)
         if dlg.ShowModal() == wx.ID_OK:
             self.LoadWordDB(dlg.GetPath())
         dlg.Destroy()
