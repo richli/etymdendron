@@ -5,7 +5,7 @@
 """
 
 import unittest
-import sys
+import sys, os
 from lxml import etree as ET
 import global_opts
 import common_funcs as cf
@@ -23,10 +23,13 @@ class EtymDB(unittest.TestCase):
         """ Test if it correctly throws an exception for a file not found """
         self.assertRaises(cf.EtymExceptDB, cf.loadDB, 'sdf')
 
-    @unittest.skip('Not yet implemented')
     def testSaveDB(self):
         """ Test saving the db """
-        raise NotImplementedError
+        db = self.getDB()
+        tmp_file = 'tmp.xml'
+        cf.saveDB(db, tmp_file)
+        os.remove(tmp_file)
+
 
     def getDB(self):
         """ Helper function to load the DB """
