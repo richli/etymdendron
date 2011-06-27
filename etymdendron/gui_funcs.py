@@ -153,9 +153,9 @@ class EtymApp(wx.App):
         """ Just saves whether we're in edit mode or not """
         self.edit_mode = event.IsChecked()
         # Change UI controls
-        wx.xrc.XRCCTRL(self.frame, 'et_txtLang').SetEditable(self.edit_mode)
-        wx.xrc.XRCCTRL(self.frame, 'et_txtDef').SetEditable(self.edit_mode)
-        wx.xrc.XRCCTRL(self.frame, 'et_txtAlt').SetEditable(self.edit_mode)
+        self.langbox.SetEditable(self.edit_mode)
+        self.defbox.SetEditable(self.edit_mode)
+        self.altbox.SetEditable(self.edit_mode)
 
 
 #    def OnDetailEdit(self,event):
