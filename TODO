@@ -4,6 +4,7 @@ TO WORK ON NEXT:
 * Save the modified XML structure (NOT YET STARTED)
 * Edit the tree
   * Enable GUI functionality to edit word details (IN PROGRESS)
+	Right now I have it so if you enable edit mode, you can edit the word details. If you disable edit mode then the word details are saved in the db (NOT the xml file yet). This seems to work, but if the first alternate text is different, it doesn't update the tree control. I need to fix this.
   * Specify the parents/children of an element
   * Add a new element
   * Remove an element (children become its siblings)
