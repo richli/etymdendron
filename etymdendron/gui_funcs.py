@@ -136,6 +136,8 @@ class EtymApp(wx.App):
                 chosen_word = [match[1] for match in matched_words]
 
             self.DisplayTree(chosen_root, chosen_word)
+#            self.search_root = chosen_root
+#            self.search_words = chosen_word
 
     def OnMorphemeSelect(self, event):
         """ Chooses between different morphemes (different trees) """
@@ -169,6 +171,8 @@ class EtymApp(wx.App):
 
             cf.editWordDetails(self.current_node,new_nodeDetails)
 # TODO: Refresh the tree if ['text'][0] changed
+            #self.DisplayTree(self.search_root, self.search_words)
+
 
 
 #    def OnDetailEdit(self,event):
