@@ -135,9 +135,9 @@ class EtymApp(wx.App):
                 chosen_root = matched_words[0][0]
                 chosen_word = [match[1] for match in matched_words]
 
-            self.DisplayTree(chosen_root, chosen_word)
-#            self.search_root = chosen_root
-#            self.search_words = chosen_word
+            self.search_root = chosen_root
+            self.search_words = chosen_word
+            self.DisplayTree(self.search_root, self.search_words)
 
     def OnMorphemeSelect(self, event):
         """ Chooses between different morphemes (different trees) """
@@ -170,8 +170,8 @@ class EtymApp(wx.App):
             new_nodeDetails['morpheme'] = alt_list[0]
 
             cf.editWordDetails(self.current_node,new_nodeDetails)
-# TODO: Refresh the tree if ['text'][0] changed
-            #self.DisplayTree(self.search_root, self.search_words)
+            # Refresh the tree
+            self.DisplayTree(self.search_root, self.search_words)
 
 
 
@@ -206,6 +206,7 @@ class EtymApp(wx.App):
             nodes is a list of ElementTree word nodes
             if root is None, then is displays an empty tree message
         """
+        self.treebox.DeleteAllItems()
         if root is None:
             self.treebox.AddRoot('No matches found')
             self.editbtn.Disable()
