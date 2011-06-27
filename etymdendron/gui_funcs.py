@@ -195,6 +195,7 @@ class EtymApp(wx.App):
             self.langbox.ChangeValue('')
             self.defbox.ChangeValue('')
             self.altbox.ChangeValue('')
+            self.selected_node = None
         else:
             root_details = cf.loadWordDetails(root)
             root_elem = self.treebox.AddRoot(root_details['text'][0],
@@ -230,8 +231,8 @@ class EtymApp(wx.App):
     def SelectTreeItem(self, event):
         """ Update various widgets when a tree item has been selected """
         # Set the 'word details' widgets
-        node = self.treebox.GetPyData(event.GetItem())
-        nodeDetails = cf.loadWordDetails(node)
+        self.current_node = self.treebox.GetPyData(event.GetItem())
+        nodeDetails = cf.loadWordDetails(self.current_node)
         alt_text = ', '.join(nodeDetails['text'])
         self.langbox.ChangeValue(nodeDetails['lang'])
         self.defbox.ChangeValue(nodeDetails['def'])
