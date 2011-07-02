@@ -161,37 +161,41 @@ class EtymApp(wx.App):
     def OnEdit(self, event):
         """ Just saves whether we're in edit mode or not """
         self.edit_mode = event.IsChecked()
-        # Change UI controls
+        self.UpdateUi_edit()
+
+    def UpdateUi_edit(self):
+        """ Update UI elements depending on edit mode """
+        if self.current_node is None:
+            self.editchk.Disable()
+        else:
+            self.editchk.Enable()
         self.langbox.SetEditable(self.edit_mode)
         self.defbox.SetEditable(self.edit_mode)
         self.altbox.SetEditable(self.edit_mode)
-#TODO: Figure out better functionality here
-# For now, if edit mode toggled off, then save out word details
-        if self.edit_mode == False:
-            new_nodeDetails = {}
-            new_nodeDetails['lang'] = self.langbox.GetValue()
-            new_nodeDetails['def'] = self.defbox.GetValue()
-            alt_list = [text_item for text_item in 
-                    self.altbox.GetValue().split(', ')]
-            new_nodeDetails['text'] = alt_list 
-            # Set the morpheme to be the first text entry
-            new_nodeDetails['morpheme'] = alt_list[0]
+        self.editbtn_save.Enable(self.edit_mode)
+        self.editbtn_revert.Enable(self.edit_mode)
 
-            cf.editWordDetails(self.current_node, new_nodeDetails)
-            # Refresh the tree
-            self.DisplayTree(self.search_root, self.search_words)
+    def OnEditSave(self, event):
+        """ Save word details """
+#TODO: Check that this is right
+        new_nodeDetails = {}
+        new_nodeDetails['lang'] = self.langbox.GetValue()
+        new_nodeDetails['def'] = self.defbox.GetValue()
+        alt_list = [text_item for text_item in 
+                self.altbox.GetValue().split(', ')]
+        new_nodeDetails['text'] = alt_list 
+        # Set the morpheme to be the first text entry
+        new_nodeDetails['morpheme'] = alt_list[0]
 
+        # Save the word details
+        cf.editWordDetails(self.current_node, new_nodeDetails)
+        # Refresh the tree
+        self.DisplayTree(self.search_root, self.search_words)
 
-
-#    def OnDetailEdit(self,event):
-#        """ This is for the word detail text boxes
-#            Because wxMSW and wxGTK function differently when it comes
-#            to marking read-only text boxes, I'm intercepting all text
-#            edits and only allowing them if edit_mode is enabled
-#        """
-##TODO: implement me
-#        print('hit')
-
+    def OnEditRevert(self, event):
+        """ Revert word details """
+#TODO: Implement this
+        pass
 
 ###
 # Some methods for the class
