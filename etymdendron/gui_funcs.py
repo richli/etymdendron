@@ -22,7 +22,9 @@ class EtymApp(wx.App):
         self.frame.SetMinSize(wx.Size(610, 395)) 
         # Initialize some other variables
         #self.search_on_select = False
+        self.current_node = None
         self.edit_mode = False
+        self.UpdateUi_edit()
         # Put focus in the search box
         self.searchbox.SetFocus()
         return True
@@ -227,7 +229,9 @@ class EtymApp(wx.App):
         self.treebox.DeleteAllItems()
         if root is None:
             self.treebox.AddRoot('No matches found')
-            self.editbtn.Disable()
+            self.editchk.Disable()
+            self.editbtn_save.Disable()
+            self.editbtn_revert.Disable()
             self.langbox.ChangeValue('')
             self.defbox.ChangeValue('')
             self.altbox.ChangeValue('')
@@ -240,7 +244,9 @@ class EtymApp(wx.App):
                 nodes = [nodes]
             self._populate_tree(root, root_elem, nodes)
             self.treebox.ExpandAll()
-            self.editbtn.Enable()
+            self.editchk.Enable()
+        #    self.editbtn_save.Disable()
+        #    self.editbtn_revert.Disable()
 
     def _populate_tree(self, node, node_elem, emph_nodes):
         """ Recursive private function to fill in the rest of the tree control 
