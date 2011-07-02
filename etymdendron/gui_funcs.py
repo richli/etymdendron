@@ -196,8 +196,7 @@ class EtymApp(wx.App):
 
     def OnEditRevert(self, event):
         """ Revert word details """
-#TODO: Implement this
-        pass
+        self.UpdateWordDetails()
 
 ###
 # Some methods for the class
@@ -271,9 +270,13 @@ class EtymApp(wx.App):
                 self._populate_tree(child, child_elem, emph_nodes)
 
     def SelectTreeItem(self, event):
+        """ Find what tree item has been selected and then update UI """
+        self.current_node = self.treebox.GetPyData(event.GetItem())
+        self.UpdateWordDetails()
+
+    def UpdateWordDetails(self):
         """ Update various widgets when a tree item has been selected """
         # Set the 'word details' widgets
-        self.current_node = self.treebox.GetPyData(event.GetItem())
         nodeDetails = cf.loadWordDetails(self.current_node)
         alt_text = ', '.join(nodeDetails['text'])
         self.langbox.ChangeValue(nodeDetails['lang'])
