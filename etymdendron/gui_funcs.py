@@ -42,8 +42,12 @@ class EtymApp(wx.App):
                 id=wx.xrc.XRCID('et_boxSearch'))
         self.frame.Bind(wx.EVT_CHOICE, self.OnMorphemeSelect,
                 id=wx.xrc.XRCID('et_choice'))
-        self.frame.Bind(wx.EVT_TOGGLEBUTTON, self.OnEdit,
-                id=wx.xrc.XRCID('et_btnEdit'))
+        self.frame.Bind(wx.EVT_CHECKBOX, self.OnEdit,
+                id=wx.xrc.XRCID('et_checkEdit'))
+        self.frame.Bind(wx.EVT_BUTTON, self.OnEditSave,
+                id=wx.xrc.XRCID('et_btnEditSave'))
+        self.frame.Bind(wx.EVT_BUTTON, self.OnEditRevert,
+                id=wx.xrc.XRCID('et_btnEditRevert'))
         # Bind text events
 #        self.frame.Bind(wx.EVT_TEXT, self.OnDetailEdit,
 #                id=wx.xrc.XRCID('et_txtLang'))
@@ -64,7 +68,9 @@ class EtymApp(wx.App):
         self.altbox = wx.xrc.XRCCTRL(self.frame,'et_txtAlt')
         self.searchchoice = wx.xrc.XRCCTRL(self.frame,'et_choice')
         self.searchbtn = wx.xrc.XRCCTRL(self.frame,'et_btnSearch')
-        self.editbtn = wx.xrc.XRCCTRL(self.frame,'et_btnEdit')
+        self.editchk = wx.xrc.XRCCTRL(self.frame,'et_checkEdit')
+        self.editbtn_save = wx.xrc.XRCCTRL(self.frame,'et_btnEditSave')
+        self.editbtn_revert = wx.xrc.XRCCTRL(self.frame,'et_btnEditRevert')
         # And show the frame!
         self.frame.Show()
 
