@@ -179,7 +179,7 @@ class EtymApp(wx.App):
 
     def OnEditSave(self, event):
         """ Save word details """
-#TODO: Check that this is right
+        # Create new details dictionary
         new_nodeDetails = {}
         new_nodeDetails['lang'] = self.langbox.GetValue()
         new_nodeDetails['def'] = self.defbox.GetValue()
@@ -230,6 +230,7 @@ class EtymApp(wx.App):
         if root is None:
             self.treebox.AddRoot('No matches found')
             self.editchk.Disable()
+            self.editchk.SetValue(False)
             self.editbtn_save.Disable()
             self.editbtn_revert.Disable()
             self.langbox.ChangeValue('')
@@ -245,8 +246,6 @@ class EtymApp(wx.App):
             self._populate_tree(root, root_elem, nodes)
             self.treebox.ExpandAll()
             self.editchk.Enable()
-        #    self.editbtn_save.Disable()
-        #    self.editbtn_revert.Disable()
 
     def _populate_tree(self, node, node_elem, emph_nodes):
         """ Recursive private function to fill in the rest of the tree control 
