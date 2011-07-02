@@ -125,12 +125,17 @@ def editWordDetails(word, details):
             new_element.text = details[item]
         new_elements.append(new_element)
 
+    # Save subword(s) and remove them from tree
+    for child in word.iterchildren(tag='word'):
+        new_elements.append(child)
+        word.remove(child)
+
     # Clear out the old elements
     for item in element_items:
         for child in word.iterchildren(tag=item):
             word.remove(child)
 
-    # Add the new ones
+    # Add the new ones, including the saved subwords
     for item in new_elements:
         word.append(item)
 
