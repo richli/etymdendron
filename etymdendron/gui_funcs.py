@@ -183,8 +183,8 @@ class EtymApp(wx.App):
         new_nodeDetails = {}
         new_nodeDetails['lang'] = self.langbox.GetValue()
         new_nodeDetails['def'] = self.defbox.GetValue()
-        alt_list = [text_item for text_item in 
-                self.altbox.GetValue().split(', ')]
+        alt_list = [text_item.strip() for text_item in
+                self.altbox.GetValue().split(',')]
         new_nodeDetails['text'] = alt_list 
         # Set the morpheme to be the first text entry
         new_nodeDetails['morpheme'] = alt_list[0]
