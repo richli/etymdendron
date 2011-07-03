@@ -160,3 +160,6 @@ def loadWordChildren(word):
     """
     return word.xpath('word')
 
+def countWordChildren(word):
+    """ Returns how many children (to arbitrary depth) a word has """
+    return len(word.xpath('word'))
