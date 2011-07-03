@@ -3,7 +3,6 @@ TODO for etymdendron
 TO WORK ON NEXT:
 * Edit the tree
   * Add functions to:
-	* List parents of a word (test case done, not yet implemented)
 	* Add unit test for countWordChildren()
     * Specify the parents/children of a word
     * Add a new word

@@ -148,8 +148,11 @@ def loadWordParents(word):
     Each item is the ElementTree node for each parent
     If no parents are found, then it returns []
 
+    NB: I can't specify more than one parent in XML, 
+    so this doesn't return a list
+
     """
-    raise NotImplementedError
+    return word.getparent()
 
 def loadWordChildren(word):
     """ This returns the child(ren) of a given word to arbitrary depth
