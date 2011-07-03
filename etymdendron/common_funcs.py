@@ -155,7 +155,7 @@ def loadWordParents(word):
     return word.getparent()
 
 def loadWordChildren(word):
-    """ This returns the child(ren) of a given word to arbitrary depth
+    """ This returns the child(ren) of a given word
     Output is a list, each item is a child word
     Each item is the ElementTree node for each child
     If no children are found, then it returns []
@@ -164,5 +164,5 @@ def loadWordChildren(word):
     return word.xpath('word')
 
 def countWordChildren(word):
-    """ Returns how many children (to arbitrary depth) a word has """
+    """ Returns how many children a word has """
     return len(word.xpath('word'))

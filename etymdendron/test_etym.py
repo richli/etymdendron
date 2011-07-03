@@ -84,6 +84,22 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(wordDets['lang'], 'Modern English')
         self.assertEqual(wordDets['def'], 'An obsolete word for a pig')
 
+    def testCountWordChildren(self):
+        """ Tests counting word children """
+        # This word shouldn't have any children
+        chosen_word = self.getWord('hross')
+        word_children = cf.countWordChildren(chosen_word)
+        self.assertEqual(word_children, 0)
+        # This word should have one child
+        chosen_word = self.getWord('far')
+        word_children = cf.countWordChildren(chosen_word)
+        self.assertEqual(word_children, 1)
+        # This word should have two children
+        chosen_word = self.getWord('porcus')
+        word_children = cf.countWordChildren(chosen_word)
+        print(cf.loadWordChildren(chosen_word))
+        self.assertEqual(word_children, 2)
+
     def testEditWord(self):
         """ Test editing a word details """
         chosen_word = self.getWord('horse')
