@@ -180,3 +180,42 @@ def createWord(word_details, word_parent=None, word_children=None):
 
     """
     raise NotImplementedError
+# Note: Don't forget to call editWord{Children,Parent} is word_{} aren't None
+
+def editWordChildren(word, children):
+    """ Changes the children of a word
+
+    word is some Element object and children is a list of Element object(s)
+    This overwrites the links to any extant children with those specified
+
+    If children is None or [] then it severs the extant children from the word
+
+    """
+    raise NotImplementedError
+
+def editWordParent(word, parent):
+    """ Changes the parent of a word
+
+    word is some Element object and parent is another Element object
+    If word already has a parent, that link to the old parent is 
+    overwritten with this one
+
+    If parent is None, then it severs the word (and its descendants)
+    from the tree
+
+    """
+    raise NotImplementedError
+
+def deleteWord(word):
+    """ Deletes the word from the tree
+
+    If word is a part of tree (has parent/children), then it severs the link
+    first by attaching any children to parent (the grandparent of the children)
+    and then modifies the word so it no longer has parent or children.
+
+    The word is then removed from the tree.
+    """
+    raise NotImplementedError
+# Note to self: If a word has no parents/children, is still written out when
+# the XML is serialized, or is it effectively removed? Do I have to delete the
+# object itself?
