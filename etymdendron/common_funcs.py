@@ -80,6 +80,9 @@ def loadWordDetails(word):
         whereas there can be more than one 'text' element. These text 
         elements are stored in a list.
     """
+    if word is None:
+        raise EtymExceptWord('No word given for loadWordDetails')
+
     wordDets = {'lang': None, 'def': None, 'text': None, 'morpheme': None}
     
     wordDets['lang'] = word.xpath('lang')[0].text
