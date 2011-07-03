@@ -254,7 +254,7 @@ class EtymApp(wx.App):
         """
         # len() of a node returns how many children it has
         if cf.countWordChildren(node) > 0:
-            for child in cf.loadWordDetails(node):
+            for child in cf.loadWordChildren(node):
                 child_details = cf.loadWordDetails(child)
                 # Just display the first alternate
                 child_label = child_details['text'][0] 
