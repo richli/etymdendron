@@ -76,9 +76,8 @@ def display_children(node, depth, word, search_word):
         search_word is the word text we're looking for
     """
     # The len() of a node returns how many children it has
-#TODO: Move xpath references to common_funcs, not here
-    if len(node.xpath('word')) > 0:
-        for child in node.xpath('word'):
+    if cf.countWordChildren(node) > 0:
+        for child in cf.loadWordChildren(node):
             depth_marker = '  '*depth
             child_markup = ''
             child_details = cf.loadWordDetails(child)

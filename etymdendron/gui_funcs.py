@@ -253,9 +253,8 @@ class EtymApp(wx.App):
             emph_nodes: a list of ElementTree elements, these will be emphasized
         """
         # len() of a node returns how many children it has
-#TODO: Replace this with a getchildrenofword function or something
-        if len(node.xpath('word')) > 0:
-            for child in node.xpath('word'):
+        if cf.countWordChildren(node) > 0:
+            for child in cf.loadWordDetails(node):
                 child_details = cf.loadWordDetails(child)
                 # Just display the first alternate
                 child_label = child_details['text'][0] 
