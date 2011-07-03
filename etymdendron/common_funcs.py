@@ -158,4 +158,5 @@ def loadWordChildren(word):
     If no children are found, then it returns []
 
     """
-    raise NotImplementedError
+    return word.xpath('word')
+
