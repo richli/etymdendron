@@ -3,14 +3,15 @@ TODO for etymdendron
 TO WORK ON NEXT:
 * Edit the tree
   * Add functions to:
-	* List parents/children of a word
+	* List parents of a word (test case done, not yet implemented)
+	* Add unit test for countWordChildren()
     * Specify the parents/children of a word
     * Add a new word
     * Remove a word (children become its siblings)
   * Moving a word is then a combo of adding and removing, but mind the children
   * The above is working within a tree, I then need to create a new tree
 * For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
-	Also, ignore * prefix, - suffix for PIE roots; also, I don't have searching for PIE roots enabled (fix that)
+* Also, ignore * prefix, - suffix for PIE roots; also, I don't have searching for PIE roots enabled (fix that)
 
 * Frontend
   * GUI
@@ -35,5 +36,5 @@ TO WORK ON NEXT:
 * Backend
   * We're using libxml (using lxml) for now, maybe make it a db sometime? (looking into SQLAlchemy)
 
-* Create some documentation using Sphinx?
+* Create some documentation using Sphinx
 
