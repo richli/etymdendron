@@ -166,3 +166,17 @@ def loadWordChildren(word):
 def countWordChildren(word):
     """ Returns how many children a word has """
     return len(word.xpath('word'))
+
+def createWord(word_details, word_parent=None, word_children=None):
+    """ Creates a new word given the word_details dictionary
+    
+    word_details is a dictionary in the same format as editWordDetails
+    That is, the keys are ['lang', 'text', 'def', 'morpheme']
+    All of the values are strings, except 'text' is a list of strings
+
+    It returns a new Element object with the right setup. It needs to be
+    added to a tree by specifying parent/children. This can be done later
+    or it can be done here by using word_parent, word_children.
+
+    """
+    raise NotImplementedError

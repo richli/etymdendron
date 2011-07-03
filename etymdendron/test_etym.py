@@ -100,7 +100,7 @@ class EtymDB(unittest.TestCase):
         print(cf.loadWordChildren(chosen_word))
         self.assertEqual(word_children, 2)
 
-    def testEditWord(self):
+    def testEditWordDetails(self):
         """ Test editing a word details """
         chosen_word = self.getWord('horse')
         orig_wordDets = cf.loadWordDetails(chosen_word)
@@ -126,9 +126,30 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(new_wordDets, test_wordDets)
         self.assertNotEqual(orig_wordDets, test_wordDets)
 
+    def testCreateWord(self):
+        """ Test creating a new word """
+        # Try some bad inputs
+        word_dets = None
+        self.assertRaises(cf.EtymExceptWord, cf.createWord, word_dets)
+        word_dets = {}
+        self.assertRaises(cf.EtymExceptWord, cf.createWord, word_dets)
+        word_dets = {'lang': 'English'}
+        self.assertRaises(cf.EtymExceptWord, cf.createWord, word_dets)
+        word_dets = {'lang': 'English', 'text': 'banana',
+                'morpheme': 'bannana', 'def': 'A fruity thing'}
+        self.assertRaises(cf.EtymExceptWord, cf.createWord, word_dets)
+
+        # Now a good input, test the output
+        word_dets = {'lang': 'English', 'text': ['banana', 'pineapple'],
+                'morpheme': 'bannana', 'def': 'A fruity thing'}
+        new_word = cf.createWord(word_dets)
+        new_word_details = cf.loadWordDetails(new_word)
+        self.assertEqual(word_dets, new_word_details)
+
+
     @unittest.skip('Not yet implemented')
     def testAddWord(self):
-        """ Test adding a word """
+        """ Test adding a word to a tree """
         raise NotImplementedError
 
     @unittest.skip('Not yet implemented')
