@@ -139,3 +139,20 @@ def editWordDetails(word, details):
     for item in new_elements:
         word.append(item)
 
+def loadWordParents(word):
+    """ This returns the parent(s) of a given word
+    Output is a tuple, each item is a parent
+    Each item is the ElementTree node for each parent
+    If no parents are found, then it returns (None,)
+
+    """
+    raise NotImplementedError
+
+def loadWordChildren(word):
+    """ This returns the child(ren) of a given word
+    Output is a tuple, each item is a child word
+    Each item is the ElementTree node for each child
+    If no children are found, then it returns (None,)
+
+    """
+    raise NotImplementedError

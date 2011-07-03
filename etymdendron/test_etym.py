@@ -44,7 +44,7 @@ class EtymDB(unittest.TestCase):
         chosen_word = matched_words[0][1]
         return chosen_word
 
-    def testReadWord(self):
+    def testReadWordDetails(self):
         """ Test reading the details of a word """
         chosen_word = self.getWord('horse')
         wordDets = cf.loadWordDetails(chosen_word)
@@ -52,6 +52,36 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(wordDets['def'],'A horse that you feed oats')
         self.assertEqual(wordDets['text'],
                 ['horse','hors','horce','horsse','horis','hos','ors'])
+
+    def testReadWordParents(self):
+        """ Test reading the parents of a word """
+        # The root shouldn't have any parents
+        chosen_word = self.getWord('khursa')
+        word_parents = cf.loadWordParents(chosen_word)
+        self.assertEqual(word_parents, None)
+        self.assertRaises(cf.EtymExceptWord, cf.loadWordDetails, word_parents[0])
+        # This word should have one parent
+        chosen_word = self.getWord('horse')
+        word_parents = cf.loadWordParents(chosen_word)
+        wordDets = cf.loadWordDetails(word_parents[0])
+        self.assertEqual(wordDets['text'], 'hors')
+        self.assertEqual(wordDets['lang'], 'Old English')
+        self.assertEqual(wordDets['def'], 'A man-eating beast')
+
+    def testReadWordChildren(self):
+        """ Test reading the children of a word """
+        # This word shouldn't have any children
+        chosen_word = self.getWord('hross')
+        word_children = cf.loadWordChildren(chosen_word)
+        self.assertEqual(word_children, None)
+        self.assertRaises(cf.EtymExceptWord, cf.loadWordDetails, word_children[0])
+        # This word should have one child
+        chosen_word = self.getWord('far')
+        word_children = cf.loadWordChildren(chosen_word)
+        wordDets = cf.loadWordDetails(word_children[0])
+        self.assertEqual(wordDets['text'], 'farrow')
+        self.assertEqual(wordDets['lang'], 'Modern English')
+        self.assertEqual(wordDets['def'], 'An obsolete word for a pig')
 
     def testEditWord(self):
         """ Test editing a word details """
