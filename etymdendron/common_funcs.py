@@ -50,11 +50,22 @@ def searchDB(word_db, search_word):
         The 'words' element is itself a list of tuples: 
             [(tree,word), (tree,word), ...]
     """
-     # We go through each of the possible trees
+    # We go through each of the possible trees
     matched_words = []
     found_roots = set()
     num_trees = 0
     for tree in word_db.getroot().iterchildren():
+        # First look at the root
+        for text in tree.iterchildren(tag='text'):
+            if text.text == search_word:
+                # Alright, we found a match
+                # Add the root to our list
+                if tree not in found_roots:
+                    num_trees += 1
+                found_roots.add(tree)
+                # Add the found word to our list
+                matched_words.append((tree, tree))
+        # Now look at all children of the root
         for word in tree.iterdescendants(tag='word'):
             for text in word.iterchildren(tag='text'):
                 if text.text == search_word:

@@ -1,6 +1,9 @@
 TODO for etymdendron
 --------------------
 TO WORK ON NEXT:
+* Enable search for PIE roots
+  Should be enabled in cf.searchDB now, but write a test case for it
+  The GUI doesn't completely behave when searching for a PIE root
 * Edit the tree
   * Add functions to:
 	* List parents/children of a word
@@ -10,7 +13,7 @@ TO WORK ON NEXT:
   * Moving a word is then a combo of adding and removing, but mind the children
   * The above is working within a tree, I then need to create a new tree
 * For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
-	Also, ignore * prefix, - suffix for PIE roots; also, I don't have searching for PIE roots enabled (fix that)
+	Also, ignore * prefix, - suffix for PIE roots
 
 * Frontend
   * GUI
