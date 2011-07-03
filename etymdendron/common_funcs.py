@@ -80,7 +80,7 @@ def loadWordDetails(word):
         whereas there can be more than one 'text' element. These text 
         elements are stored in a list.
     """
-    if word is None:
+    if word == []:
         raise EtymExceptWord('No word given for loadWordDetails')
 
     wordDets = {'lang': None, 'def': None, 'text': None, 'morpheme': None}
@@ -144,18 +144,18 @@ def editWordDetails(word, details):
 
 def loadWordParents(word):
     """ This returns the parent(s) of a given word
-    Output is a tuple, each item is a parent
+    Output is a list, each item is a parent
     Each item is the ElementTree node for each parent
-    If no parents are found, then it returns (None,)
+    If no parents are found, then it returns []
 
     """
     raise NotImplementedError
 
 def loadWordChildren(word):
-    """ This returns the child(ren) of a given word
-    Output is a tuple, each item is a child word
+    """ This returns the child(ren) of a given word to arbitrary depth
+    Output is a list, each item is a child word
     Each item is the ElementTree node for each child
-    If no children are found, then it returns (None,)
+    If no children are found, then it returns []
 
     """
     raise NotImplementedError

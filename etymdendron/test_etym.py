@@ -73,13 +73,13 @@ class EtymDB(unittest.TestCase):
         # This word shouldn't have any children
         chosen_word = self.getWord('hross')
         word_children = cf.loadWordChildren(chosen_word)
-        self.assertEqual(word_children, None)
-        self.assertRaises(cf.EtymExceptWord, cf.loadWordDetails, word_children[0])
+        self.assertEqual(word_children, [])
+        self.assertRaises(cf.EtymExceptWord, cf.loadWordDetails, word_children)
         # This word should have one child
         chosen_word = self.getWord('far')
         word_children = cf.loadWordChildren(chosen_word)
         wordDets = cf.loadWordDetails(word_children[0])
-        self.assertEqual(wordDets['text'], 'farrow')
+        self.assertEqual(wordDets['text'][0], 'farrow')
         self.assertEqual(wordDets['lang'], 'Modern English')
         self.assertEqual(wordDets['def'], 'An obsolete word for a pig')
 
