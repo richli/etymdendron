@@ -50,73 +50,6 @@
 				<object class="wxBoxSizer">
 					<orient>wxVERTICAL</orient>
 					<object class="sizeritem">
-						<option>1</option>
-						<flag>wxEXPAND | wxALL</flag>
-						<border>5</border>
-						<object class="wxPanel" name="et_panelSearch">
-							<style>wxTAB_TRAVERSAL</style>
-							<object class="wxStaticBoxSizer">
-								<orient>wxVERTICAL</orient>
-								<label>Search</label>
-								<object class="sizeritem">
-									<option>1</option>
-									<flag>wxEXPAND</flag>
-									<border>5</border>
-									<object class="wxGridBagSizer">
-										<vgap>0</vgap>
-										<hgap>0</hgap>
-										<growablecols>0</growablecols>
-										<growablerows></growablerows>
-										<object class="sizeritem">
-											<cellpos>0,0</cellpos>
-											<cellspan>1,3</cellspan>
-											<flag>wxALL|wxEXPAND</flag>
-											<border>5</border>
-											<object class="wxTextCtrl" name="et_boxSearch">
-												<style>wxTE_PROCESS_ENTER</style>
-												<value></value>
-												<maxlength>0</maxlength>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<cellpos>0,3</cellpos>
-											<cellspan>1,1</cellspan>
-											<flag>wxALL</flag>
-											<border>5</border>
-											<object class="wxButton" name="et_btnSearch">
-												<label>Search</label>
-												<default>0</default>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<cellpos>1,0</cellpos>
-											<cellspan>1,2</cellspan>
-											<flag>wxALL</flag>
-											<border>5</border>
-											<object class="wxCheckBox" name="et_checkSearch">
-												<enabled>0</enabled>
-												<hidden>1</hidden>
-												<label>Use selected word</label>
-												<checked>0</checked>
-											</object>
-										</object>
-										<object class="sizeritem">
-											<cellpos>1,2</cellpos>
-											<cellspan>1,1</cellspan>
-											<flag>wxALL</flag>
-											<border>5</border>
-											<object class="wxChoice" name="et_choice">
-												<enabled>0</enabled>
-												<selection>0</selection>
-												<content />
-											</object>
-										</object>
-									</object>
-								</object>
-							</object>
-						</object>
-					</object>
-					<object class="sizeritem">
 						<option>0</option>
 						<flag>wxALL|wxEXPAND</flag>
 						<border>5</border>
@@ -223,6 +156,73 @@
 											<object class="wxButton" name="et_btnEditRevert">
 												<label>Revert</label>
 												<default>0</default>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND | wxALL</flag>
+						<border>5</border>
+						<object class="wxPanel" name="et_panelSearch">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxVERTICAL</orient>
+								<label>Search</label>
+								<object class="sizeritem">
+									<option>1</option>
+									<flag>wxEXPAND</flag>
+									<border>5</border>
+									<object class="wxGridBagSizer">
+										<vgap>0</vgap>
+										<hgap>0</hgap>
+										<growablecols>0</growablecols>
+										<growablerows></growablerows>
+										<object class="sizeritem">
+											<cellpos>0,0</cellpos>
+											<cellspan>1,3</cellspan>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<object class="wxTextCtrl" name="et_boxSearch">
+												<style>wxTE_PROCESS_ENTER</style>
+												<value></value>
+												<maxlength>0</maxlength>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>0,3</cellpos>
+											<cellspan>1,1</cellspan>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxButton" name="et_btnSearch">
+												<label>Search</label>
+												<default>0</default>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>1,0</cellpos>
+											<cellspan>1,2</cellspan>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxCheckBox" name="et_checkSearch">
+												<enabled>0</enabled>
+												<hidden>1</hidden>
+												<label>Use selected word</label>
+												<checked>0</checked>
+											</object>
+										</object>
+										<object class="sizeritem">
+											<cellpos>1,2</cellpos>
+											<cellspan>1,1</cellspan>
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxChoice" name="et_choice">
+												<enabled>0</enabled>
+												<selection>0</selection>
+												<content />
 											</object>
 										</object>
 									</object>
