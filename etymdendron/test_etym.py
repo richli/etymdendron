@@ -232,14 +232,17 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(cf.countWordChildren(chosen_word), 1)
         self.assertEqual(cf.loadWordParents(test_child), chosen_word)
 
+    @unittest.skip('Not yet implemented')
     def testChangeParent(self):
         """ Tests modifying the parent of a word """
         raise NotImplementedError
 
+    @unittest.skip('Not yet implemented')
     def testAddWord(self):
         """ Test adding a word to a tree """
         raise NotImplementedError
 
+    @unittest.skip('Not yet implemented')
     def testDelWord(self):
         """ Test deleting a word """
         raise NotImplementedError
