@@ -108,12 +108,14 @@ def editWordDetails(word, details):
         space (since one element of each kind (lang, def, text) must exist.
 
     """
-    # First check sanity of the word
+    # First check sanity of the input details
     element_items = ['lang', 'text', 'morpheme', 'def']
     for item in element_items:
         if item not in details.keys():
             raise EtymExceptWord('Required key(s) not found in word details'
                     '\n details: {0}'.format(details))
+    if type(details['text']) is not list:
+        raise EtymExceptWord("'text' value is not a list")
 
     # Create the new Element objects
     new_elements = []
@@ -146,7 +148,7 @@ def loadWordParents(word):
     """ This returns the parent(s) of a given word
     Output is a list, each item is a parent
     Each item is the ElementTree node for each parent
-    If no parents are found, then it returns []
+    If no parents are found, then it returns None
 
     NB: I can't specify more than one parent in XML, 
     so this doesn't return a list
@@ -193,7 +195,7 @@ def validateWord(word):
 
     # First check the tag
     if word.tag != 'word':
-        raise EtymExceptWord('Invalid word tag')
+        raise EtymExceptWord('Invalid word tag (tag={0})'.format(word.tag))
 
     # Check all of the subelements are present in right numbers
     test_items = {'lang':0, 'text':0, 'morpheme':0, 'def':0, 'word':0}
@@ -228,7 +230,7 @@ def editWordChildren(word, children):
     """ Changes the children of a word
 
     word is some Element object and children is a list of Element object(s)
-    This overwrites the links to any extant children with those specified
+    This *OVERWRITES* the links to any extant children with those specified
 
     If children is None or [] then it severs the extant children from the word
 

@@ -97,7 +97,6 @@ class EtymDB(unittest.TestCase):
         # This word should have two children
         chosen_word = self.getWord('porcus')
         word_children = cf.countWordChildren(chosen_word)
-        print(cf.loadWordChildren(chosen_word))
         self.assertEqual(word_children, 2)
 
     def testEditWordDetails(self):
@@ -145,6 +144,8 @@ class EtymDB(unittest.TestCase):
         new_word = cf.createWord(word_dets)
         new_word_details = cf.loadWordDetails(new_word)
         self.assertEqual(word_dets, new_word_details)
+
+        #TODO: Add tests for creating a word with parent/children specified
 
     def testValidateWord(self):
         """ Tests validating a word """
