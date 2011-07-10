@@ -182,6 +182,48 @@ def createWord(word_details, word_parent=None, word_children=None):
     raise NotImplementedError
 # Note: Don't forget to call editWord{Children,Parent} is word_{} aren't None
 
+def validateWord(word):
+    """ Validates the elements of a word
+
+    word is an Element object and is checked that it follows the DTD.
+    If all the subelements exist (lang, def, subwords, etc), then it
+    rewrites them in the proper order
+
+    """
+
+    # First check the tag
+    if word.tag != 'word':
+        raise EtymExceptWord('Invalid word tag')
+
+    # Check all of the subelements are present in right numbers
+    test_items = {'lang':0, 'text':0, 'morpheme':0, 'def':0, 'word':0}
+    word_items = [child.tag for child in word]
+    for item in word_items:
+        if item not in test_items.keys():
+            # Only allowable items are allowed
+            raise EtymExceptWord('Extra item(s) found in word details'
+                    '\n details: {0}'.format(word_items))
+        else:
+            test_items[item] += 1
+
+    # Need at least one of the following
+    for item in ['lang', 'text', 'morpheme', 'def']:
+        if test_items[item] < 1:
+            raise EtymExceptWord('Required item "{0}" not found in word details'
+                '\n details: {1}'.format(item, word_items))
+
+    # Need at most one of the following
+    for item in ['lang', 'morpheme', 'def']:
+        if test_items[item] > 1:
+            raise EtymExceptWord('Too many of "{0} found in word details'
+                '\n details: {1}'.format(item, word_items))
+
+    # Now put the items in the right order
+    word_dets = loadWordDetails(word)
+    editWordDetails(word, word_dets)
+
+    return True
+
 def editWordChildren(word, children):
     """ Changes the children of a word
 

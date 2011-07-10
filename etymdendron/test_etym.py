@@ -146,6 +146,64 @@ class EtymDB(unittest.TestCase):
         new_word_details = cf.loadWordDetails(new_word)
         self.assertEqual(word_dets, new_word_details)
 
+    def testValidateWord(self):
+        """ Tests validating a word """
+        # Test a known good word
+        chosen_word = self.getWord('far')
+        self.assertEqual(cf.validateWord(chosen_word), True)
+
+        # Test some bad words
+        # wrong tag
+        test_word = ET.Element('gook')
+        self.assertRaises(cf.EtymExceptWord, cf.validateWord, test_word)
+        # right tag, no text
+        test_word = ET.Element('word')
+        self.assertRaises(cf.EtymExceptWord, cf.validateWord, test_word)
+        # good tag and text, no details
+        test_word.text = 'testing'
+        self.assertRaises(cf.EtymExceptWord, cf.validateWord, test_word)
+        # Create some incomplete details
+        word_det = ET.Element('lang')
+        word_det.text = 'asdf'
+        test_word.append(word_det)
+        self.assertRaises(cf.EtymExceptWord, cf.validateWord, test_word)
+        word_det = ET.Element('def')
+        word_det.text = 'lkjfs'
+        test_word.append(word_det)
+        self.assertRaises(cf.EtymExceptWord, cf.validateWord, test_word)
+        word_det = ET.Element('morpheme')
+        word_det.text = 'sdf0'
+        test_word.append(word_det)
+        self.assertRaises(cf.EtymExceptWord, cf.validateWord, test_word)
+        word_det = ET.Element('text')
+        word_det.text = '23rds'
+        test_word.append(word_det)
+        word_det = ET.Element('text')
+        word_det.text = '230oudsf'
+        test_word.append(word_det)
+        self.assertEqual(cf.validateWord(chosen_word), True)
+        # Make sure it gets saved in the right order
+        test_word = ET.Element('word')
+        word_det = ET.Element('text')
+        word_det.text = '23rds'
+        test_word.append(word_det)
+        test_word.text = 'testing'
+        word_det = ET.Element('def')
+        word_det.text = 'lkjfs'
+        test_word.append(word_det)
+        word_det = ET.Element('text')
+        word_det.text = '203fjklsdfj'
+        test_word.append(word_det)
+        word_det = ET.Element('lang')
+        word_det.text = 'asdf'
+        test_word.append(word_det)
+        word_det = ET.Element('morpheme')
+        word_det.text = 'sdf0'
+        test_word.append(word_det)
+        cf.validateWord(test_word)
+        sort_output = '<word>testing<lang>asdf</lang><text>23rds</text><text>203fjklsdfj</text><morpheme>sdf0</morpheme><def>lkjfs</def></word>'
+        self.assertEqual(ET.tostring(test_word), sort_output)
+
     def testChangeChildren(self):
         """ Tests modifying the children of a word """
         raise NotImplementedError
