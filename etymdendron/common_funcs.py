@@ -181,8 +181,25 @@ def createWord(word_details, word_parent=None, word_children=None):
     or it can be done here by using word_parent, word_children.
 
     """
-    raise NotImplementedError
-# Note: Don't forget to call editWord{Children,Parent} is word_{} aren't None
+    # Create the new word element
+    new_word = ET.Element('word')
+
+    # Append children words
+    if word_children:
+        editWordChildren(new_word, word_children)
+
+    # Add in the details
+    if word_details:
+        editWordDetails(new_word, word_details)
+    else:
+        raise EtymExceptWord('No word_details specified!')
+
+    # Attach to parent word
+    #TODO: implement me
+    #editWordParent(new_word, word_parent)
+
+    # Return the newly created word
+    return new_word
 
 def validateWord(word):
     """ Validates the elements of a word
