@@ -207,7 +207,30 @@ class EtymDB(unittest.TestCase):
 
     def testChangeChildren(self):
         """ Tests modifying the children of a word """
-        raise NotImplementedError
+        chosen_word = self.getWord('far')
+        real_children = cf.loadWordChildren(chosen_word)
+        word_dets = {'lang': 'English', 'text': ['banana', 'pineapple'],
+                'morpheme': 'bannana', 'def': 'A fruity thing'}
+        test_child = cf.createWord(word_dets)
+        cf.validateWord(test_child)
+
+        # Test output with good input
+        # (chosen_word only has one child)
+        new_children = list(real_children)
+        new_children.append(test_child)
+        cf.editWordChildren(chosen_word, new_children)
+        self.assertEqual(cf.countWordChildren(chosen_word), 2)
+
+        # This removes children from chosen_word
+        cf.editWordChildren(chosen_word, None)
+        self.assertEqual(cf.countWordChildren(chosen_word), 0)
+        self.assertEqual(cf.loadWordParents(real_children[0]), None)
+        self.assertEqual(cf.loadWordParents(test_child), None)
+
+        # Let's add a child back on
+        cf.editWordChildren(chosen_word, test_child)
+        self.assertEqual(cf.countWordChildren(chosen_word), 1)
+        self.assertEqual(cf.loadWordParents(test_child), chosen_word)
 
     def testChangeParent(self):
         """ Tests modifying the parent of a word """
