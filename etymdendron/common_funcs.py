@@ -235,7 +235,28 @@ def editWordChildren(word, children):
     If children is None or [] then it severs the extant children from the word
 
     """
-    raise NotImplementedError
+
+    num_children = 0
+    if children is not None:
+        if type(children) is list:
+            num_children = len(children)
+        else:
+            num_children = 1
+            children = [children] # wrap the child in a list
+
+    # Check that each child is valid
+    if num_children > 0:
+        for child in children:
+            validateWord(child)
+
+    # Remove extant children
+    for child in word.iterchildren(tag='word'):
+        word.remove(child)
+
+    # Add in the new ones
+    if num_children > 0:
+        for child in children:
+            word.append(child)
 
 def editWordParent(word, parent):
     """ Changes the parent of a word
