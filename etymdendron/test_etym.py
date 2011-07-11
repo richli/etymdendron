@@ -265,11 +265,6 @@ class EtymDB(unittest.TestCase):
         raise NotImplementedError
 
     @unittest.skip('Not yet implemented')
-    def testAddTree(self):
-        """ Test adding a tree """
-        raise NotImplementedError
-
-    @unittest.skip('Not yet implemented')
     def testDelTree(self):
         """ Test deleting a tree """
         raise NotImplementedError
