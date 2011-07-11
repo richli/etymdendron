@@ -30,7 +30,6 @@ class EtymDB(unittest.TestCase):
         cf.saveDB(db, tmp_file)
         os.remove(tmp_file)
 
-
     def getDB(self):
         """ Helper function to load the DB """
         return cf.loadDB(global_opts.WORDS_FILE)
@@ -232,10 +231,28 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(cf.countWordChildren(chosen_word), 1)
         self.assertEqual(cf.loadWordParents(test_child), chosen_word)
 
-    @unittest.skip('Not yet implemented')
     def testChangeParent(self):
         """ Tests modifying the parent of a word """
-        raise NotImplementedError
+        # This word has a parent, 'equinus'
+        chosen_word = self.getWord('equine')
+        # Make sure it can read the parent
+        test_parent = cf.loadWordParents(chosen_word)
+        parent_details = cf.loadWordDetails(test_parent)
+        self.assertEquals(parent_details['text'], ['equinus'])
+        self.assertEquals(parent_details['lang'], 'Latin')
+        # Add a new word and set its parent
+        word_dets = {'lang': 'English', 'text': ['banana', 'pineapple'],
+                'morpheme': 'bannana', 'def': 'A fruity thing'}
+        new_word = cf.createWord(word_dets)
+        cf.editWordParent(new_word, test_parent)
+        self.assertEqual(cf.countWordChildren(test_parent),2)
+        self.assertEqual(cf.countWordChildren(chosen_word),0)
+        cf.editWordParent(new_word, chosen_word)
+        self.assertEqual(cf.countWordChildren(chosen_word),1)
+        # Add a new word and it to be parent to a word
+        new_word = cf.createWord(word_dets)
+        cf.editWordParent(chosen_word, new_word)
+        self.assertEqual(new_word, cf.loadWordParents(chosen_word))
 
     @unittest.skip('Not yet implemented')
     def testAddWord(self):
