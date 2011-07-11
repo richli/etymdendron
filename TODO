@@ -1,38 +1,31 @@
 TODO for etymdendron
---------------------
-TO WORK ON NEXT:
-* Edit the tree
+====================
+TO WORK ON NEXT
+---------------
+* Backend functions to edit the tree
+  * Implement editWordParent(), deleteWord(), createWord()
   * Add functions to:
-    * Specify the parents/children of a word
-    * Add a new word
-    * Remove a word (children become its siblings)
     * Move a word (it's then a combo of adding and removing, but mind the children)
   * The above is working within a tree, I then need to create a new tree
-* For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
 * I don't have searching for PIE roots enabled yet
 * Ignore * prefix, - suffix for PIE roots
-
-* Frontend
-  * GUI
-	* Implement edit mode toggle
-	  * Create new entries in the tree
-	  * Remove entries from the tree
-	  * Drag-and-drop elements of the tree
-	* Maybe create a link to the entry on etymonline?
-	* A taskbar icon
-	* GUI Layout phases:
-  	  * Phase 1: (DONE) Just the treelist widget for now
-  	  * Phase 2: Use Graphviz to plot the trees? (pydot, pygraphviz, networkx, python-graph?)
-  	  * Phase 3: Use floatcanvas to have interactive trees?
-  * CLI
-    * Make options to edit the tree and save out the XML?
-	  * Edit entries of the tree
-	  * Create new entries in the tree
-	  * Remove entries from the tree
-
-* Backend
-  * Add more words to words.xml, add more tests
-  * We're using libxml (using lxml) for now, maybe make it a db sometime? (looking into SQLAlchemy)
-
+* GUI
+  * Implement more editing
+    * Create new entries in the tree
+    * Remove entries from the tree
+    * Drag-and-drop elements of the tree
+    * Create a new tree
+  * Maybe create a link to the entry on etymonline
+  * A taskbar icon
 * Create some documentation using Sphinx
+* For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
 
+EVENTUALLY
+----------
+  * Add more words to words.xml, add more tests
+  * GUI Layout phases:
+    * Phase 1: (DONE) Just the treelist widget for now
+    * Phase 2: Use Graphviz to plot the trees? (pydot, pygraphviz, networkx, python-graph?)
+    * Phase 3: Use floatcanvas to have interactive trees?
+
+# vim: syntax=rst
