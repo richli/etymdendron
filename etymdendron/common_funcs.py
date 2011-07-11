@@ -286,7 +286,20 @@ def editWordParent(word, parent):
     from the tree
 
     """
-    raise NotImplementedError
+
+    # Check inputs
+    validateWord(word)
+    validateWord(parent)
+
+    # Sever the word from its old parent
+    old_parent = word.getparent()
+    if old_parent is not None:
+        for child in old_parent.iterchildren(tag='word'):
+            if child == word:
+                old_parent.remove(child)
+
+    # Attach it to its new one
+    parent.append(word)
 
 def deleteWord(word):
     """ Deletes the word from the tree
