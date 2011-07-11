@@ -185,7 +185,7 @@ def createWord(word_details, word_parent=None, word_children=None):
     new_word = ET.Element('word')
 
     # Append children words
-    if word_children:
+    if word_children is not None:
         editWordChildren(new_word, word_children)
 
     # Add in the details
@@ -195,8 +195,8 @@ def createWord(word_details, word_parent=None, word_children=None):
         raise EtymExceptWord('No word_details specified!')
 
     # Attach to parent word
-    #TODO: implement me
-    #editWordParent(new_word, word_parent)
+    if word_parent is not None:
+        editWordParent(new_word, word_parent)
 
     # Return the newly created word
     return new_word
