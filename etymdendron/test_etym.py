@@ -144,7 +144,19 @@ class EtymDB(unittest.TestCase):
         new_word_details = cf.loadWordDetails(new_word)
         self.assertEqual(word_dets, new_word_details)
 
-        #TODO: Add tests for creating a word with parent/children specified
+        # Try creating a word with a specified parent/children
+        child_dets = {'lang': 'Spanglish', 'text': ['strawberry'],
+                'morpheme': 'strawberry', 'def': 'A fruity thing'}
+        parent_dets = {'lang': 'Fromesian', 'text': ['raspberry'],
+                'morpheme': 'raspberry', 'def': 'A fruity thing'}
+        word_dets = {'lang': 'English', 'text': ['banana'],
+                'morpheme': 'banana', 'def': 'A fruity thing'}
+        new_child = cf.createWord(child_dets)
+        new_parent = cf.createWord(parent_dets)
+        new_word = cf.createWord(word_dets, word_parent=new_parent,
+                                 word_children = new_child)
+        self.assertEqual(cf.loadWordChildren(new_word)[0], new_child)
+        self.assertEqual(cf.loadWordParents(new_word), new_parent)
 
     def testValidateWord(self):
         """ Tests validating a word """
