@@ -1,5 +1,12 @@
 #!/usr/bin/env python
-""" This file is the main driver for the program """
+""" This file is a CLI interface to the program 
+
+    Note, this is no longer feature-complete since the GUI implements more 
+    functions than this one. I don't have the time or interest to finish this
+    off, but I have tried to keep the functions such that whether a GUI or CLI
+    calls them, the result is the same.
+
+"""
 
 ###
 # Imports (global)
