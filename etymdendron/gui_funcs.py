@@ -62,6 +62,8 @@ class EtymApp(wx.App):
         # Bind tree events
         self.frame.Bind(wx.EVT_TREE_SEL_CHANGED, self.SelectTreeItem,
                 id=wx.xrc.XRCID('et_tree'))
+        self.frame.Bind(wx.EVT_TREE_ITEM_MENU, self.MenuTreeItem,
+                id=wx.xrc.XRCID('et_tree'))
         # Save some object references for later
         self.searchbox = wx.xrc.XRCCTRL(self.frame,'et_boxSearch')
         self.treebox = wx.xrc.XRCCTRL(self.frame,'et_tree')
@@ -267,6 +269,39 @@ class EtymApp(wx.App):
                     self.treebox.SelectItem(child_elem)
                 # Recurse!
                 self._populate_tree(child, child_elem, emph_nodes)
+
+    def MenuTreeItem(self, event):
+        """ Right-click menu for a tree item """
+        self.current_node = self.treebox.GetPyData(event.GetItem())
+        menu = wx.Menu()
+        child_item_id = wx.NewId()
+        menu.Append(child_item_id, 'Add child word')
+        sib_item_id = wx.NewId()
+        menu.Append(sib_item_id, 'Add sibling word')
+        del_item_id = wx.NewId()
+        menu.Append(del_item_id, 'Delete word')
+        menu.Bind(wx.EVT_MENU, self.TreeItemAddChild, id=child_item_id)
+        menu.Bind(wx.EVT_MENU, self.TreeItemAddSib, id=sib_item_id)
+        menu.Bind(wx.EVT_MENU, self.TreeItemDelete, id=del_item_id)
+        self.treebox.PopupMenu(menu)
+
+    def TreeItemDelete(self, event):
+        """ Delete the selected tree item """
+        wordDets = cf.loadWordDetails(self.current_node)
+        print('Delete {0}'.format(wordDets['text'][0]))
+        #TODO: Finish implementing me
+
+    def TreeItemAddChild(self, event):
+        """ Add a child to the selected tree item """
+        wordDets = cf.loadWordDetails(self.current_node)
+        print('Add a child to {0}'.format(wordDets['text'][0]))
+        #TODO: Finish implementing me
+
+    def TreeItemAddSib(self, event):
+        """ Add a sibling to the selected tree item """
+        wordDets = cf.loadWordDetails(self.current_node)
+        print('Add a sibling to {0}'.format(wordDets['text'][0]))
+        #TODO: Finish implementing me
 
     def SelectTreeItem(self, event):
         """ Find what tree item has been selected and then update UI """
