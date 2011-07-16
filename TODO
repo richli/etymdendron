@@ -11,10 +11,10 @@ TO WORK ON NEXT
 * Ignore * prefix, - suffix for PIE roots
 * GUI
   * Implement more editing
-    * Create new entries in the tree
-    * Remove entries from the tree
+    * Create new entries in the tree (started, need to finish)
+    * Remove entries from the tree (started, need to finish)
     * Drag-and-drop elements of the tree
-    * Create a new tree
+    * Create a new tree (added a menu item)
   * Maybe create a link to the entry on etymonline
   * A taskbar icon
 * Create some documentation using Sphinx
