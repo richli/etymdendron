@@ -10,6 +10,12 @@
 			<label>MyMenuBar</label>
 			<object class="wxMenu" name="m_file">
 				<label>File</label>
+				<object class="wxMenuItem" name="m_newtree">
+					<label>New tree</label>
+					<help></help>
+					<enabled>0</enabled>
+				</object>
+				<object class="separator" />
 				<object class="wxMenuItem" name="m_load">
 					<label>Load</label>
 					<help></help>
