@@ -273,6 +273,7 @@ class EtymApp(wx.App):
     def MenuTreeItem(self, event):
         """ Right-click menu for a tree item """
         self.current_node = self.treebox.GetPyData(event.GetItem())
+        # Create the menu
         menu = wx.Menu()
         child_item_id = wx.NewId()
         menu.Append(child_item_id, 'Add child word')
@@ -280,9 +281,16 @@ class EtymApp(wx.App):
         menu.Append(sib_item_id, 'Add sibling word')
         del_item_id = wx.NewId()
         menu.Append(del_item_id, 'Delete word')
+        # Disable items if not in edit mode
+        if not self.edit_mode:
+            menu.Enable(child_item_id, False)
+            menu.Enable(sib_item_id, False)
+            menu.Enable(del_item_id, False)
+        # Bind events
         menu.Bind(wx.EVT_MENU, self.TreeItemAddChild, id=child_item_id)
         menu.Bind(wx.EVT_MENU, self.TreeItemAddSib, id=sib_item_id)
         menu.Bind(wx.EVT_MENU, self.TreeItemDelete, id=del_item_id)
+        # Show the menu
         self.treebox.PopupMenu(menu)
 
     def TreeItemDelete(self, event):
