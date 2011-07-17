@@ -275,7 +275,7 @@ class EtymDB(unittest.TestCase):
         num_trees, matched_words = cf.searchDB(db, 'ferkel')
         test_word = matched_words[0][1]
 
-#        # Test deleting a word that's not in the tree
+#        # Test deleting a word that's not in the tree?
 #        word_dets = {'lang': 'English', 'text': ['banana', 'pineapple'],
 #                'morpheme': 'bannana', 'def': 'A fruity thing'}
 #        orphan_word = cf.createWord(word_dets)
