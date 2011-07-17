@@ -214,7 +214,9 @@ class EtymDB(unittest.TestCase):
         word_det.text = 'sdf0'
         test_word.append(word_det)
         cf.validateWord(test_word)
-        sort_output = '<word>testing<lang>asdf</lang><text>23rds</text><text>203fjklsdfj</text><morpheme>sdf0</morpheme><def>lkjfs</def></word>'
+        sort_output = ('<word>testing<lang>asdf</lang><text>23rds</text>'
+        '<text>203fjklsdfj</text><morpheme>sdf0</morpheme>'
+        '<def>lkjfs</def></word>')
         self.assertEqual(ET.tostring(test_word), sort_output)
 
     def testChangeChildren(self):
@@ -258,10 +260,10 @@ class EtymDB(unittest.TestCase):
                 'morpheme': 'bannana', 'def': 'A fruity thing'}
         new_word = cf.createWord(word_dets)
         cf.editWordParent(new_word, test_parent)
-        self.assertEqual(cf.countWordChildren(test_parent),2)
-        self.assertEqual(cf.countWordChildren(chosen_word),0)
+        self.assertEqual(cf.countWordChildren(test_parent), 2)
+        self.assertEqual(cf.countWordChildren(chosen_word), 0)
         cf.editWordParent(new_word, chosen_word)
-        self.assertEqual(cf.countWordChildren(chosen_word),1)
+        self.assertEqual(cf.countWordChildren(chosen_word), 1)
         # Add a new word and it to be parent to a word
         new_word = cf.createWord(word_dets)
         cf.editWordParent(chosen_word, new_word)
@@ -309,6 +311,7 @@ class EtymDB(unittest.TestCase):
         raise NotImplementedError
 
 class EtymDisplayCLI(unittest.TestCase):
+    """ Various tests for the CLI display """
     dispHorse = u'''Root: khursa (PIE)
   Child: hors (Old English, "A man-eating beast")
     Child: *horse*, hors, horce, horsse, horis, hos, ors (Middle English, "A horse that you feed oats")

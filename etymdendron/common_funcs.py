@@ -11,10 +11,13 @@ except ImportError as im_err:
 ###
 # Exceptions
 class EtymException(Exception):
+    """ Generic Exception for Etymdendron """
     pass
 class EtymExceptDB(EtymException):
+    """ A database-related exception """
     pass
 class EtymExceptWord(EtymException):
+    """ A word-related exception """
     pass
 
 ###
