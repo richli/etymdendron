@@ -211,7 +211,7 @@ def validateWord(word):
     """
 
     # First check the tag
-    if word.tag != 'word':
+    if word.tag != 'word' and word.tag != 'tree':
         raise EtymExceptWord('Invalid word tag (tag={0})'.format(word.tag))
 
     # Check all of the subelements are present in right numbers
