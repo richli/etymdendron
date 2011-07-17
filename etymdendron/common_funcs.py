@@ -232,7 +232,7 @@ def validateWord(word):
                 '\n details: {1}'.format(item, word_items))
 
     # Need at most one of the following
-    for item in ['lang', 'morpheme', 'def']:
+    for item in ['lang', 'def']:
         if test_items[item] > 1:
             raise EtymExceptWord('Too many of "{0}" found in word details'
                 '\n details: {1}'.format(item, word_items))
