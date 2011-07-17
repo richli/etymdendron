@@ -287,8 +287,11 @@ class EtymApp(wx.App):
 
     def TreeItemDelete(self, event):
         """ Delete the selected tree item """
-        wordDets = cf.loadWordDetails(self.current_node)
-        print('Delete {0}'.format(wordDets['text'][0]))
+        cf.deleteWord(self.current_node)
+        # Refresh the tree
+        self.DisplayTree(self.search_root, self.search_words)
+        #wordDets = cf.loadWordDetails(self.current_node)
+        #print('Delete {0}'.format(wordDets['text'][0]))
         #TODO: Finish implementing me
 
     def TreeItemAddChild(self, event):
