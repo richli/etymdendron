@@ -3,7 +3,6 @@ TODO for etymdendron
 TO WORK ON NEXT
 ---------------
 * Backend functions to edit the tree
-  * Implement deleteWord()
   * Add functions to:
     * Move a word (it's then a combo of adding and removing, but mind the children)
   * The above is working within a tree, I then need to create a new tree
