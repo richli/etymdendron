@@ -19,7 +19,6 @@ TO WORK ON NEXT
 
 KNOWN BUGS
 ----------
-* Cannot create a sibling word to the tree root (raises an exception)
 * Cannot delete the tree root (raises an exception)
 
 EVENTUALLY

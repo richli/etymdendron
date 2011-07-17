@@ -286,6 +286,9 @@ class EtymApp(wx.App):
             menu.Enable(child_item_id, False)
             menu.Enable(sib_item_id, False)
             menu.Enable(del_item_id, False)
+        # Disable add sibling if we're on the root word (no parent)
+        if cf.loadWordDetails(self.current_node)['tag'] == 'tree':
+            menu.Enable(sib_item_id, False)
         # Bind events
         menu.Bind(wx.EVT_MENU, self.TreeItemAddChild, id=child_item_id)
         menu.Bind(wx.EVT_MENU, self.TreeItemAddSib, id=sib_item_id)
