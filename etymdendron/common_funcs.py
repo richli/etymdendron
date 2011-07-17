@@ -234,7 +234,7 @@ def validateWord(word):
     # Need at most one of the following
     for item in ['lang', 'morpheme', 'def']:
         if test_items[item] > 1:
-            raise EtymExceptWord('Too many of "{0} found in word details'
+            raise EtymExceptWord('Too many of "{0}" found in word details'
                 '\n details: {1}'.format(item, word_items))
 
     # Now put the items in the right order
