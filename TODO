@@ -5,19 +5,22 @@ TO WORK ON NEXT
 * Backend functions to edit the tree
   * Add functions to:
     * Move a word (it's then a combo of adding and removing, but mind the children)
-  * The above is working within a tree, I then need to create a new tree
+  * Create/delete new trees
 * I don't have searching for PIE roots enabled yet
 * Ignore * prefix, - suffix for PIE roots
 * GUI
   * Implement more editing
-    * Create new entries in the tree (started, need to finish)
-    * Remove entries from the tree (started, need to finish)
     * Drag-and-drop elements of the tree
     * Create a new tree (added a menu item)
   * Maybe create a link to the entry on etymonline
   * A taskbar icon
 * Create some documentation using Sphinx
 * For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
+
+KNOWN BUGS
+----------
+* Cannot create a sibling word to the tree root (raises an exception)
+* Cannot delete the tree root (raises an exception)
 
 EVENTUALLY
 ----------
