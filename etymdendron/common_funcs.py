@@ -89,6 +89,7 @@ def loadWordDetails(word):
     wordDets['def'] = word.xpath('def')[0].text
     wordDets['morpheme'] = word.xpath('morpheme')[0].text
     wordDets['text'] = [n.text for n in word.xpath('text')]
+    wordDets['tag'] = word.tag
 
     return wordDets
 
@@ -182,6 +183,8 @@ def createWord(word_details, word_parent=None, word_children=None):
 
     """
     # Create the new word element
+    # TODO: If word_details has a 'tag' key, the value belongs here ('word' or
+    # 'tree')
     new_word = ET.Element('word')
 
     # Append children words

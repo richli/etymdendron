@@ -139,7 +139,8 @@ class EtymDB(unittest.TestCase):
 
         # Now a good input, test the output
         word_dets = {'lang': 'English', 'text': ['banana', 'pineapple'],
-                'morpheme': 'bannana', 'def': 'A fruity thing'}
+                'morpheme': 'bannana', 'def': 'A fruity thing',
+                     'tag': 'word'}
         new_word = cf.createWord(word_dets)
         new_word_details = cf.loadWordDetails(new_word)
         self.assertEqual(word_dets, new_word_details)
