@@ -289,7 +289,8 @@ def editWordParent(word, parent):
 
     # Check inputs
     validateWord(word)
-    validateWord(parent)
+    if parent is not None:
+        validateWord(parent)
 
     # Sever the word from its old parent
     old_parent = word.getparent()
@@ -299,7 +300,8 @@ def editWordParent(word, parent):
                 old_parent.remove(child)
 
     # Attach it to its new one
-    parent.append(word)
+    if parent is not None:
+        parent.append(word)
 
 def deleteWord(word):
     """ Deletes the word from the tree
