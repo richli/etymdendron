@@ -266,10 +266,36 @@ class EtymDB(unittest.TestCase):
         cf.editWordParent(chosen_word, new_word)
         self.assertEqual(new_word, cf.loadWordParents(chosen_word))
 
-    @unittest.skip('Not yet implemented')
     def testDelWord(self):
         """ Test deleting a word """
-        raise NotImplementedError
+        # This parent I've chosen has only one child
+        db = self.getDB()
+        num_trees, matched_words = cf.searchDB(db, 'varch')
+        test_parent = matched_words[0][1]
+        num_trees, matched_words = cf.searchDB(db, 'ferkel')
+        test_word = matched_words[0][1]
+
+        # Test deleting a word that's not in the tree
+        word_dets = {'lang': 'English', 'text': ['banana', 'pineapple'],
+                'morpheme': 'bannana', 'def': 'A fruity thing'}
+        orphan_word = cf.createWord(word_dets)
+        self.assertRaises(cf.EtymExceptWord, cf.deleteWord, orphan_word)
+
+        # Test deleting a word
+        cf.deleteWord(test_word)
+        self.assertEqual(cf.loadWordChildren(test_parent), 0)
+        num_trees, matched_words = cf.searchDB(db, 'ferkel')
+        self.assertEqual(num_trees, 0)
+
+        # Reload the db, delete the parent and ensure the child moves up
+        db = self.getDB()
+        num_trees, matched_words = cf.searchDB(db, 'varch')
+        test_parent = matched_words[0][1]
+        num_trees, matched_words = cf.searchDB(db, 'ferkel')
+        test_word = matched_words[0][1]
+        test_grandparent = cf.loadWordParents(test_parent)
+        cf.deleteWord(test_parent)
+        self.assertEqual(cf.loadWordParents(test_word), test_grandparent)
 
     @unittest.skip('Not yet implemented')
     def testDelTree(self):
