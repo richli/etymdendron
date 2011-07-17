@@ -327,7 +327,3 @@ def deleteWord(word):
     # Sever the word from its parent
     editWordParent(word, None)
 
-# Note to self: If a word has no parents/children, is still written out when
-# the XML is serialized, or is it effectively removed? Do I have to delete the
-# object itself?
-
