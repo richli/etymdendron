@@ -290,21 +290,27 @@ class EtymApp(wx.App):
         cf.deleteWord(self.current_node)
         # Refresh the tree
         self.DisplayTree(self.search_root, self.search_words)
-        #wordDets = cf.loadWordDetails(self.current_node)
-        #print('Delete {0}'.format(wordDets['text'][0]))
-        #TODO: Finish implementing me
 
     def TreeItemAddChild(self, event):
         """ Add a child to the selected tree item """
-        wordDets = cf.loadWordDetails(self.current_node)
-        print('Add a child to {0}'.format(wordDets['text'][0]))
-        #TODO: Finish implementing me
+        # Create a word with some default values
+        #wordDets = cf.loadWordDetails(self.current_node)
+        word_dets = {'text': ['DEFAULT'], 'morpheme': 'DEFAULT', 'lang':
+                     'UNKNOWN', 'def': 'Change me!'}
+        cf.createWord(word_dets, word_parent=self.current_node)
+        # Refresh the tree
+        self.DisplayTree(self.search_root, self.search_words)
 
     def TreeItemAddSib(self, event):
         """ Add a sibling to the selected tree item """
-        wordDets = cf.loadWordDetails(self.current_node)
-        print('Add a sibling to {0}'.format(wordDets['text'][0]))
-        #TODO: Finish implementing me
+        # Create a word with some default values
+        #wordDets = cf.loadWordDetails(self.current_node)
+        word_dets = {'text': ['DEFAULT'], 'morpheme': 'DEFAULT', 'lang':
+                     'UNKNOWN', 'def': 'Change me!'}
+        cf.createWord(word_dets,
+                      word_parent=cf.loadWordParents(self.current_node))
+        # Refresh the tree
+        self.DisplayTree(self.search_root, self.search_words)
 
     def SelectTreeItem(self, event):
         """ Find what tree item has been selected and then update UI """
