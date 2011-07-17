@@ -312,7 +312,34 @@ def deleteWord(word):
 
     The word is then removed from the tree.
     """
-    raise NotImplementedError
+
+    # Check input
+    validateWord(word)
+
+    # Check that it's in the tree
+    # TODO: Finish implementing me
+
+    # Load in parent and children
+    word_children = loadWordChildren(word)
+    word_parent = loadWordParents(word)
+
+    # Attach the children to the new parent
+    for child in word_children:
+        editWordParent(child, word_parent)
+
+    # Sever the word from its parent
+    editWordParent(word, None)
+
+
+#    old_parent = word.getparent()
+#    if old_parent is not None:
+#        for child in old_parent.iterchildren(tag='word'):
+#            if child == word:
+#                old_parent.remove(child)
+
+
+
 # Note to self: If a word has no parents/children, is still written out when
 # the XML is serialized, or is it effectively removed? Do I have to delete the
 # object itself?
+
