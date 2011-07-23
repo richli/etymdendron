@@ -300,4 +300,240 @@
       </word>
     </word>
   </tree>
+  <tree id="5">
+  <lang>PIE</lang>
+    <text>*woid-</text>
+    <text>*weid-</text>
+	<text>*wid-</text>
+    <morpheme>*woid-</morpheme>
+    <def>To see; (? orginally to find)</def>
+	<word>
+		<lang>Old Germanic</lang>
+		<text>wait-</text>
+		<text>wit-</text>
+		<morpheme>wait-</morpheme>
+		<def>To see</def>
+		<word>
+			<lang>Gothic</lang>
+			<text>witan</text>
+			<text>wait</text>
+			<text>waist</text>
+			<text>witum</text>
+			<text>wissa</text>
+			<morpheme>witan</morpheme>
+			<def>To have seen, hence to know</def>
+		</word>
+		<word>
+			<lang>Old High German</lang>
+			<text>wizzan</text>
+			<text>wizan</text>
+			<text>weiz</text>
+			<text>wiz(z)umês</text>
+			<text>wiz(z)un</text>
+			<text>wissa</text>
+			<text>wista</text>
+			<text>(gi)wizan</text>
+			<morpheme>wizzan</morpheme>
+			<def>To have seen, hence to know</def>
+			<word>
+				<lang>Middle High German</lang>
+				<text>wizzen</text>
+				<text>weiz</text>
+				<text>wizzen</text>
+				<text>wisse</text>
+				<text>wiste</text>
+				<text>wesse</text>
+				<text>weste</text>
+				<text>wuste</text>
+				<text>gewizzen</text>
+				<text>gewist</text>
+				<morpheme>wizzen</morpheme>
+				<def>To know (facts)</def>
+				<word>
+					<lang>(Modern High) German</lang>
+					<text>wissen</text>
+					<text>weiss</text>
+					<text>weisst</text>
+					<text>wissen</text>
+					<text>wusste</text>
+					<text>gewusst</text>
+					<morpheme>wissen</morpheme>
+					<def>To know (facts)</def>
+				</word>
+			</word>
+		</word>
+		<word>
+			<lang>Old Saxon</lang>
+			<text>witan</text>
+			<text>wêt</text>
+			<text>wêst</text>
+			<text>witun</text>
+			<text>wissa</text>
+			<morpheme>witan</morpheme>
+			<def>To have seen, hence to know</def>
+			<word>
+				<lang>Middle Low German, Middle Dutch</lang>
+				<text>wêten</text>
+				<text>weet</text>
+				<text>weets</text>
+				<text>weten</text>
+				<text>wiste</text>
+				<text>gheweten</text>
+				<morpheme>wêten</morpheme>
+				<def>To know</def>
+				<word>
+					<lang>Low German, Dutch</lang>
+					<text>weten</text>
+					<morpheme>weten</morpheme>
+					<def>To know</def>
+				</word>
+			</word>
+		</word>
+		<word>
+			<lang>Old English</lang>
+			<text>witan</text>
+			<text>wát</text>
+			<text>wást</text>
+			<text>witon</text>
+			<text>wisse</text>
+			<text>wiste</text>
+			<text>gewiten</text>
+			<morpheme>witan</morpheme>
+			<def>To have seen, hence to know</def>
+			<word>
+				<lang>Middle English</lang>
+				<text>witen</text>
+				<text>wyten</text>
+				<text>wite</text>
+				<text>witin</text>
+				<text>witten</text>
+				<text>wijt</text>
+				<text>wyete</text>
+				<text>wiet</text>
+				<text>wiete</text>
+				<text>whitte</text>
+				<text>witt</text>
+				<text>wytt</text>
+				<text>wit</text>
+				<morpheme>witen</morpheme>
+				<def>To know</def>
+				<word>
+					<lang>(Present-day) English</lang>
+					<text>wit</text>
+					<text>wot</text>
+					<text>wost</text>
+					<text>wite</text>
+					<text>wist</text>
+					<text>witen</text>
+					<morpheme>wit</morpheme>
+					<def>To know (archaic)</def>
+				</word>
+			</word>
+		</word>
+		<word>
+			<lang>Old Frisian</lang>
+			<text>wita</text>
+			<text>wêt</text>
+			<text>*wast</text>
+			<text>*witon</text>
+			<text>witen</text>
+			<text>witath</text>
+			<text>wiste</text>
+			<morpheme>wita</morpheme>
+			<def>To have seen, hence to know</def>
+		</word>
+		<word>
+			<lang>Old Norse</lang>
+			<text>vita</text>
+			<text>veit</text>
+			<text>veizt</text>
+			<text>vitum</text>
+			<text>vissa</text>
+			<text>vitaðr</text>
+			<morpheme>vita</morpheme>
+			<def>To have seen, hence to know</def>
+			<word>
+				<lang>Swedish</lang>
+				<text>veta</text>
+				<text>vet</text>
+				<text>visste</text>
+				<text>vetat</text>
+				<morpheme>veta</morpheme>
+				<def>To know</def>
+			</word>
+			<word>
+				<lang>Danish</lang>
+				<text>vide</text>
+				<text>ved</text>
+				<text>vidste</text>
+				<text>vidst</text>
+				<morpheme>vide</morpheme>
+				<def>To know</def>
+			</word>
+		</word>
+	</word>
+	<word>
+		<lang>Sanskrit</lang>
+		<text>véda</text>
+		<text>véttha</text>
+		<text>vidmá</text>
+		<morpheme>véda</morpheme>
+		<def>? To have seen, hence to know</def>
+	</word>
+	<word>
+		<lang>Sanskrit</lang>
+		<text>veda</text>
+		<morpheme>veda</morpheme>
+		<def>knowledge</def>
+	</word>
+	<word>
+		<lang>Sanskrit</lang>
+		<text>vitta-</text>
+		<morpheme>vitta-</morpheme>
+		<def>known</def>
+	</word>
+	<word>
+		<lang>Sanskrit</lang>
+		<text>vittá-</text>
+		<morpheme>vittá-</morpheme>
+		<def>found</def>
+	</word>
+	<word>
+		<lang>Latin</lang>
+		<text>vidēre</text>
+		<morpheme>vidēre</morpheme>
+		<def>To see</def>
+	</word>
+	<word>
+		<lang>Old Prussian</lang>
+		<text>waisei</text>
+		<text>waidimai</text>
+		<morpheme>waisei</morpheme>
+		<def>To have seen, hence to know</def>
+	</word>
+	<word>
+		<lang>Old Irish</lang>
+		<text>fiadu</text>
+		<morpheme>fiadu</morpheme>
+		<def>witness</def>
+	</word>
+	<word>
+		<lang>Old Irish</lang>
+		<text>fiss</text>
+		<morpheme>fiss</morpheme>
+		<def>knowledge</def>
+	</word>
+	<word>
+		<lang>Old Irish</lang>
+		<text>rofetar</text>
+		<morpheme>rofetar</morpheme>
+		<def>I know</def>
+	</word>
+	<word>
+		<lang>Old Irish</lang>
+		<text>finnaim</text>
+		<morpheme>finnaim</morpheme>
+		<def>I find out</def>
+	</word>
+  </tree>
 </etym>
