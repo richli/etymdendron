@@ -14,8 +14,9 @@ TO WORK ON NEXT
     * Create a new tree (added a menu item)
   * Maybe create a link to the entry on etymonline
   * A taskbar icon
+  http://docs.wxwidgets.org/stable/wx_wxtoplevelwindow.html#wxtoplevelwindowseticons
 * Create some documentation using Sphinx
-* For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros)
+* For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros; (z)un); flatten diacritics)
 
 KNOWN BUGS
 ----------
