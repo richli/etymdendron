@@ -25,6 +25,7 @@ class EtymExceptWord(EtymException):
 def loadDB(filename):
     """ This function loads the word database given by filename 
         Right now with the XML backend, I read and parse the file
+
     """
     words_db = ET.ElementTree()
     try:
@@ -42,6 +43,7 @@ def loadDB(filename):
 def saveDB(words_db, filename):
     """ This saves words_db into filename
         This is using the XML backend
+
     """
     with open(filename, 'w') as f:
         f.write(ET.tostring(words_db, encoding='utf-8', pretty_print=True,
@@ -49,9 +51,11 @@ def saveDB(words_db, filename):
 
 def searchDB(word_db, search_word):
     """ Searches the database word_db for the word search_word
+
         Returns a tuple: (num_trees, words)
         The 'words' element is itself a list of tuples: 
-            [(tree,word), (tree,word), ...]
+        [(tree,word), (tree,word), ...]
+
     """
      # We go through each of the possible trees
     matched_words = []
@@ -79,9 +83,11 @@ def loadWordDetails(word):
         For example, details = {'lang':'Modern English', 
             'def':'To dance lively', 
             'text': ['bigdance','coolstep','befrobingate'] }
+
         Remember the 'lang' and 'def' elements contain only a string, 
         whereas there can be more than one 'text' element. These text 
         elements are stored in a list.
+
     """
     if word == []:
         raise EtymExceptWord('No word given for loadWordDetails')
@@ -104,6 +110,7 @@ def editWordDetails(word, details):
         For example, details = {'lang':'Modern English', 
             'def':'To dance lively', 
             'text': ['bigdance','coolstep','befrobingate'] }
+
         Remember the 'lang' and 'def' elements contain only a string, 
         whereas there can be more than one 'text' element. These text 
         elements are stored in a list.
@@ -317,6 +324,7 @@ def deleteWord(word):
     and then modifies the word so it no longer has parent or children.
 
     The word is then removed from the tree.
+
     """
 
     # Check input
