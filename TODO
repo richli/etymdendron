@@ -6,17 +6,18 @@ TO WORK ON NEXT
   * Add functions to:
     * Move a word (it's then a combo of adding and removing, but mind the children)
   * Create/delete new trees
-* I don't have searching for PIE roots enabled yet
-* Ignore * prefix, - suffix for PIE roots
 * GUI
   * Implement more editing
     * Drag-and-drop elements of the tree
     * Create a new tree (added a menu item)
-  * Maybe create a link to the entry on etymonline
+  * Create a link to the entry on etymonline
   * A taskbar icon
   http://docs.wxwidgets.org/stable/wx_wxtoplevelwindow.html#wxtoplevelwindowseticons
-* Create some documentation using Sphinx
+* I don't have searching for PIE roots enabled yet
+* Ignore * prefix, - suffix for PIE roots
 * For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros; (z)un); flatten diacritics)
+* Create some documentation using Sphinx
+  * This is started. I should format the docstrings with rST and include built documentation when I package the project with distutils.
 
 KNOWN BUGS
 ----------
