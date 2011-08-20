@@ -19,4 +19,4 @@ Etymdendron is a etymology tree viewer.
 
 Usage
 =====
-Run `etym-gui.pyw` to run it.
+Run :file:`etym-gui.pyw` to run it.
