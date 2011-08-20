@@ -11,6 +11,9 @@ TO WORK ON NEXT
     * Drag-and-drop elements of the tree
     * Create a new tree (added a menu item)
   * Create a link to the entry on etymonline
+    * The URL is http://www.etymonline.com/index.php?term=
+    * Append the term you're search for after the =
+    * Prefixes and suffixes have a hyphen (eg, ex-, -ectomy)
   * A taskbar icon
   http://docs.wxwidgets.org/stable/wx_wxtoplevelwindow.html#wxtoplevelwindowseticons
 * I don't have searching for PIE roots enabled yet
