@@ -353,6 +353,12 @@ def moveWord(source, dest):
     source is the word to be moved. This routine attaches it to be a child
     of dest.
 
+    This is just a wrapper (possibly unneeded) for editWordParent()
+
     """
-    raise NotImplementedError
+    validateWord(source)
+    validateWord(dest)
+
+    editWordParent(source, dest)
+
 

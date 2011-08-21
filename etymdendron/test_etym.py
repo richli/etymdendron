@@ -346,8 +346,6 @@ class EtymDB(unittest.TestCase):
         test_dest_child = matched_words[0][1]
         self.assertEqual(cf.loadWordParents(test_dest_child), test_source)
 
-
-
     @unittest.skip('Not yet implemented')
     def testDelTree(self):
         """ Test deleting a tree """
