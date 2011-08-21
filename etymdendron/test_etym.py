@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8 :
 """ Testing framework for etymdendron 
-    Uses the unittest framework in the stdlib
+
+    Uses the unittest framework in the stdlib.
 """
 
 import unittest

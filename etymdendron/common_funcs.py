@@ -24,7 +24,8 @@ class EtymExceptWord(EtymException):
 # Functions
 def loadDB(filename):
     """ This function loads the word database given by filename 
-        Right now with the XML backend, I read and parse the file
+
+        Right now with the XML backend, I read and parse the file.
 
     """
     words_db = ET.ElementTree()
@@ -42,7 +43,8 @@ def loadDB(filename):
 
 def saveDB(words_db, filename):
     """ This saves words_db into filename
-        This is using the XML backend
+
+        This is using the XML backend.
 
     """
     with open(filename, 'w') as f:
@@ -77,8 +79,9 @@ def searchDB(word_db, search_word):
 
 def loadWordDetails(word):
     """ Returns the details of the element word
+
         details is a dict where the keys are the element names and 
-        the values the element text
+        the values the element text.
 
         For example, details = {'lang':'Modern English', 
             'def':'To dance lively', 
@@ -104,8 +107,9 @@ def loadWordDetails(word):
 
 def editWordDetails(word, details):
     """ Edits the element word using details
+
         details is a dict where the keys are the element names and 
-        the values the element text
+        the values the element text.
 
         For example, details = {'lang':'Modern English', 
             'def':'To dance lively', 
@@ -157,21 +161,23 @@ def editWordDetails(word, details):
 
 def loadWordParents(word):
     """ This returns the parent(s) of a given word
-    Output is a list, each item is a parent
-    Each item is the ElementTree node for each parent
-    If no parents are found, then it returns None
+
+    Output is a list, each item is a parent.
+    Each item is the ElementTree node for each parent.
+    If no parents are found, then it returns None.
 
     NB: I can't specify more than one parent in XML, 
-    so this doesn't return a list
+    so this doesn't return a list.
 
     """
     return word.getparent()
 
 def loadWordChildren(word):
     """ This returns the child(ren) of a given word
-    Output is a list, each item is a child word
-    Each item is the ElementTree node for each child
-    If no children are found, then it returns []
+
+    Output is a list, each item is a child word.
+    Each item is the ElementTree node for each child.
+    If no children are found, then it returns [].
 
     """
     return word.xpath('word')
@@ -183,9 +189,9 @@ def countWordChildren(word):
 def createWord(word_details, word_parent=None, word_children=None):
     """ Creates a new word given the word_details dictionary
     
-    word_details is a dictionary in the same format as editWordDetails
-    That is, the keys are ['lang', 'text', 'def', 'morpheme']
-    All of the values are strings, except 'text' is a list of strings
+    word_details is a dictionary in the same format as editWordDetails.
+    That is, the keys are ['lang', 'text', 'def', 'morpheme'].
+    All of the values are strings, except 'text' is a list of strings.
 
     It returns a new Element object with the right setup. It needs to be
     added to a tree by specifying parent/children. This can be done later
@@ -219,7 +225,7 @@ def validateWord(word):
 
     word is an Element object and is checked that it follows the DTD.
     If all the subelements exist (lang, def, subwords, etc), then it
-    rewrites them in the proper order
+    rewrites them in the proper order.
 
     """
 
@@ -262,10 +268,11 @@ def validateWord(word):
 def editWordChildren(word, children):
     """ Changes the children of a word
 
-    word is some Element object and children is a list of Element object(s)
-    This *OVERWRITES* the links to any extant children with those specified
+    word is some Element object and children is a list of Element object(s).
+    This **OVERWRITES** the links to any extant children with those specified.
 
-    If children is None or [] then it severs the extant children from the word
+    If children is None or [] then it severs the extant children from 
+    the word.
 
     """
 
@@ -294,12 +301,12 @@ def editWordChildren(word, children):
 def editWordParent(word, parent):
     """ Changes the parent of a word
 
-    word is some Element object and parent is another Element object
+    word is some Element object and parent is another Element object.
     If word already has a parent, that link to the old parent is 
-    overwritten with this one
+    overwritten with this one.
 
     If parent is None, then it severs the word (and its descendants)
-    from the tree
+    from the tree.
 
     """
 
@@ -323,8 +330,9 @@ def deleteWord(word):
     """ Deletes the word from the tree
 
     If word is a part of tree (has parent/children), then it severs the link
-    first by attaching any children to parent (the grandparent of the children)
-    and then modifies the word so it no longer has parent or children.
+    first by attaching any children to parent (the grandparent 
+    of the children) and then modifies the word so it no longer 
+    has parent or children.
 
     The word is then removed from the tree.
 

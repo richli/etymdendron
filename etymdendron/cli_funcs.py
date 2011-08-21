@@ -6,6 +6,7 @@ import common_funcs as cf
 # Input functions
 def get_search_word():
     """ Just a wrapper to input a search word
+
     """
     #NB: for Python3, this is input(...), not raw_input(...)
     word = raw_input('Input a word to search for: ') 
@@ -13,8 +14,8 @@ def get_search_word():
     return word
 
 def get_num_choice(prompt='Input: ', min_num=0, max_num=10):
-    """ Get a number choice with prompt, only allow integers 
-        between min_num and max_num
+    """ Prompt for an integer between min_num and max_num
+
     """
     while True:
         num = raw_input(prompt)
@@ -31,8 +32,10 @@ def get_num_choice(prompt='Input: ', min_num=0, max_num=10):
 
 def choose_word_from_many(words):
     """ From a list of matched words, prompts the user to select which one
-        words is a list of tuples, each tuple is (tree,word)
-        returns the one (tree,word) tuple
+
+        words is a list of tuples, each tuple is (tree,word).
+        Returns the one (tree,word) tuple.
+
     """
     # Find the morphemes,language for each instance
     mor_lan = []
@@ -57,7 +60,9 @@ def choose_word_from_many(words):
 # Display functions
 def display_tree(tree, word, search_word):
     """ For a given word and tree, display the rest of the tree 
-        The search_word is emphasized
+
+        The search_word is emphasized.
+
     """
     # Encapsulate word in a list if it isn't already
     if type(word) is not list:
@@ -70,10 +75,12 @@ def display_tree(tree, word, search_word):
 
 def display_children(node, depth, word, search_word):
     """ Recursive function to display children of a node
-        depth is what level we're on
+
+        depth is what level we're on.
         word is the word element we're looking for (it will be emphasized
-        in the tree)
-        search_word is the word text we're looking for
+        in the tree).
+        search_word is the word text we're looking for.
+
     """
     # The len() of a node returns how many children it has
     if cf.countWordChildren(node) > 0:

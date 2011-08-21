@@ -223,9 +223,10 @@ class EtymApp(wx.App):
 
     def DisplayTree(self, root, nodes):
         """ Displays the tree in the wx.TreeCtrl object 
-            root is the ElementTree root node
-            nodes is a list of ElementTree word nodes
-            if root is None, then is displays an empty tree message
+
+            root is the ElementTree root node.
+            nodes is a list of ElementTree word nodes.
+            If root is None, then is displays an empty tree message.
         """
         self.treebox.DeleteAllItems()
         if root is None:
@@ -250,9 +251,12 @@ class EtymApp(wx.App):
 
     def _populate_tree(self, node, node_elem, emph_nodes):
         """ Recursive private function to fill in the rest of the tree control 
-            node: the ElementTree element we're working on
-            node_elem: the corresponding object in the TreeCtrl class
-            emph_nodes: a list of ElementTree elements, these will be emphasized
+
+            node: the ElementTree element we're working on.
+            node_elem: the corresponding object in the TreeCtrl class.
+            emph_nodes: a list of ElementTree elements, 
+            these will be emphasized.
+
         """
         # len() of a node returns how many children it has
         if cf.countWordChildren(node) > 0:
