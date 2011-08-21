@@ -223,6 +223,9 @@ def validateWord(word):
 
     """
 
+    if word is None:
+        raise EtymExceptWord('word is None!')
+
     # First check the tag
     if word.tag != 'word' and word.tag != 'tree':
         raise EtymExceptWord('Invalid word tag (tag={0})'.format(word.tag))
