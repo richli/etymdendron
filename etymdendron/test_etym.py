@@ -347,10 +347,55 @@ class EtymDB(unittest.TestCase):
         test_dest_child = matched_words[0][1]
         self.assertEqual(cf.loadWordParents(test_dest_child), test_source)
 
+    def testFindroot(self):
+        """ Test finding the tree root of a word """
+        # Search for biology, since it's in two trees
+        db = self.getDB()
+        # First get references to the words
+        num_trees, matched_words = cf.searchDB(db, 'biology')
+        test_source = matched_words[0][1]
+        test_root = matched_words[0][0]
+        self.assertEqual(num_trees, 2)
+        # Find the root
+        tree_root = cf.findRoot(test_source)
+        tree_root_details = cf.loadWordDetails(tree_root)
+        # Confirm it's right
+        self.assertEqual(tree_root_details['lang'], 'PIE')
+        self.assertEqual(tree_root_details['morpheme'], 'gweie')
+        self.assertEqual(test_root, tree_root)
+        # Now try the other biology tree
+        test_source = matched_words[1][1]
+        test_root = matched_words[1][0]
+        # Find the root
+        tree_root = cf.findRoot(test_source)
+        tree_root_details = cf.loadWordDetails(tree_root)
+        # Confirm it's right
+        self.assertEqual(tree_root_details['lang'], 'PIE')
+        self.assertEqual(tree_root_details['morpheme'], 'leg')
+        self.assertEqual(test_root, tree_root)
+
     @unittest.skip('Not yet implemented')
     def testDelTree(self):
         """ Test deleting a tree """
-        raise NotImplementedError
+        # Search for biology, since it's in two trees
+        db = self.getDB()
+        # First get references to the words
+        num_trees, matched_words = cf.searchDB(db, 'biology')
+        test_source = matched_words[0][1]
+        self.assertEqual(num_trees, 2)
+        tree_root = cf.findRoot(test_source)
+        # Delete a tree
+        cf.deleteTree(tree_root)
+        # Confirm it happened
+        num_trees, matched_words = cf.searchDB(db, 'biology')
+        test_source = matched_words[0][1]
+        self.assertEqual(num_trees, 1)
+        tree_root = cf.findRoot(test_source)
+        # Try again
+        cf.deleteTree(tree_root)
+        # Confirm it happened (again)
+        num_trees, matched_words = cf.searchDB(db, 'biology')
+        self.assertEqual(num_trees, 0)
 
     @unittest.skip('Not yet implemented')
     def testAddTree(self):
