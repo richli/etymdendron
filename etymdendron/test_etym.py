@@ -323,6 +323,30 @@ class EtymDB(unittest.TestCase):
         self.assertRaises(cf.EtymExceptWord, cf.moveWord, test_source, None)
         self.assertRaises(cf.EtymExceptWord, cf.moveWord, None, test_source)
 
+        # Another test, this time make sure the children are maintained
+        # We move fearh (which has a child and a grandchild) to be a child
+        # of porcus (which has two children and a few further descendants)
+        db = self.getDB()
+        # First get references to the words
+        num_trees, matched_words = cf.searchDB(db, 'fearh')
+        test_source = matched_words[0][1]
+        test_source_parent = cf.loadWordParents(test_source)
+        num_trees, matched_words = cf.searchDB(db, 'porcus')
+        test_dest_parent = matched_words[0][1]
+        self.assertEqual(cf.countWordChildren(test_dest_parent), 2)
+        self.assertEqual(cf.countWordChildren(test_source), 1)
+        # Perform the move
+        cf.moveWord(test_source, test_dest_parent)
+        # Make sure it really happened
+        self.assertEqual(cf.countWordChildren(test_dest_parent), 3)
+        self.assertEqual(cf.countWordChildren(test_source_parent), 2)
+        self.assertEqual(cf.loadWordParents(test_source), test_dest_parent)
+        self.assertEqual(cf.countWordChildren(test_source), 1)
+        num_trees, matched_words = cf.searchDB(db, 'far')
+        test_dest_child = matched_words[0][1]
+        self.assertEqual(cf.loadWordParents(test_dest_child), test_source)
+
+
 
     @unittest.skip('Not yet implemented')
     def testDelTree(self):
