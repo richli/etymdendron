@@ -369,4 +369,11 @@ def moveWord(source, dest):
 
     editWordParent(source, dest)
 
+def findRoot(word):
+    """ Returns the tree root for a given word """
+    return word.xpath('ancestor::tree')[0]
+
+def deleteTree(tree):
+    """ Removes the tree and all its children from the XML db """
+    raise NotImplementedError
 
