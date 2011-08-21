@@ -300,6 +300,30 @@ class EtymDB(unittest.TestCase):
         cf.deleteWord(test_parent)
         self.assertEqual(cf.loadWordParents(test_word), test_grandparent)
 
+    def testMoveWord(self):
+        """ Test moving a word to a different location in the tree """
+        db = self.getDB()
+        # Here we move ross to be a child of hross
+        # First get references to the words
+        num_trees, matched_words = cf.searchDB(db, 'ross')
+        test_source = matched_words[0][1]
+        test_source_parent = cf.loadWordParents(test_source)
+        num_trees, matched_words = cf.searchDB(db, 'hross')
+        test_dest_parent = matched_words[0][1]
+        self.assertEqual(cf.countWordChildren(test_dest_parent), 0)
+        # Perform the move
+        cf.moveWord(test_source, test_dest_parent)
+        # Make sure it really happened
+        self.assertEqual(cf.countWordChildren(test_dest_parent), 1)
+        self.assertEqual(cf.countWordChildren(test_source_parent), 0)
+        self.assertEqual(cf.loadWordParents(test_source), test_dest_parent)
+
+        # Let's test for some bad inputs
+        self.assertRaises(cf.EtymExceptWord, cf.moveWord, None, None)
+        self.assertRaises(cf.EtymExceptWord, cf.moveWord, test_source, None)
+        self.assertRaises(cf.EtymExceptWord, cf.moveWord, None, test_source)
+
+
     @unittest.skip('Not yet implemented')
     def testDelTree(self):
         """ Test deleting a tree """

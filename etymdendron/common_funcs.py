@@ -341,3 +341,6 @@ def deleteWord(word):
     # Sever the word from its parent
     editWordParent(word, None)
 
+def moveWord(source, dest):
+    raise NotImplementedError
+
