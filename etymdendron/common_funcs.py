@@ -342,5 +342,14 @@ def deleteWord(word):
     editWordParent(word, None)
 
 def moveWord(source, dest):
+    """ Moves a word in the tree to a different location
+
+    source and dest are both valid words in the same tree. Children of
+    source and maintained so they're present in dest.
+
+    source is the word to be moved. This routine attaches it to be a child
+    of dest.
+
+    """
     raise NotImplementedError
 
