@@ -4,8 +4,7 @@ TO WORK ON NEXT
 ---------------
 * Backend functions to edit the tree
   * Add functions to:
-    * Move a word (it's then a combo of adding and removing, but mind the children)
-  * Create/delete new trees
+    * Create/delete new trees
 * GUI
   * Implement more editing
     * Drag-and-drop elements of the tree
