@@ -1,5 +1,15 @@
 Changelog for etymdendron
 
+2011-08-21	v0.50
+Implemented a unit testing framework for many of the functions. Abstracted the
+XML access behind functions to query and set word details and such. Added more
+trees to the words.xml database. Enabled edit word details functionality
+within the GUI, added a right-click menu to the tree list. Can delete and
+create new words from the GUI, and can delete trees (but not yet create them).
+Can save out XML file after updating it. Started some automatic documentation
+using Sphinx. Added a toggle-able edit mode in the GUI. Added a link to
+etymonline using the right-click menu.
+
 2011-06-19	v0.20
 Basic GUI laid out. Functionality duplicates that of the command-line version:
 search and display trees, get information about each entry. Word definitions
