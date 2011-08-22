@@ -347,7 +347,7 @@ class EtymDB(unittest.TestCase):
         test_dest_child = matched_words[0][1]
         self.assertEqual(cf.loadWordParents(test_dest_child), test_source)
 
-    def testFindroot(self):
+    def testFindRoot(self):
         """ Test finding the tree root of a word """
         # Search for biology, since it's in two trees
         db = self.getDB()
@@ -373,6 +373,16 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(tree_root_details['lang'], 'PIE')
         self.assertEqual(tree_root_details['morpheme'], 'leg')
         self.assertEqual(test_root, tree_root)
+
+    def testCheckNode(self):
+        """ Test checking the node type """
+        db = self.getDB()
+        num_trees, matched_words = cf.searchDB(db, 'fearh')
+        test_source = matched_words[0][1]
+        test_root = matched_words[0][0]
+        self.assertEqual(cf.checkNode(test_source), 'word')
+        self.assertRaises(cf.EtymExceptWord, cf.checkNode, None)
+        self.assertEqual(cf.checkNode(test_root), 'tree')
 
     def testDelTree(self):
         """ Test deleting a tree """

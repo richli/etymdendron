@@ -373,6 +373,18 @@ def findRoot(word):
     """ Returns the tree root for a given word """
     return word.xpath('ancestor::tree')[0]
 
+def checkNode(word):
+    """ Checks the word and returns the type 
+
+    Returns 'word' or 'tree' depending on if it's a word or a tree root.
+    Raises an exception if the word is invalid.
+
+    """
+    if word is None:
+        raise EtymExceptWord('word is None')
+
+    return word.tag
+
 def deleteTree(tree):
     """ Removes the tree and all its children from the XML db """
 
