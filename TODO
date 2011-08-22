@@ -17,6 +17,7 @@ KNOWN BUGS
 
 EVENTUALLY
 ----------
+  * Dynamically enable save/revert buttons (disable them until changes are made to the text boxes)
   * Add more words to words.xml, add more tests
   * A taskbar icon
   http://docs.wxwidgets.org/stable/wx_wxtoplevelwindow.html#wxtoplevelwindowseticons
