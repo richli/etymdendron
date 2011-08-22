@@ -279,6 +279,9 @@ class EtymApp(wx.App):
         self.current_node = self.treebox.GetPyData(event.GetItem())
         # Create the menu
         menu = wx.Menu()
+        www_item_id = wx.NewId()
+        menu.Append(www_item_id, 'Lookup on etymonline')
+        menu.AppendSeparator()
         child_item_id = wx.NewId()
         menu.Append(child_item_id, 'Add child word')
         sib_item_id = wx.NewId()
@@ -294,11 +297,18 @@ class EtymApp(wx.App):
         if cf.loadWordDetails(self.current_node)['tag'] == 'tree':
             menu.Enable(sib_item_id, False)
         # Bind events
+        menu.Bind(wx.EVT_MENU, self.TreeItemLookupWWW, id=www_item_id)
         menu.Bind(wx.EVT_MENU, self.TreeItemAddChild, id=child_item_id)
         menu.Bind(wx.EVT_MENU, self.TreeItemAddSib, id=sib_item_id)
         menu.Bind(wx.EVT_MENU, self.TreeItemDelete, id=del_item_id)
         # Show the menu
         self.treebox.PopupMenu(menu)
+
+    def TreeItemLookupWWW(self, event):
+        """ Lookup an entry on etymonline """
+        lookup_word = cf.loadWordDetails(self.current_node)
+        wx.LaunchDefaultBrowser('http://www.etymonline.com/index.php?' 
+                                'term={0}'.format(lookup_word['morpheme']))
 
     def TreeItemDelete(self, event):
         """ Delete the selected tree item """
