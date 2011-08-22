@@ -66,6 +66,10 @@ class EtymApp(wx.App):
                 id=wx.xrc.XRCID('et_tree'))
         self.frame.Bind(wx.EVT_TREE_ITEM_MENU, self.MenuTreeItem,
                 id=wx.xrc.XRCID('et_tree'))
+        self.frame.Bind(wx.EVT_TREE_BEGIN_DRAG, self.DragTreeItem,
+                id=wx.xrc.XRCID('et_tree'))
+        self.frame.Bind(wx.EVT_TREE_END_DRAG, self.DropTreeItem,
+                id=wx.xrc.XRCID('et_tree'))
         # Save some object references for later
         self.searchbox = wx.xrc.XRCCTRL(self.frame, 'et_boxSearch')
         self.treebox = wx.xrc.XRCCTRL(self.frame, 'et_tree')
@@ -298,6 +302,29 @@ class EtymApp(wx.App):
                     self.treebox.SelectItem(child_elem)
                 # Recurse!
                 self._populate_tree(child, child_elem, emph_nodes, select)
+
+    def DragTreeItem(self, event):
+        """ Initiate a drag-and-drop for the tree """
+        # This is only allowable under edit mode
+        if self.edit_mode:
+            self._drag_node = self.treebox.GetPyData(event.GetItem())
+            node_type = cf.checkNode(self._drag_node)
+            # We let words be moved, but not the tree root
+            if node_type == 'word':
+                event.Allow()
+            elif node_type == 'tree':
+                event.Veto()
+
+    def DropTreeItem(self, event):
+        """ Finish a drop-and-drop for the tree """
+        self._drop_node = self.treebox.GetPyData(event.GetItem())
+        # Can't drop onto a child of the self._drag_node (infinite loop)
+        #TODO: implement
+        # Okay, move the word
+        cf.moveWord(self._drag_node, self._drop_node)
+        # Refresh the tree
+        self.DisplayTree(self.search_root, self.search_words,
+                         select=self._drop_node)
 
     def MenuTreeItem(self, event):
         """ Right-click menu for a tree item """
