@@ -406,10 +406,47 @@ class EtymDB(unittest.TestCase):
         num_trees, matched_words = cf.searchDB(db, 'biology')
         self.assertEqual(num_trees, 0)
 
-    @unittest.skip('Not yet implemented')
     def testAddTree(self):
         """ Test adding a tree """
-        raise NotImplementedError
+        # Create a test word to attach to the new tree
+        word_dets = {'lang': 'English', 'text': ['banana', 'pineapple'],
+                'morpheme': 'banana', 'def': 'A fruity thing',
+                     'tag': 'word'}
+        new_word = cf.createWord(word_dets)
+        new_word_details = cf.loadWordDetails(new_word)
+        self.assertEqual(word_dets, new_word_details)
+        # Create the new tree
+        db = self.getDB()
+        tree_dets = {'lang': 'PIE', 'text': ['bane'],
+                'morpheme': 'bane', 'def': 'Some fruit',
+                     'tag': 'tree'}
+        cf.addTree(db, tree_dets, [new_word])
+        # Test that it was created
+        num_trees, matched_words = cf.searchDB(db, 'banana')
+        search_word = matched_words[0][1]
+        search_root = matched_words[0][0]
+        search_root_dets = cf.loadWordDetails(search_root)
+        self.assertEqual(search_word, new_word)
+        self.assertEqual(search_root_dets['lang'], 'PIE')
+        self.assertEqual(search_root_dets['def'], 'Some fruit')
+        self.assertEqual(search_root_dets['morpheme'], 'bane')
+        self.assertEqual(search_root_dets['text'], ['bane'])
+
+        # Okay, now test some bad input
+        # second arg not a list
+        self.assertRaises(cf.EtymExceptWord, cf.addTree, 
+                          db, tree_dets, new_word)
+        # No word given
+        self.assertRaises(cf.EtymExceptWord, cf.addTree, 
+                          db, tree_dets, [None])
+        # Invalid db
+        self.assertRaises(cf.EtymExceptWord, cf.addTree, 
+                          None, tree_dets, [new_word])
+        # Bad tree details
+        tree_dets = {'lang': 'PIE', 'text': 'bane',
+                'morpheme': 'bane', 'tag': 'tree'}
+        self.assertRaises(cf.EtymExceptWord, cf.addTree, 
+                          db, tree_dets, [new_word])
 
 class EtymDisplayCLI(unittest.TestCase):
     """ Various tests for the CLI display """
