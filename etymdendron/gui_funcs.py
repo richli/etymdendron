@@ -37,6 +37,8 @@ class EtymApp(wx.App):
         self.frame.Bind(wx.EVT_MENU, self.OnAbout, id=wx.xrc.XRCID('m_about'))
         self.frame.Bind(wx.EVT_MENU, self.OnLoad, id=wx.xrc.XRCID('m_load'))
         self.frame.Bind(wx.EVT_MENU, self.OnSave, id=wx.xrc.XRCID('m_save'))
+        self.frame.Bind(wx.EVT_MENU, self.OnNewTree,
+                        id=wx.xrc.XRCID('m_newtree'))
         # Bind button events
         self.frame.Bind(wx.EVT_BUTTON, self.OnSearch,
                 id=wx.xrc.XRCID('et_btnSearch'))
@@ -199,6 +201,11 @@ class EtymApp(wx.App):
     def OnEditRevert(self, event):
         """ Revert word details """
         self.UpdateWordDetails()
+
+    def OnNewTree(self, event):
+        """ Create a new tree """
+        # TODO: Implement me
+        print('We want a new tree!')
 
 ###
 # Some methods for the class
