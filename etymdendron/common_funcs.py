@@ -394,4 +394,13 @@ def deleteTree(tree):
     # Sever the tree from the db
     tree.clear()
 
+def addTree(tree_details, children):
+    """ Add a tree to the XML db 
+
+    tree_details is a dict with keys: 'lang', 'def', 'text', 'morpheme'.
+    children is a list of children to add to the tree. There **MUST** be
+    at least one child to add to the tree.
+    
+    """
+    raise NotImplementedError
 
