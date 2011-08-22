@@ -3,7 +3,6 @@ TODO for etymdendron
 TO WORK ON NEXT
 ---------------
 1) Drag-and-drop elements of the tree in the tree control GUI
-* Select a new word automatically upon creation
 2) Create some documentation using Sphinx
   * This is started. I should format the docstrings with rST and include built documentation when I package the project with distutils.
 3) Searching improvements
