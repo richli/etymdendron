@@ -420,6 +420,8 @@ def deleteTree(tree):
 def addTree(word_db, tree_details, children):
     """ Add a tree to the XML db 
 
+    Returns the new tree element.
+
     tree_details is a dict with keys: 'lang', 'def', 'text', 'morpheme'.
     children is a list of children to add to the tree. There **MUST** be
     at least one child to add to the tree.
@@ -451,7 +453,8 @@ def addTree(word_db, tree_details, children):
     etym_root = word_db.getroot()
 
     # Now we can create the tree
-    createWord(tree_details, word_parent=etym_root, word_children=children)
-
+    new_tree = createWord(tree_details, word_parent=etym_root,
+                          word_children=children)
+    return new_tree
 # EOF
 
