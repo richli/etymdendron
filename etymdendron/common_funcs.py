@@ -375,5 +375,11 @@ def findRoot(word):
 
 def deleteTree(tree):
     """ Removes the tree and all its children from the XML db """
-    raise NotImplementedError
+
+    # Check input
+    validateWord(tree)
+
+    # Sever the tree from the db
+    tree.clear()
+
 

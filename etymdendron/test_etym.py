@@ -374,7 +374,6 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(tree_root_details['morpheme'], 'leg')
         self.assertEqual(test_root, tree_root)
 
-    @unittest.skip('Not yet implemented')
     def testDelTree(self):
         """ Test deleting a tree """
         # Search for biology, since it's in two trees
