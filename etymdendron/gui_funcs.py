@@ -77,6 +77,9 @@ class EtymApp(wx.App):
         self.editchk = wx.xrc.XRCCTRL(self.frame, 'et_checkEdit')
         self.editbtn_save = wx.xrc.XRCCTRL(self.frame, 'et_btnEditSave')
         self.editbtn_revert = wx.xrc.XRCCTRL(self.frame, 'et_btnEditRevert')
+        self.menubar = self.frame.GetMenuBar()
+        self.menu_newtree = self.menubar.FindItemById(wx.xrc.XRCID('m_newtree'))
+        
         # And show the frame!
         self.frame.Show()
 
@@ -180,6 +183,7 @@ class EtymApp(wx.App):
         self.altbox.SetEditable(self.edit_mode)
         self.editbtn_save.Enable(self.edit_mode)
         self.editbtn_revert.Enable(self.edit_mode)
+        self.menu_newtree.Enable(self.edit_mode)
 
     def OnEditSave(self, event):
         """ Save word details """
