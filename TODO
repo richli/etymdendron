@@ -3,8 +3,7 @@ TODO for etymdendron
 TO WORK ON NEXT
 ---------------
 * Backend functions to edit the tree
-  * Add functions to:
-    * Create/delete new trees
+  * Implement cf.addTree() and test_etym.testAddTree()
 * GUI
   * Implement more editing
     * Drag-and-drop elements of the tree
