@@ -7,7 +7,7 @@
 <!ELEMENT morpheme (#PCDATA)>
 <!ELEMENT def (#PCDATA)>
 <!ELEMENT word (lang , text+ , morpheme+ , def , word*)>
-<!ATTLIST tree id CDATA #REQUIRED>
+<!ATTLIST tree id CDATA #IMPLIED>
 ]>
 <!-- This file provides for some test cases: 
 	 1) A word is found multiple times in the same tree (ros)
