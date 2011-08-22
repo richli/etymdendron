@@ -354,9 +354,9 @@ class EtymApp(wx.App):
         #wordDets = cf.loadWordDetails(self.current_node)
         word_dets = {'text': ['NEW WORD'], 'morpheme': 'NEW WORD', 'lang':
                      'UNKNOWN', 'def': 'Change me!'}
-        cf.createWord(word_dets, word_parent=self.current_node)
+        new_word = cf.createWord(word_dets, word_parent=self.current_node)
         # Refresh the tree
-        self.DisplayTree(self.search_root, self.search_words)
+        self.DisplayTree(self.search_root, self.search_words, select=new_word)
 
     def TreeItemAddSib(self, event):
         """ Add a sibling to the selected tree item """
@@ -364,10 +364,10 @@ class EtymApp(wx.App):
         #wordDets = cf.loadWordDetails(self.current_node)
         word_dets = {'text': ['NEW WORD'], 'morpheme': 'NEW WORD', 'lang':
                      'UNKNOWN', 'def': 'Change me!'}
-        cf.createWord(word_dets,
+        new_word = cf.createWord(word_dets,
                       word_parent=cf.loadWordParents(self.current_node))
-        # Refresh the tree
-        self.DisplayTree(self.search_root, self.search_words)
+        # Refresh the tree, select new word
+        self.DisplayTree(self.search_root, self.search_words, select=new_word)
 
     def SelectTreeItem(self, event):
         """ Find what tree item has been selected and then update UI """
