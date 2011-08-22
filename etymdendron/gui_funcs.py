@@ -240,12 +240,14 @@ class EtymApp(wx.App):
         print('{0} saved with {1} trees'.format(filename,
             len(self.words_tree.getroot())))
 
-    def DisplayTree(self, root, nodes):
+    def DisplayTree(self, root, nodes, select=None):
         """ Displays the tree in the wx.TreeCtrl object 
 
             root is the ElementTree root node.
-            nodes is a list of ElementTree word nodes.
+            nodes is a list of ElementTree word nodes to emphasize.
             If root is None, then is displays an empty tree message.
+            select is a word that is selected (focused), this overrides
+            focusing on any emphasized nodes.
         """
         self.treebox.DeleteAllItems()
         if root is None:
@@ -264,17 +266,19 @@ class EtymApp(wx.App):
                     data = wx.TreeItemData(root))
             if type(nodes) is not list:
                 nodes = [nodes]
-            self._populate_tree(root, root_elem, nodes)
+            self._populate_tree(root, root_elem, nodes, select)
             self.treebox.ExpandAll()
             self.editchk.Enable()
 
-    def _populate_tree(self, node, node_elem, emph_nodes):
+    def _populate_tree(self, node, node_elem, emph_nodes, select):
         """ Recursive private function to fill in the rest of the tree control 
 
             node: the ElementTree element we're working on.
             node_elem: the corresponding object in the TreeCtrl class.
             emph_nodes: a list of ElementTree elements, 
             these will be emphasized.
+            select: an element that will be selected (focused). If not None
+            then it overrides focusing on emphasized nodes.
 
         """
         # len() of a node returns how many children it has
@@ -285,13 +289,15 @@ class EtymApp(wx.App):
                 child_label = child_details['text'][0] 
                 child_elem = self.treebox.AppendItem(node_elem, child_label,
                         data = wx.TreeItemData(child))
-                if child in emph_nodes:
+                if child in emph_nodes and select is None:
                     # Emphasize the node
                     self.treebox.SetItemBold(child_elem)
                     # Select the node
                     self.treebox.SelectItem(child_elem)
+                if select is not None and child == select:
+                    self.treebox.SelectItem(child_elem)
                 # Recurse!
-                self._populate_tree(child, child_elem, emph_nodes)
+                self._populate_tree(child, child_elem, emph_nodes, select)
 
     def MenuTreeItem(self, event):
         """ Right-click menu for a tree item """
