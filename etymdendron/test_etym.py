@@ -439,8 +439,10 @@ class EtymDB(unittest.TestCase):
         # No word given
         self.assertRaises(cf.EtymExceptWord, cf.addTree, 
                           db, tree_dets, [None])
-        # Invalid db
         self.assertRaises(cf.EtymExceptWord, cf.addTree, 
+                          db, tree_dets, [])
+        # Invalid db
+        self.assertRaises(cf.EtymExceptDB, cf.addTree, 
                           None, tree_dets, [new_word])
         # Bad tree details
         tree_dets = {'lang': 'PIE', 'text': 'bane',
