@@ -254,8 +254,8 @@ class EtymDB(unittest.TestCase):
         # Make sure it can read the parent
         test_parent = cf.loadWordParents(chosen_word)
         parent_details = cf.loadWordDetails(test_parent)
-        self.assertEquals(parent_details['text'], ['equinus'])
-        self.assertEquals(parent_details['lang'], 'Latin')
+        self.assertEqual(parent_details['text'], ['equinus'])
+        self.assertEqual(parent_details['lang'], 'Latin')
         # Add a new word and set its parent
         word_dets = {'lang': 'English', 'text': ['banana', 'pineapple'],
                 'morpheme': 'bannana', 'def': 'A fruity thing'}
