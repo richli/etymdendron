@@ -255,35 +255,36 @@ def validateWord(word):
         raise EtymExceptWord('word is None!')
 
     # First check the tag
-    if word.tag != 'word' and word.tag != 'tree':
+    if word.tag not in ['word', 'tree', 'etym']:
         raise EtymExceptWord('Invalid word tag (tag={0})'.format(word.tag))
 
     # Check all of the subelements are present in right numbers
-    test_items = {'lang':0, 'text':0, 'morpheme':0, 'def':0, 'word':0}
-    word_items = [child.tag for child in word]
-    for item in word_items:
-        if item not in test_items.keys():
-            # Only allowable items are allowed
-            raise EtymExceptWord('Extra item(s) found in word details'
-                    '\n details: {0}'.format(word_items))
-        else:
-            test_items[item] += 1
+    if word.tag in ['word', 'tree']:
+        test_items = {'lang':0, 'text':0, 'morpheme':0, 'def':0, 'word':0}
+        word_items = [child.tag for child in word]
+        for item in word_items:
+            if item not in test_items.keys():
+                # Only allowable items are allowed
+                raise EtymExceptWord('Extra item(s) found in word details'
+                        '\n details: {0}'.format(word_items))
+            else:
+                test_items[item] += 1
 
-    # Need at least one of the following
-    for item in ['lang', 'text', 'morpheme', 'def']:
-        if test_items[item] < 1:
-            raise EtymExceptWord('Required item "{0}" not found in word details'
-                '\n details: {1}'.format(item, word_items))
+        # Need at least one of the following
+        for item in ['lang', 'text', 'morpheme', 'def']:
+            if test_items[item] < 1:
+                raise EtymExceptWord('Required item "{0}" not found in word details'
+                    '\n details: {1}'.format(item, word_items))
 
-    # Need at most one of the following
-    for item in ['lang', 'def']:
-        if test_items[item] > 1:
-            raise EtymExceptWord('Too many of "{0}" found in word details'
-                '\n details: {1}'.format(item, word_items))
+        # Need at most one of the following
+        for item in ['lang', 'def']:
+            if test_items[item] > 1:
+                raise EtymExceptWord('Too many of "{0}" found in word details'
+                    '\n details: {1}'.format(item, word_items))
 
-    # Now put the items in the right order
-    word_dets = loadWordDetails(word)
-    editWordDetails(word, word_dets)
+        # Now put the items in the right order
+        word_dets = loadWordDetails(word)
+        editWordDetails(word, word_dets)
 
     return True
 
