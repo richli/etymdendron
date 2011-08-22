@@ -302,7 +302,14 @@ class EtymApp(wx.App):
 
     def TreeItemDelete(self, event):
         """ Delete the selected tree item """
-        cf.deleteWord(self.current_node)
+        # Find what type of node it is (word or tree root)
+        node_type = cf.checkNode(self.current_node)
+        # Delete the word or tree
+        if node_type == 'word':
+            cf.deleteWord(self.current_node)
+        elif node_type == 'tree':
+            cf.deleteTree(self.current_node)
+            self.search_root = self.search_words = None
         # Refresh the tree
         self.DisplayTree(self.search_root, self.search_words)
 
