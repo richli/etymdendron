@@ -65,16 +65,16 @@ class EtymApp(wx.App):
         self.frame.Bind(wx.EVT_TREE_ITEM_MENU, self.MenuTreeItem,
                 id=wx.xrc.XRCID('et_tree'))
         # Save some object references for later
-        self.searchbox = wx.xrc.XRCCTRL(self.frame,'et_boxSearch')
-        self.treebox = wx.xrc.XRCCTRL(self.frame,'et_tree')
-        self.langbox = wx.xrc.XRCCTRL(self.frame,'et_txtLang')
-        self.defbox = wx.xrc.XRCCTRL(self.frame,'et_txtDef')
-        self.altbox = wx.xrc.XRCCTRL(self.frame,'et_txtAlt')
-        self.searchchoice = wx.xrc.XRCCTRL(self.frame,'et_choice')
-        self.searchbtn = wx.xrc.XRCCTRL(self.frame,'et_btnSearch')
-        self.editchk = wx.xrc.XRCCTRL(self.frame,'et_checkEdit')
-        self.editbtn_save = wx.xrc.XRCCTRL(self.frame,'et_btnEditSave')
-        self.editbtn_revert = wx.xrc.XRCCTRL(self.frame,'et_btnEditRevert')
+        self.searchbox = wx.xrc.XRCCTRL(self.frame, 'et_boxSearch')
+        self.treebox = wx.xrc.XRCCTRL(self.frame, 'et_tree')
+        self.langbox = wx.xrc.XRCCTRL(self.frame, 'et_txtLang')
+        self.defbox = wx.xrc.XRCCTRL(self.frame, 'et_txtDef')
+        self.altbox = wx.xrc.XRCCTRL(self.frame, 'et_txtAlt')
+        self.searchchoice = wx.xrc.XRCCTRL(self.frame, 'et_choice')
+        self.searchbtn = wx.xrc.XRCCTRL(self.frame, 'et_btnSearch')
+        self.editchk = wx.xrc.XRCCTRL(self.frame, 'et_checkEdit')
+        self.editbtn_save = wx.xrc.XRCCTRL(self.frame, 'et_btnEditSave')
+        self.editbtn_revert = wx.xrc.XRCCTRL(self.frame, 'et_btnEditRevert')
         # And show the frame!
         self.frame.Show()
 
