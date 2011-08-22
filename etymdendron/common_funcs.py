@@ -394,7 +394,7 @@ def deleteTree(tree):
     # Sever the tree from the db
     tree.clear()
 
-def addTree(tree_details, children):
+def addTree(word_db, tree_details, children):
     """ Add a tree to the XML db 
 
     tree_details is a dict with keys: 'lang', 'def', 'text', 'morpheme'.
@@ -402,5 +402,19 @@ def addTree(tree_details, children):
     at least one child to add to the tree.
     
     """
+    # Some argument checking
+    if children is None:
+        raise EtymExceptWord("'children' is None")
+    elif type(children) is not list:
+        raise EtymExceptWord("'children' argument is not a list")
+    elif len(children) < 1:
+        raise EtymExceptWord("'children' argument is empty")
+
+    if word_db is None:
+        raise EtymExceptDB("'word_db' argument is invalid")
+
+    #TODO: I left off here. Check tree_details dict similar to editWordDetails()
+
+
     raise NotImplementedError
 
