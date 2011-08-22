@@ -5,9 +5,8 @@ TO WORK ON NEXT
 * Backend functions to edit the tree
   * Implement cf.addTree() and test_etym.testAddTree()
 * GUI
-  * Implement more editing
-    * Drag-and-drop elements of the tree
-    * Create a new tree (added a menu item)
+  * Drag-and-drop elements of the tree
+  * Create a new tree (added a menu item)
   * A taskbar icon
   http://docs.wxwidgets.org/stable/wx_wxtoplevelwindow.html#wxtoplevelwindowseticons
 * I don't have searching for PIE roots enabled yet
