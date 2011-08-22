@@ -95,7 +95,8 @@ def loadWordDetails(word):
     if word == []:
         raise EtymExceptWord('No word given for loadWordDetails')
 
-    wordDets = {'lang': None, 'def': None, 'text': None, 'morpheme': None}
+    wordDets = {'lang': None, 'def': None, 'text': None, 
+                'morpheme': None, 'tag': None}
     
     wordDets['lang'] = word.xpath('lang')[0].text
     wordDets['def'] = word.xpath('def')[0].text
@@ -197,11 +198,32 @@ def createWord(word_details, word_parent=None, word_children=None):
     added to a tree by specifying parent/children. This can be done later
     or it can be done here by using word_parent, word_children.
 
+    If word_details['tag'] = 'tree' then a new tree is created. There 
+    cannot be a word_parent, and there MUST be at least one word_children.
+
     """
-    # Create the new word element
-    # TODO: If word_details has a 'tag' key, the value belongs here ('word' or
-    # 'tree')
-    new_word = ET.Element('word')
+    # Make sure we have some word_details
+    if word_details is None:
+        raise EtymExceptWord('No word_details specified!')
+
+    # Are we creating a word element or a tree root?
+    if 'tag' in word_details:
+        tag = word_details['tag']
+    else:
+        tag = 'word'
+
+    # Create the new word element or tree element
+    if tag == 'word':
+        new_word = ET.Element(tag)
+    elif tag == 'tree':
+#        if word_parent is not None:
+#            raise EtymExceptWord("Can't specify a parent ({0}) to "
+#                                 "a tree ({1})".format(word_parent,
+#                                                       word_details))
+        if word_children is None:
+            raise EtymExceptWord("Must specify at least one child")
+
+        new_word = ET.Element(tag)
 
     # Append children words
     if word_children is not None:
