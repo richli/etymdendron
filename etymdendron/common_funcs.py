@@ -413,8 +413,22 @@ def addTree(word_db, tree_details, children):
     if word_db is None:
         raise EtymExceptDB("'word_db' argument is invalid")
 
-    #TODO: I left off here. Check tree_details dict similar to editWordDetails()
+    # Check sanity of the details dictionary
+    element_items = ['lang', 'text', 'morpheme', 'def']
+    for item in element_items:
+        if item not in tree_details.keys():
+            raise EtymExceptWord('Required key(s) not found in word details'
+                    '\n details: {0}'.format(tree_details))
+    if type(tree_details['text']) is not list:
+        raise EtymExceptWord("'text' value is not a list")
 
+    tree_details['tag'] = 'tree'
 
-    raise NotImplementedError
+    # Find the root etym element (it's the parent of each tree)
+    etym_root = word_db.getroot()
+
+    # Now we can create the tree
+    createWord(tree_details, word_parent=etym_root, word_children=children)
+
+# EOF
 
