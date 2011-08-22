@@ -207,8 +207,17 @@ class EtymApp(wx.App):
 
     def OnNewTree(self, event):
         """ Create a new tree """
-        # TODO: Implement me
-        print('We want a new tree!')
+        # Create a tree with some default values
+        tree_dets = {'text': ['NEW ROOT'], 'morpheme': 'NEW ROOT', 'lang':
+                     'UNKNOWN', 'def': 'Change me!', 'tag': 'tree'}
+        word_dets = {'text': ['NEW WORD'], 'morpheme': 'NEW WORD', 'lang':
+                     'UNKNOWN', 'def': 'Change me!'}
+        new_word = cf.createWord(word_dets)
+        new_tree = cf.addTree(self.words_tree, tree_dets, [new_word])
+        # Refresh the tree
+        self.search_root = new_tree
+        self.search_words = None
+        self.DisplayTree(self.search_root, self.search_words)
 
 ###
 # Some methods for the class
