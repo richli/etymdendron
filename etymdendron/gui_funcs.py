@@ -95,7 +95,6 @@ class EtymApp(wx.App):
 
     def OnQuit(self, event):
         """ Exits the program """
-        #import pdb; pdb.set_trace()
         self.frame.Close(True)
 
     def OnLoad(self, event):
@@ -338,7 +337,7 @@ class EtymApp(wx.App):
         """ Add a child to the selected tree item """
         # Create a word with some default values
         #wordDets = cf.loadWordDetails(self.current_node)
-        word_dets = {'text': ['DEFAULT'], 'morpheme': 'DEFAULT', 'lang':
+        word_dets = {'text': ['NEW WORD'], 'morpheme': 'NEW WORD', 'lang':
                      'UNKNOWN', 'def': 'Change me!'}
         cf.createWord(word_dets, word_parent=self.current_node)
         # Refresh the tree
@@ -348,7 +347,7 @@ class EtymApp(wx.App):
         """ Add a sibling to the selected tree item """
         # Create a word with some default values
         #wordDets = cf.loadWordDetails(self.current_node)
-        word_dets = {'text': ['DEFAULT'], 'morpheme': 'DEFAULT', 'lang':
+        word_dets = {'text': ['NEW WORD'], 'morpheme': 'NEW WORD', 'lang':
                      'UNKNOWN', 'def': 'Change me!'}
         cf.createWord(word_dets,
                       word_parent=cf.loadWordParents(self.current_node))
