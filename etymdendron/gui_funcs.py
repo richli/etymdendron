@@ -4,6 +4,7 @@
 # We're using wxWidgets as a cross-platform toolkit
 import wx
 import wx.xrc
+import os.path
 from global_opts import WORDS_FILE
 import common_funcs as cf
 
@@ -14,7 +15,9 @@ class EtymApp(wx.App):
 # Initialization
     def OnInit(self):
         """ Load in the XRC file and display frame """
-        self.xrc = wx.xrc.XmlResource('etym.xrc')
+        etympath = os.path.dirname(__file__)
+        etymxrc = os.path.join(etympath, 'etym.xrc')
+        self.xrc = wx.xrc.XmlResource(etymxrc)
         self.InitUI()
         # Override the tight fitting of the sizers; this is also a 
         # workaround since the frame size is set before the menubar is
