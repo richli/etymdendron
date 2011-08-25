@@ -2,9 +2,7 @@ TODO for etymdendron
 ====================
 TO WORK ON NEXT
 ---------------
-1) Create some documentation using Sphinx
-  * This is started. I should format the docstrings with rST and include built documentation when I package the project with distutils.
-2) Searching improvements
+* Searching improvements
   * For searching, add options to do non-exact matches (partial words; account for variant spellings in the XML (such as ros,hros; (z)un); flatten diacritics)
   * I don't have searching for PIE roots enabled yet
   * Ignore * prefix, - suffix for PIE roots

@@ -14,7 +14,7 @@ shutil.copytree('doc/_build/html', 'documentation')
 
 # Create the distribution
 setup(  name='etymdendron',
-        version='0.50',
+        version='0.60',
         packages=['etymdendron'],
         package_dir={'etymdendron': 'etymdendron'},
         package_data={'etymdendron': ['words.xml', 'etym.xrc']},

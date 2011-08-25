@@ -1,5 +1,11 @@
 Changelog for etymdendron
 
+2011-08-25	v0.60
+Can add a tree using the File menu. New words are focused upon creation. Can
+reorganize the tree by dragging-and-dropping elements while in edit mode.
+Include documentation within the source distribution. Updated so can run it
+using an external script (run.pyw) or python -m etymdendron.
+
 2011-08-21	v0.50
 Implemented a unit testing framework for many of the functions. Abstracted the
 XML access behind functions to query and set word details and such. Added more
