@@ -319,12 +319,14 @@ class EtymApp(wx.App):
         """ Finish a drop-and-drop for the tree """
         self._drop_node = self.treebox.GetPyData(event.GetItem())
         # Can't drop onto a child of the self._drag_node (infinite loop)
-        #TODO: implement
-        # Okay, move the word
-        cf.moveWord(self._drag_node, self._drop_node)
-        # Refresh the tree
-        self.DisplayTree(self.search_root, self.search_words,
-                         select=self._drop_node)
+        if cf.isDescendant(self._drag_node, self._drop_node):
+            event.Veto()
+        else:
+            # Okay, move the word
+            cf.moveWord(self._drag_node, self._drop_node)
+            # Refresh the tree
+            self.DisplayTree(self.search_root, self.search_words,
+                             select=self._drop_node)
 
     def MenuTreeItem(self, event):
         """ Right-click menu for a tree item """
