@@ -399,14 +399,17 @@ def findRoot(word):
 def isDescendant(source, test_word):
     """ Determines if test_word is a descendant of source
 
-    Returns True if so, False otherwise.
+    Returns True if so, False otherwise. Also returns true if 
+    source and test_word are the same.
 
     """
     validateWord(source)
     validateWord(test_word)
 
-    #TODO: Implement
-    raise NotImplementedError
+    # Find all descendants
+    descs = source.xpath('descendant-or-self::word')
+    # Perform the test
+    return (test_word in descs)
 
 def checkNode(word):
     """ Checks the word and returns the type 
