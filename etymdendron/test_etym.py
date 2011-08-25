@@ -374,6 +374,24 @@ class EtymDB(unittest.TestCase):
         self.assertEqual(tree_root_details['morpheme'], 'leg')
         self.assertEqual(test_root, tree_root)
 
+    def testIsDescendant(self):
+        """ Test checking IsDescendant() """
+        # "farho" is a great grand-parent of "farrow"
+        # "porcus" is a sibling of "farho"
+        db = self.getDB()
+        num_trees, matched_words = cf.searchDB(db, 'farho')
+        test_top = matched_words[0][1]
+        num_trees, matched_words = cf.searchDB(db, 'farrow')
+        test_bottom = matched_words[0][1]
+        num_trees, matched_words = cf.searchDB(db, 'porcus')
+        test_side = matched_words[0][1]
+
+        self.assertEqual(cf.isDescendant(test_top, test_bottom), True)
+        self.assertEqual(cf.isDescendant(test_top, test_side), False)
+        self.assertEqual(cf.isDescendant(test_bottom, test_top), False)
+        self.assertEqual(cf.isDescendant(test_bottom, test_side), False)
+
+
     def testCheckNode(self):
         """ Test checking the node type """
         db = self.getDB()

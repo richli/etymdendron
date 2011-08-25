@@ -396,6 +396,18 @@ def findRoot(word):
     """ Returns the tree root for a given word """
     return word.xpath('ancestor::tree')[0]
 
+def isDescendant(source, test_word):
+    """ Determines if test_word is a descendant of source
+
+    Returns True if so, False otherwise.
+
+    """
+    validateWord(source)
+    validateWord(test_word)
+
+    #TODO: Implement
+    raise NotImplementedError
+
 def checkNode(word):
     """ Checks the word and returns the type 
 
